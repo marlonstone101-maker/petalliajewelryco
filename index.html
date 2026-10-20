@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PETALLIA JEWELRY . CO | Fine Stainless Steel & Luxury Jewelry</title>
+  
+  <!-- Google Fonts: Playfair Display & Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Stripe JS SDK -->
+  <script src="https://js.stripe.com/v3/"></script>
+
+  <!-- Firebase Modular SDKs -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, onSnapshot, doc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+    import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
+
+    // Replace with your Firebase Project Configuration
+    const firebaseConfig = {
+      apiKey: "YOUR_FIREBASE_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+
+    // Initialize Firebase
+    window.firebaseApp = initializeApp(firebaseConfig);
+    window.db = getFirestore(window.firebaseApp);
+    window.storage = getStorage(window.firebaseApp);
+  </script>
+
+  <style>
+    /* STARK BLACK & WHITE MONOCHROME DESIGN SYSTEM */
+    :root {
+      --bg-main: #FFFFFF;
+      --bg-card: #FFFFFF;
+      --bg-glass: rgba(255, 255, 255, 0.95);
+      --text-black: #000000;
+      --text-muted: #555555;
+      --border-black: #000000;
+      --border-light: #E0E0E0;
+      --font-heading: 'Playfair Display', serif;
+      --font-body: 'Montserrat', sans-serif;
+      --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-black);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* SCROLLBAR */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-main);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--text-black);
+    }
+
+    /* ANNOUNCEMENT BAR */
+    .announcement-bar {
+      background: #000000;
+      color: #FFFFFF;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      text-align: center;
+      padding: 10px 15px;
+      border-bottom: 1px solid #000000;
+    }
+
+    /* NAVIGATION HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--bg-glass);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-black);
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-logo-container {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    /* SHARP, CLEAR FLAT LOGO */
+    .brand-logo {
+      height: 60px;
+      width: auto;
+      object-fit: contain;
+      background: transparent;
+      padding: 0;
+      border: none;
+      image-rendering: -webkit-optimize-contrast;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-black);
+      text-decoration: none;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 600;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: #000000;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-social-icons {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 1.1rem;
+    }
+
+    .nav-social-icons a {
+      color: var(--text-black);
+      transition: var(--transition);
+    }
+
+    .nav-social-icons a:hover {
+      opacity: 0.6;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .icon-btn {
+      background: none;
+      border: none;
+      color: var(--text-black);
+      font-size: 1.2rem;
+      cursor: pointer;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: -8px;
+      right: -10px;
+      background: #000000;
+      color: #FFFFFF;
+      font-weight: 700;
+      font-size: 0.65rem;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* SLIDESHOW HERO SECTION */
+    .hero-slideshow {
+      position: relative;
+      width: 100%;
+      height: 75vh;
+      min-height: 480px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border-black);
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    .slide-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.45);
+    }
+
+    .slide-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 800px;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid var(--border-black);
+    }
+
+    .slide-content h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4.5vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: 3px;
+      margin-bottom: 15px;
+      color: #000000;
+      text-transform: uppercase;
+    }
+
+    .slide-content p {
+      font-size: 0.85rem;
+      letter-spacing: 2.5px;
+      color: var(--text-muted);
+      margin-bottom: 25px;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .btn-black {
+      display: inline-block;
+      padding: 14px 38px;
+      background: #000000;
+      color: #FFFFFF;
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      border: 1px solid #000000;
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .btn-black:hover {
+      background: #FFFFFF;
+      color: #000000;
+    }
+
+    /* SECTION TITLES */
+    .section-header {
+      text-align: center;
+      padding: 60px 20px 25px;
+    }
+
+    .section-header h2 {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text-black);
+      text-transform: uppercase;
+    }
+
+    .section-header .subtext {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--text-muted);
+      margin-top: 6px;
+      font-weight: 500;
+    }
+
+    /* CATEGORY FILTER BUTTONS */
+    .category-filters {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      padding: 0 15px;
+    }
+
+    .filter-btn {
+      background: #FFFFFF;
+      color: var(--text-black);
+      border: 1px solid var(--border-black);
+      padding: 8px 22px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: #000000;
+      color: #FFFFFF;
+    }
+
+    /* MONOCHROME LUXURY PRODUCT GRID (THUMBNAILS) */
+    .products-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+    }
+
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-black);
+      overflow: hidden;
+      position: relative;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: #000000;
+      color: #FFFFFF;
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 4px 10px;
+      z-index: 2;
+    }
+
+    .product-img-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: #F8F8F8;
+      border-bottom: 1px solid var(--border-black);
+    }
+
+    .product-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .product-card:hover .product-img-wrapper img {
+      transform: scale(1.06);
+    }
+
+    .product-info {
+      padding: 18px 15px;
+      text-align: center;
+    }
+
+    .product-title {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      color: var(--text-black);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .product-price {
+      font-size: 0.9rem;
+      color: var(--text-black);
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    /* MODAL POPUP FOR PRODUCT VIEW & FULFILLMENT */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(5px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition);
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-black);
+      width: 100%;
+      max-width: 850px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      overflow: hidden;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: #000000;
+      font-size: 1.6rem;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .modal-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-right: 1px solid var(--border-black);
+    }
+
+    .modal-details {
+      padding: 35px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .modal-details h3 {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      color: var(--text-black);
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .modal-details .modal-price {
+      font-size: 1.25rem;
+      color: var(--text-black);
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .delivery-section {
+      margin: 15px 0;
+      border-top: 1px solid var(--border-light);
+      padding-top: 12px;
+    }
+
+    .delivery-section label {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-black);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .select-custom {
+      width: 100%;
+      padding: 12px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-black);
+      color: #000000;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      outline: none;
+      margin-bottom: 10px;
+    }
+
+    /* SLIDE-OUT CART DRAWER */
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: -450px;
+      width: 100%;
+      max-width: 420px;
+      height: 100vh;
+      background: #FFFFFF;
+      border-left: 1px solid var(--border-black);
+      z-index: 2100;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+    }
+
+    .cart-drawer.active {
+      right: 0;
+    }
+
+    .cart-header {
+      padding: 20px;
+      border-bottom: 1px solid var(--border-black);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cart-header h3 {
+      font-family: var(--font-heading);
+      color: var(--text-black);
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .cart-item {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 15px;
+    }
+
+    .cart-item img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border: 1px solid var(--border-black);
+    }
+
+    .cart-item-info h4 {
+      font-size: 0.9rem;
+      color: var(--text-black);
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .cart-item-info p {
+      font-size: 0.85rem;
+      color: var(--text-black);
+      font-weight: 600;
+    }
+
+    .cart-footer {
+      padding: 20px;
+      border-top: 1px solid var(--border-black);
+      background: #FFFFFF;
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: var(--text-black);
+      text-transform: uppercase;
+    }
+
+    /* HIDDEN CLIENT ADMIN PANEL */
+    .admin-panel {
+      max-width: 900px;
+      margin: 40px auto 80px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-black);
+      padding: 35px;
+      display: none;
+    }
+
+    .admin-panel.active {
+      display: block;
+    }
+
+    .admin-panel h3 {
+      font-family: var(--font-heading);
+      color: var(--text-black);
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-black);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 15px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-black);
+      color: #000000;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .form-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      color: var(--text-black);
+      font-weight: 500;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #FFFFFF;
+      border-top: 1px solid var(--border-black);
+      padding: 40px 20px 20px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      height: 45px;
+      background: transparent;
+      padding: 0;
+      border: none;
+      margin-bottom: 15px;
+    }
+
+    .copyright {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* TABLET & MOBILE RESPONSIVE OPTIMIZATIONS */
+    @media (max-width: 1024px) {
+      .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 12px 4%;
+      }
+
+      .brand-logo {
+        height: 42px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-social-icons {
+        gap: 12px;
+        font-size: 1rem;
+      }
+
+      .hero-slideshow {
+        height: 55vh;
+      }
+
+      .slide-content {
+        padding: 20px;
+        margin: 0 15px;
+      }
+
+      .slide-content h1 {
+        font-size: 1.8rem;
+      }
+
+      /* STRICT 2 COLUMNS ON MOBILE */
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .product-info {
+        padding: 10px 8px;
+      }
+
+      .product-title {
+        font-size: 0.85rem;
+      }
+
+      .product-price {
+        font-size: 0.8rem;
+      }
+
+      .modal-card {
+        grid-template-columns: 1fr;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+
+      .modal-image {
+        height: 240px;
+      }
+
+      .cart-drawer {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announcement-bar">
+    📦 We Deliver Island Wide | Stainless Steel Jewelry 📦
+  </div>
+
+  <!-- NAVIGATION -->
+  <header>
+    <a href="#" class="brand-logo-container">
+      <img src="logo.jpg" alt="PETALLIA JEWELRY . CO Logo" class="brand-logo" onerror="this.src='https://via.placeholder.com/150x50/ffffff/000000?text=PETALLIA'">
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#new-arrivals">New Arrivals</a></li>
+      <li><a href="#all-jewelry">Shop All</a></li>
+    </ul>
+
+    <div class="nav-social-icons">
+      <a href="https://www.instagram.com/jewelrybypetallia?psln=OWlwa2d2NDlzMTdu" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://wa.me/18762967705" target="_blank" title="WhatsApp Us"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="icon-btn" onclick="toggleCart()">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="cart-badge" id="cart-count">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- LUXURY HERO HERO SLIDESHOW -->
+  <section class="hero-slideshow" id="slideshow-container">
+    <!-- Dynamic Slides loaded via JavaScript -->
+  </section>
+
+  <!-- NEW ARRIVALS SECTION -->
+  <section class="section-header" id="new-arrivals">
+    <h2>New Arrivals</h2>
+    <div class="subtext">Exquisite New Masterpieces</div>
+  </section>
+
+  <div class="products-container">
+    <div class="product-grid" id="new-arrivals-grid">
+      <!-- Dynamic Products -->
+    </div>
+  </div>
+
+  <!-- ALL PRODUCTS SECTION (COLLECTION WITH CATEGORY THUMBNAIL TABS) -->
+  <section class="section-header" id="all-jewelry">
+    <h2>The Full Collection</h2>
+    <div class="subtext">Timeless Stainless Steel Pieces</div>
+  </section>
+
+  <!-- CATEGORY FILTER BUTTONS -->
+  <div class="category-filters">
+    <button class="filter-btn active" onclick="filterCategory('all', this)">All Pieces</button>
+    <button class="filter-btn" onclick="filterCategory('necklaces', this)">Necklaces</button>
+    <button class="filter-btn" onclick="filterCategory('bracelets', this)">Bracelets</button>
+    <button class="filter-btn" onclick="filterCategory('rings', this)">Rings</button>
+  </div>
+
+  <div class="products-container">
+    <div class="product-grid" id="main-product-grid">
+      <!-- Dynamic Products -->
+    </div>
+  </div>
+
+  <!-- HIDDEN CLIENT ADMIN PANEL (Access via clicking footer copyright with passcode 0140) -->
+  <section class="admin-panel" id="admin-section">
+    <h3>Client Admin Portal</h3>
+    <p style="text-align:center; color: var(--text-muted); font-size: 0.85rem; margin-bottom: 25px;">
+      Upload new jewelry arrivals, add to hero slideshow, and manage products.
+    </p>
+
+    <form id="admin-upload-form">
+      <div class="form-group">
+        <label>Product Title</label>
+        <input type="text" id="admin-title" class="form-control" placeholder="e.g. Black Clover Pendant Necklace" required>
+      </div>
+
+      <div class="form-group">
+        <label>Price ($USD or$JMD)</label>
+        <input type="number" id="admin-price" class="form-control" placeholder="e.g. 45" required>
+      </div>
+
+      <div class="form-group">
+        <label>Category</label>
+        <select id="admin-category" class="form-control select-custom" required>
+          <option value="necklaces">Necklaces</option>
+          <option value="bracelets">Bracelets</option>
+          <option value="rings">Rings</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Product Description</label>
+        <textarea id="admin-desc" class="form-control" rows="3" placeholder="High grade stainless steel luxury piece..." required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Product Image File</label>
+        <input type="file" id="admin-file" class="form-control" accept="image/*" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-checkbox">
+          <input type="checkbox" id="admin-is-new"> Mark as "New Arrival"
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label class="form-checkbox">
+          <input type="checkbox" id="admin-is-slide"> Add to Hero Slideshow
+        </label>
+      </div>
+
+      <button type="submit" class="btn-black" style="width: 100%; margin-top: 10px;">
+        Upload & Publish To Store
+      </button>
+    </form>
+  </section>
+
+  <!-- PRODUCT DETAIL & FULFILLMENT MODAL -->
+  <div class="modal-overlay" id="product-modal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <div class="modal-image">
+        <img id="modal-img" src="#" alt="Jewelry Item">
+      </div>
+      <div class="modal-details">
+        <h3 id="modal-title">Product Name</h3>
+        <div class="modal-price" id="modal-price">$0.00</div>
+        <p id="modal-desc" style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;"></p>
+
+        <!-- FULFILLMENT METHOD SELECTION -->
+        <div class="delivery-section">
+          <label><i class="fa-solid fa-bag-shopping"></i> Select Fulfillment Option:</label>
+          <select id="fulfillment-select" class="select-custom" onchange="toggleFulfillmentOptions()">
+            <option value="delivery">Islandwide Delivery</option>
+            <option value="pickup">Store Pickup</option>
+          </select>
+        </div>
+
+        <!-- 14 PARISHES ISLANDWIDE DELIVERY SELECTION -->
+        <div class="delivery-section" id="parish-container">
+          <label><i class="fa-solid fa-truck-fast"></i> Select Jamaica Parish (14 Parishes):</label>
+          <select id="parish-select" class="select-custom">
+            <option value="Kingston">Kingston</option>
+            <option value="St. Andrew">St. Andrew</option>
+            <option value="St. Catherine">St. Catherine</option>
+            <option value="Clarendon">Clarendon</option>
+            <option value="Manchester">Manchester</option>
+            <option value="St. Elizabeth">St. Elizabeth</option>
+            <option value="Westmoreland">Westmoreland</option>
+            <option value="Hanover">Hanover</option>
+            <option value="St. James">St. James</option>
+            <option value="Trelawny">Trelawny</option>
+            <option value="St. Ann">St. Ann</option>
+            <option value="St. Mary">St. Mary</option>
+            <option value="Portland">Portland</option>
+            <option value="St. Thomas">St. Thomas</option>
+          </select>
+        </div>
+
+        <button class="btn-black" onclick="addCurrentToCart()">Add To Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE-OUT CART DRAWER -->
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h3>Your Shopping Bag</h3>
+      <button class="modal-close" onclick="toggleCart()" style="position:static;">&times;</button>
+    </div>
+    <div class="cart-items" id="cart-items-container">
+      <!-- Dynamic Cart Items -->
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total:</span>
+        <span id="cart-total-price">$0.00</span>
+      </div>
+      <button class="btn-black" style="width: 100%;" onclick="checkoutStripe()">
+        Proceed To Stripe Checkout
+      </button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <img src="logo.jpg" alt="PETALLIA Logo" class="footer-logo" onerror="this.src='https://via.placeholder.com/150x50/ffffff/000000?text=PETALLIA'">
+    <!-- Click copyright with code 0140 to unlock Admin Portal -->
+    <p class="copyright" onclick="unlockAdmin()">&copy; 2026 PETALLIA JEWELRY . CO. All Rights Reserved.</p>
+  </footer>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // Initialize Stripe
+    const stripe = Stripe('YOUR_STRIPE_PUBLISHABLE_KEY');
+
+    // Default Sample Data for Initial Showcase
+    let products = [
+      {
+        id: '1',
+        title: 'Clover Chain & Pendant',
+        price: 45,
+        category: 'necklaces',
+        description: 'Premium stainless steel flower clover necklace with exquisite finish.',
+        image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80',
+        isNew: true,
+        isSlide: true
+      },
+      {
+        id: '2',
+        title: 'Monochrome Cuff Bangle',
+        price: 55,
+        category: 'bracelets',
+        description: 'Chic textured wrist cuff made with tarnish-free stainless steel.',
+        image: 'https://images.unsplash.com/photo-1611591475155-42e523a67047?auto=format&fit=crop&w=800&q=80',
+        isNew: true,
+        isSlide: true
+      },
+      {
+        id: '3',
+        title: 'Classic Statement Watch',
+        price: 85,
+        category: 'rings',
+        description: 'Elegant wristwatch tailored for high class and everyday wear.',
+        image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=80',
+        isNew: false,
+        isSlide: false
+      },
+      {
+        id: '4',
+        title: 'Link & Charm Bracelet Set',
+        price: 60,
+        category: 'bracelets',
+        description: 'Delicate chain link set with statement centerpiece.',
+        image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=800&q=80',
+        isNew: false,
+        isSlide: false
+      }
+    ];
+
+    let cart = [];
+    let selectedProduct = null;
+    let currentSlide = 0;
+
+    // SECRET ADMIN UNLOCK WITH PASSCODE 0140
+    function unlockAdmin() {
+      const passcode = prompt("Enter Admin Passcode:");
+      if (passcode === "0140") {
+        const panel = document.getElementById('admin-section');
+        panel.classList.toggle('active');
+        if (panel.classList.contains('active')) {
+          panel.scrollIntoView({ behavior: 'smooth' });
+          alert("Admin Portal Unlocked successfully.");
+        }
+      } else if (passcode !== null) {
+        alert("Incorrect passcode.");
+      }
+    }
+
+    // RENDER HERO SLIDESHOW
+    function renderSlideshow() {
+      const container = document.getElementById('slideshow-container');
+      const slideProducts = products.filter(p => p.isSlide);
+
+      if (slideProducts.length === 0) {
+        container.innerHTML = `
+          <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1600&q=80');">
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+              <h1>PETALLIA JEWELRY . CO</h1>
+              <p>Stainless Steel Fine Jewelry | Islandwide Delivery</p>
+              <a href="#all-jewelry" class="btn-black">View Product</a>
+            </div>
+          </div>`;
+        return;
+      }
+
+      container.innerHTML = slideProducts.map((product, index) => `
+        <div class="slide ${index === 0 ? 'active' : ''}" style="background-image: url('${product.image}');">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <h1>${product.title}</h1>
+            <p>$${product.price} USD | Stainless Steel</p>
+            <a href="#all-jewelry" class="btn-black">View Product</a>
+          </div>
+        </div>
+      `).join('');
+
+      startSlideTimer();
+    }
+
+    function startSlideTimer() {
+      const slides = document.querySelectorAll('.slide');
+      if (slides.length <= 1) return;
+      
+      setInterval(() => {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+      }, 5000);
+    }
+
+    // RENDER PRODUCTS & CATEGORY FILTERING
+    function renderProducts(filteredList = null) {
+      const newArrivalsGrid = document.getElementById('new-arrivals-grid');
+      const mainGrid = document.getElementById('main-product-grid');
+
+      const newArrivals = products.filter(p => p.isNew);
+      const displayProducts = filteredList || products;
+
+      newArrivalsGrid.innerHTML = newArrivals.map(p => createProductCardHTML(p)).join('');
+      mainGrid.innerHTML = displayProducts.map(p => createProductCardHTML(p)).join('');
+    }
+
+    function filterCategory(category, btnElement) {
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      if (btnElement) btnElement.classList.add('active');
+
+      if (category === 'all') {
+        renderProducts(products);
+      } else {
+        const filtered = products.filter(p => p.category === category);
+        renderProducts(filtered);
+      }
+    }
+
+    function createProductCardHTML(p) {
+      return `
+        <div class="product-card" onclick="openModal('${p.id}')">
+          ${p.isNew ? '<span class="product-badge">New Arrival</span>' : ''}
+          <div class="product-img-wrapper">
+            <img src="${p.image}" alt="${p.title}" loading="lazy">
+          </div>
+          <div class="product-info">
+            <div class="product-title">${p.title}</div>
+            <div class="product-price">$${p.price}.00</div>
+          </div>
+        </div>
+      `;
+    }
+
+    // MODAL FUNCTIONS
+    function openModal(id) {
+      selectedProduct = products.find(p => p.id === id);
+      if (!selectedProduct) return;
+
+      document.getElementById('modal-img').src = selectedProduct.image;
+      document.getElementById('modal-title').innerText = selectedProduct.title;
+      document.getElementById('modal-price').innerText = `$${selectedProduct.price}.00`;
+      document.getElementById('modal-desc').innerText = selectedProduct.description;
+      
+      document.getElementById('fulfillment-select').value = 'delivery';
+      toggleFulfillmentOptions();
+
+      document.getElementById('product-modal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('product-modal').classList.remove('active');
+    }
+
+    function toggleFulfillmentOptions() {
+      const fulfillment = document.getElementById('fulfillment-select').value;
+      const parishContainer = document.getElementById('parish-container');
+      if (fulfillment === 'pickup') {
+        parishContainer.style.display = 'none';
+      } else {
+        parishContainer.style.display = 'block';
+      }
+    }
+
+    // CART FUNCTIONS
+    function toggleCart() {
+      document.getElementById('cart-drawer').classList.toggle('active');
+    }
+
+    function addCurrentToCart() {
+      if (!selectedProduct) return;
+      const fulfillment = document.getElementById('fulfillment-select').value;
+      let fulfillmentDetail = 'Store Pickup';
+      
+      if (fulfillment === 'delivery') {
+        const parish = document.getElementById('parish-select').value;
+        fulfillmentDetail = `Delivery: ${parish}`;
+      }
+      
+      cart.push({
+        ...selectedProduct,
+        fulfillmentType: fulfillmentDetail
+      });
+
+      updateCartUI();
+      closeModal();
+      toggleCart();
+    }
+
+    function updateCartUI() {
+      document.getElementById('cart-count').innerText = cart.length;
+      const container = document.getElementById('cart-items-container');
+      
+      let total = 0;
+      container.innerHTML = cart.map((item) => {
+        total += item.price;
+        return `
+          <div class="cart-item">
+            <img src="${item.image}" alt="${item.title}">
+            <div class="cart-item-info">
+              <h4>${item.title}</h4>
+              <p>$${item.price}.00</p>
+              <small style="color: var(--text-muted); font-size: 0.7rem;">${item.fulfillmentType}</small>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('cart-total-price').innerText = `$${total}.00`;
+    }
+
+    // STRIPE CHECKOUT
+    async function checkoutStripe() {
+      if (cart.length === 0) {
+        alert("Your shopping bag is empty!");
+        return;
+      }
+      
+      alert("Redirecting to Stripe Payment Gateway...");
+    }
+
+    // CLIENT ADMIN UPLOAD FORM HANDLER
+    document.getElementById('admin-upload-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const title = document.getElementById('admin-title').value;
+      const price = parseFloat(document.getElementById('admin-price').value);
+      const category = document.getElementById('admin-category').value;
+      const desc = document.getElementById('admin-desc').value;
+      const fileInput = document.getElementById('admin-file');
+      const isNew = document.getElementById('admin-is-new').checked;
+      const isSlide = document.getElementById('admin-is-slide').checked;
+
+      if (fileInput.files.length === 0) return;
+
+      const file = fileInput.files[0];
+      const fakeImageUrl = URL.createObjectURL(file);
+
+      const newProduct = {
+        id: Date.now().toString(),
+        title: title,
+        price: price,
+        category: category,
+        description: desc,
+        image: fakeImageUrl,
+        isNew: isNew,
+        isSlide: isSlide
+      };
+
+      products.unshift(newProduct);
+      renderSlideshow();
+      renderProducts();
+
+      alert("Product published successfully to store!");
+      document.getElementById('admin-upload-form').reset();
+      document.getElementById('admin-section').classList.remove('active');
+    });
+
+    // INITIAL RENDER
+    window.addEventListener('DOMContentLoaded', () => {
+      renderSlideshow();
+      renderProducts();
+    });
+  </script>
+</body>
+</html>
