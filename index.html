@@ -22,7 +22,6 @@
     import { getFirestore, collection, addDoc, onSnapshot, doc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
     import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
 
-    // Replace with your Firebase Project Configuration
     const firebaseConfig = {
       apiKey: "YOUR_FIREBASE_API_KEY",
       authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
@@ -32,7 +31,6 @@
       appId: "YOUR_APP_ID"
     };
 
-    // Initialize Firebase
     window.firebaseApp = initializeApp(firebaseConfig);
     window.db = getFirestore(window.firebaseApp);
     window.storage = getStorage(window.firebaseApp);
@@ -100,7 +98,7 @@
       background: var(--bg-glass);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border-black);
-      padding: 15px 5%;
+      padding: 12px 5%;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -112,20 +110,23 @@
       text-decoration: none;
     }
 
-    /* SHARP, CLEAR FLAT LOGO */
+    /* CLEAN FLAT BORDERLESS LOGO */
     .brand-logo {
-      height: 60px;
+      height: 52px;
       width: auto;
       object-fit: contain;
-      background: transparent;
-      padding: 0;
-      border: none;
+      background: transparent !important;
+      border: none !important;
+      outline: none !important;
+      padding: 0 !important;
+      box-shadow: none !important;
+      display: block;
       image-rendering: -webkit-optimize-contrast;
     }
 
     .nav-links {
       display: flex;
-      gap: 30px;
+      gap: 35px;
       list-style: none;
       align-items: center;
     }
@@ -156,20 +157,60 @@
       width: 100%;
     }
 
-    .nav-social-icons {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      font-size: 1.1rem;
-    }
-
-    .nav-social-icons a {
+    .menu-toggle-btn {
+      display: none;
+      background: none;
+      border: none;
       color: var(--text-black);
-      transition: var(--transition);
+      font-size: 1.4rem;
+      cursor: pointer;
     }
 
-    .nav-social-icons a:hover {
-      opacity: 0.6;
+    /* MOBILE NAVIGATION DRAWER */
+    .mobile-nav-drawer {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 280px;
+      height: 100vh;
+      background: #FFFFFF;
+      border-right: 1px solid var(--border-black);
+      z-index: 2200;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      padding: 30px 20px;
+      box-shadow: 10px 0 30px rgba(0,0,0,0.1);
+    }
+
+    .mobile-nav-drawer.active {
+      left: 0;
+    }
+
+    .mobile-nav-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .mobile-nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .mobile-nav-links a {
+      color: var(--text-black);
+      text-decoration: none;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 600;
+      display: block;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-light);
     }
 
     .nav-actions {
@@ -340,7 +381,7 @@
       color: #FFFFFF;
     }
 
-    /* MONOCHROME LUXURY PRODUCT GRID (THUMBNAILS) */
+    /* PRODUCT GRID */
     .products-container {
       max-width: 1400px;
       margin: 0 auto;
@@ -421,7 +462,7 @@
       letter-spacing: 1px;
     }
 
-    /* MODAL POPUP FOR PRODUCT VIEW & FULFILLMENT */
+    /* MODAL POPUP */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -674,16 +715,36 @@
     footer {
       background: #FFFFFF;
       border-top: 1px solid var(--border-black);
-      padding: 40px 20px 20px;
+      padding: 45px 20px 25px;
       text-align: center;
     }
 
     .footer-logo {
-      height: 45px;
-      background: transparent;
-      padding: 0;
-      border: none;
-      margin-bottom: 15px;
+      height: 48px;
+      background: transparent !important;
+      border: none !important;
+      outline: none !important;
+      padding: 0 !important;
+      box-shadow: none !important;
+      margin-bottom: 18px;
+      object-fit: contain;
+    }
+
+    .footer-social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+    }
+
+    .footer-social-icons a {
+      color: var(--text-black);
+      transition: var(--transition);
+    }
+
+    .footer-social-icons a:hover {
+      opacity: 0.6;
     }
 
     .copyright {
@@ -694,7 +755,7 @@
       user-select: none;
     }
 
-    /* TABLET & MOBILE RESPONSIVE OPTIMIZATIONS */
+    /* RESPONSIVE BREAKPOINTS */
     @media (max-width: 1024px) {
       .product-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -704,20 +765,19 @@
 
     @media (max-width: 768px) {
       header {
-        padding: 12px 4%;
+        padding: 10px 4%;
       }
 
       .brand-logo {
-        height: 42px;
+        height: 40px;
       }
 
       .nav-links {
         display: none;
       }
 
-      .nav-social-icons {
-        gap: 12px;
-        font-size: 1rem;
+      .menu-toggle-btn {
+        display: block;
       }
 
       .hero-slideshow {
@@ -774,8 +834,12 @@
     📦 We Deliver Island Wide | Stainless Steel Jewelry 📦
   </div>
 
-  <!-- NAVIGATION -->
+  <!-- NAVIGATION HEADER -->
   <header>
+    <button class="menu-toggle-btn" onclick="toggleMobileMenu()">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
     <a href="#" class="brand-logo-container">
       <img src="logo.jpg" alt="PETALLIA JEWELRY . CO Logo" class="brand-logo" onerror="this.src='https://via.placeholder.com/150x50/ffffff/000000?text=PETALLIA'">
     </a>
@@ -785,11 +849,6 @@
       <li><a href="#all-jewelry">Shop All</a></li>
     </ul>
 
-    <div class="nav-social-icons">
-      <a href="https://www.instagram.com/jewelrybypetallia?psln=OWlwa2d2NDlzMTdu" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-      <a href="https://wa.me/18762967705" target="_blank" title="WhatsApp Us"><i class="fa-brands fa-whatsapp"></i></a>
-    </div>
-
     <div class="nav-actions">
       <button class="icon-btn" onclick="toggleCart()">
         <i class="fa-solid fa-bag-shopping"></i>
@@ -798,7 +857,20 @@
     </div>
   </header>
 
-  <!-- LUXURY HERO HERO SLIDESHOW -->
+  <!-- MOBILE NAVIGATION SLIDE-OUT DRAWER -->
+  <div class="mobile-nav-drawer" id="mobile-drawer">
+    <div class="mobile-nav-header">
+      <img src="logo.jpg" alt="PETALLIA" style="height: 38px; background: transparent; border: none;" onerror="this.style.display='none'">
+      <button class="modal-close" onclick="toggleMobileMenu()" style="position:static; font-size: 1.4rem;">&times;</button>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="#new-arrivals" onclick="toggleMobileMenu()">New Arrivals</a></li>
+      <li><a href="#all-jewelry" onclick="toggleMobileMenu()">Shop All</a></li>
+      <li><a href="#" onclick="promptMobileAdmin(event)">Admin Portal</a></li>
+    </ul>
+  </div>
+
+  <!-- LUXURY HERO SLIDESHOW -->
   <section class="hero-slideshow" id="slideshow-container">
     <!-- Dynamic Slides loaded via JavaScript -->
   </section>
@@ -835,7 +907,7 @@
     </div>
   </div>
 
-  <!-- HIDDEN CLIENT ADMIN PANEL (Access via clicking footer copyright with passcode 0140) -->
+  <!-- HIDDEN CLIENT ADMIN PANEL -->
   <section class="admin-panel" id="admin-section">
     <h3>Client Admin Portal</h3>
     <p style="text-align:center; color: var(--text-muted); font-size: 0.85rem; margin-bottom: 25px;">
@@ -960,7 +1032,13 @@
   <!-- FOOTER -->
   <footer>
     <img src="logo.jpg" alt="PETALLIA Logo" class="footer-logo" onerror="this.src='https://via.placeholder.com/150x50/ffffff/000000?text=PETALLIA'">
-    <!-- Click copyright with code 0140 to unlock Admin Portal -->
+    
+    <div class="footer-social-icons">
+      <a href="https://www.instagram.com/jewelrybypetallia?psln=OWlwa2d2NDlzMTdu" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://wa.me/18762967705" target="_blank" title="WhatsApp Us"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+
+    <!-- Click copyright with passcode 0140 to unlock Admin Portal -->
     <p class="copyright" onclick="unlockAdmin()">&copy; 2026 PETALLIA JEWELRY . CO. All Rights Reserved.</p>
   </footer>
 
@@ -969,7 +1047,6 @@
     // Initialize Stripe
     const stripe = Stripe('YOUR_STRIPE_PUBLISHABLE_KEY');
 
-    // Default Sample Data for Initial Showcase
     let products = [
       {
         id: '1',
@@ -1016,6 +1093,18 @@
     let cart = [];
     let selectedProduct = null;
     let currentSlide = 0;
+
+    // TOGGLE MOBILE DRAWER
+    function toggleMobileMenu() {
+      document.getElementById('mobile-drawer').classList.toggle('active');
+    }
+
+    // MOBILE ADMIN ACCESS PROMPT
+    function promptMobileAdmin(e) {
+      e.preventDefault();
+      toggleMobileMenu();
+      unlockAdmin();
+    }
 
     // SECRET ADMIN UNLOCK WITH PASSCODE 0140
     function unlockAdmin() {
