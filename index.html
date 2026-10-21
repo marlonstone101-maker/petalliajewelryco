@@ -876,8 +876,8 @@
       </div>
 
       <div class="form-group">
-        <label>Price ($USD or$JMD)</label>
-        <input type="number" id="admin-price" class="form-control" placeholder="e.g. 45" required>
+        <label>Price ($JMD)</label>
+        <input type="number" id="admin-price" class="form-control" placeholder="e.g. 7000" required>
       </div>
 
       <div class="form-group">
@@ -1006,7 +1006,7 @@
       {
         id: '1',
         title: 'Clover Chain & Pendant',
-        price: 45,
+        price: 7000,
         category: 'necklaces',
         description: 'Premium stainless steel flower clover necklace with exquisite finish.',
         image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80',
@@ -1016,7 +1016,7 @@
       {
         id: '2',
         title: 'Monochrome Cuff Bangle',
-        price: 55,
+        price: 8500,
         category: 'bracelets',
         description: 'Chic textured wrist cuff made with tarnish-free stainless steel.',
         image: 'https://images.unsplash.com/photo-1611591475155-42e523a67047?auto=format&fit=crop&w=800&q=80',
@@ -1026,7 +1026,7 @@
       {
         id: '3',
         title: 'Classic Statement Watch',
-        price: 85,
+        price: 13000,
         category: 'rings',
         description: 'Elegant wristwatch tailored for high class and everyday wear.',
         image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=80',
@@ -1036,7 +1036,7 @@
       {
         id: '4',
         title: 'Link & Charm Bracelet Set',
-        price: 60,
+        price: 9300,
         category: 'bracelets',
         description: 'Delicate chain link set with statement centerpiece.',
         image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=800&q=80',
@@ -1099,7 +1099,7 @@
           <div class="slide-overlay"></div>
           <div class="slide-content">
             <h1>${product.title}</h1>
-            <p>$${product.price} USD | Stainless Steel</p>
+            <p>$${product.price.toLocaleString()} JMD | Stainless Steel</p>
             <a href="#all-jewelry" class="btn-black">View Product</a>
           </div>
         </div>
@@ -1152,7 +1152,7 @@
           </div>
           <div class="product-info">
             <div class="product-title">${p.title}</div>
-            <div class="product-price">$${p.price}.00</div>
+            <div class="product-price">$${p.price.toLocaleString()}.00 JMD</div>
           </div>
         </div>
       `;
@@ -1165,7 +1165,7 @@
 
       document.getElementById('modal-img').src = selectedProduct.image;
       document.getElementById('modal-title').innerText = selectedProduct.title;
-      document.getElementById('modal-price').innerText = `$${selectedProduct.price}.00`;
+      document.getElementById('modal-price').innerText = `$${selectedProduct.price.toLocaleString()}.00 JMD`;
       document.getElementById('modal-desc').innerText = selectedProduct.description;
       
       document.getElementById('fulfillment-select').value = 'delivery';
@@ -1225,14 +1225,14 @@
             <img src="${item.image}" alt="${item.title}">
             <div class="cart-item-info">
               <h4>${item.title}</h4>
-              <p>$${item.price}.00</p>
+              <p>$${item.price.toLocaleString()}.00 JMD</p>
               <small style="color: var(--text-muted); font-size: 0.7rem;">${item.fulfillmentType}</small>
             </div>
           </div>
         `;
       }).join('');
 
-      document.getElementById('cart-total-price').innerText = `$${total}.00`;
+      document.getElementById('cart-total-price').innerText = `$${total.toLocaleString()}.00 JMD`;
     }
 
     // STRIPE CHECKOUT
