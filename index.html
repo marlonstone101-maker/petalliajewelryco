@@ -78,7 +78,7 @@
       background: var(--accent-gold);
     }
 
-    /* ANNOUNCEMENT BAR */
+    /* HORIZONTAL ANIMATED ANNOUNCEMENT TICKER */
     .announcement-bar {
       background: linear-gradient(135deg, #111111 0%, #2A2A2A 100%);
       color: #FFFFFF;
@@ -86,9 +86,32 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 3px;
-      text-align: center;
-      padding: 11px 15px;
+      padding: 11px 0;
       border-bottom: 1px solid var(--accent-gold);
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    .ticker-track {
+      display: inline-flex;
+      align-items: center;
+      animation: scrollHorizontal 25s linear infinite;
+    }
+
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      padding-right: 60px;
+    }
+
+    @keyframes scrollHorizontal {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
     }
 
     /* NAVIGATION HEADER */
@@ -873,9 +896,14 @@
 </head>
 <body>
 
-  <!-- ANNOUNCEMENT BAR -->
+  <!-- HORIZONTAL ANIMATED ANNOUNCEMENT TICKER -->
   <div class="announcement-bar">
-    ✨ Waterproof & Tarnish-Free | Islandwide Delivery Across Jamaica ✨
+    <div class="ticker-track">
+      <div class="ticker-item">🕒 Open Hours: Monday – Saturday | 10:00 AM – 7:00 PM</div>
+      <div class="ticker-item">📦 Islandwide Delivery Across Jamaica 📦</div>
+      <div class="ticker-item">🕒 Open Hours: Monday – Saturday | 10:00 AM – 7:00 PM</div>
+      <div class="ticker-item">📦 Islandwide Delivery Across Jamaica 📦</div>
+    </div>
   </div>
 
   <!-- NAVIGATION HEADER -->
