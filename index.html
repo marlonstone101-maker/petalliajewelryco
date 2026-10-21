@@ -112,7 +112,7 @@
 
     /* CLEAN FLAT BORDERLESS LOGO */
     .brand-logo {
-      height: 52px;
+      height: 42px;
       width: auto;
       object-fit: contain;
       background: transparent !important;
@@ -124,41 +124,13 @@
       image-rendering: -webkit-optimize-contrast;
     }
 
+    /* HIDE DESKTOP NAV LINKS TO FORCE HAMBURGER MENU ACROSS ALL DEVICES */
     .nav-links {
-      display: flex;
-      gap: 35px;
-      list-style: none;
-      align-items: center;
-    }
-
-    .nav-links a {
-      color: var(--text-black);
-      text-decoration: none;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-weight: 600;
-      transition: var(--transition);
-      position: relative;
-    }
-
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      width: 0%;
-      height: 2px;
-      bottom: -4px;
-      left: 0;
-      background-color: #000000;
-      transition: var(--transition);
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
+      display: none;
     }
 
     .menu-toggle-btn {
-      display: none;
+      display: block;
       background: none;
       border: none;
       color: var(--text-black);
@@ -166,7 +138,7 @@
       cursor: pointer;
     }
 
-    /* MOBILE NAVIGATION DRAWER */
+    /* MOBILE / UNIVERSAL NAVIGATION DRAWER */
     .mobile-nav-drawer {
       position: fixed;
       top: 0;
@@ -768,18 +740,6 @@
         padding: 10px 4%;
       }
 
-      .brand-logo {
-        height: 40px;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .menu-toggle-btn {
-        display: block;
-      }
-
       .hero-slideshow {
         height: 55vh;
       }
@@ -843,11 +803,6 @@
     <a href="#" class="brand-logo-container">
       <img src="logo.jpg" alt="PETALLIA JEWELRY . CO Logo" class="brand-logo" onerror="this.src='https://via.placeholder.com/150x50/ffffff/000000?text=PETALLIA'">
     </a>
-
-    <ul class="nav-links">
-      <li><a href="#new-arrivals">New Arrivals</a></li>
-      <li><a href="#all-jewelry">Shop All</a></li>
-    </ul>
 
     <div class="nav-actions">
       <button class="icon-btn" onclick="toggleCart()">
