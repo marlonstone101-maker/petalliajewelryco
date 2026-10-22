@@ -405,26 +405,35 @@
       font-size: 0.85rem;
     }
 
-    /* INSTAGRAM VIDEO REELS SECTION */
+    /* INSTAGRAM RUNNING VIDEO MARQUEE SECTION */
     .instagram-reels-section {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 40px 20px 20px;
+      background: #000000;
+      padding: 50px 0;
+      overflow: hidden;
+      border-top: 1px solid var(--accent-gold);
+      border-bottom: 1px solid var(--accent-gold);
     }
 
-    .reels-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
+    .reels-marquee-track {
+      display: flex;
       gap: 20px;
+      width: max-content;
+      animation: marqueeScroll 30s linear infinite;
+    }
+
+    .reels-marquee-track:hover {
+      animation-play-state: paused;
     }
 
     .reel-card {
       position: relative;
+      width: 220px;
       aspect-ratio: 9 / 16;
       border-radius: 6px;
       overflow: hidden;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
       background: #000000;
+      flex-shrink: 0;
     }
 
     .reel-card video {
@@ -795,7 +804,6 @@
     /* MOBILE BREAKPOINT & 2-COLUMN GRID FOR COLLECTION */
     @media (max-width: 1024px) {
       .product-grid { grid-template-columns: repeat(3, 1fr); }
-      .reels-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 768px) {
@@ -808,8 +816,6 @@
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 14px;
       }
-
-      .reels-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
 
       .modal-card {
         grid-template-columns: 1fr;
@@ -889,14 +895,35 @@
     </div>
   </div>
 
-  <!-- INSTAGRAM 4-VIDEO REELS SECTION -->
+  <!-- INSTAGRAM RUNNING VIDEO MARQUEE SECTION -->
   <div class="section-header">
     <h2>Shop Our Instagram</h2>
     <div class="subtext">Follow @jewelrybypetallia</div>
   </div>
 
   <div class="instagram-reels-section">
-    <div class="reels-grid">
+    <div class="reels-marquee-track">
+      <!-- Video 1 -->
+      <div class="reel-card">
+        <video src="video1.mp4" autoplay muted loop playsinline></video>
+        <div class="reel-overlay-icon"><i class="fa-brands fa-instagram"></i></div>
+      </div>
+      <!-- Video 2 -->
+      <div class="reel-card">
+        <video src="video2.mp4" autoplay muted loop playsinline></video>
+        <div class="reel-overlay-icon"><i class="fa-brands fa-instagram"></i></div>
+      </div>
+      <!-- Video 3 -->
+      <div class="reel-card">
+        <video src="video3.mp4" autoplay muted loop playsinline></video>
+        <div class="reel-overlay-icon"><i class="fa-brands fa-instagram"></i></div>
+      </div>
+      <!-- Video 4 -->
+      <div class="reel-card">
+        <video src="video4.mp4" autoplay muted loop playsinline></video>
+        <div class="reel-overlay-icon"><i class="fa-brands fa-instagram"></i></div>
+      </div>
+      <!-- Duplicated for Infinite Smooth Marquee Loop -->
       <div class="reel-card">
         <video src="video1.mp4" autoplay muted loop playsinline></video>
         <div class="reel-overlay-icon"><i class="fa-brands fa-instagram"></i></div>
@@ -1143,7 +1170,6 @@
         </div>
       `).join('');
       
-      // Duplicate to create seamless infinite scrolling loop
       marqueeContainer.innerHTML = marqueeHtml + marqueeHtml;
     }
 
@@ -1239,7 +1265,6 @@
       };
 
       try {
-        // Saves to Firebase Firestore if configured
         if (window.db) {
           await window.addDoc(window.collection(window.db, "products"), newProduct);
         }
