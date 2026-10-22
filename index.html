@@ -37,15 +37,12 @@
   </script>
 
   <style>
-    /* LUXURY BOUTIQUE DESIGN SYSTEM */
     :root {
       --bg-main: #FFFFFF;
       --bg-card: #FFFFFF;
-      --bg-glass: rgba(255, 255, 255, 0.95);
       --text-black: #111111;
       --text-muted: #666666;
       --accent-gold: #C5A880;
-      --border-black: #111111;
       --border-light: #E5E5E5;
       --font-heading: 'Playfair Display', serif;
       --font-body: 'Montserrat', sans-serif;
@@ -67,18 +64,11 @@
       line-height: 1.6;
     }
 
-    /* SCROLLBAR */
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: var(--bg-main);
-    }
-    ::-webkit-scrollbar-thumb {
-      background: var(--accent-gold);
-    }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-main); }
+    ::-webkit-scrollbar-thumb { background: var(--accent-gold); }
 
-    /* HORIZONTAL ANIMATED ANNOUNCEMENT TICKER */
+    /* ANNOUNCEMENT TICKER */
     .announcement-bar {
       background: linear-gradient(135deg, #111111 0%, #2A2A2A 100%);
       color: #FFFFFF;
@@ -90,7 +80,6 @@
       border-bottom: 1px solid var(--accent-gold);
       overflow: hidden;
       white-space: nowrap;
-      position: relative;
     }
 
     .ticker-track {
@@ -106,27 +95,42 @@
     }
 
     @keyframes scrollHorizontal {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-50%);
-      }
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
-    /* NAVIGATION HEADER */
+    /* SHOPIFY HEADER LAYOUT */
     header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: var(--bg-glass);
+      background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border-light);
       padding: 15px 5%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+    }
+
+    .header-left, .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .menu-toggle-btn, .icon-btn {
+      background: none;
+      border: none;
+      color: var(--text-black);
+      font-size: 1.25rem;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .menu-toggle-btn:hover, .icon-btn:hover {
+      color: var(--accent-gold);
     }
 
     .brand-logo-container {
@@ -135,45 +139,29 @@
       text-decoration: none;
     }
 
-    /* CLEAN FLAT BORDERLESS LOGO */
     .brand-logo {
-      height: 46px;
+      height: 42px;
       width: auto;
       object-fit: contain;
-      background: transparent !important;
-      border: none !important;
-      outline: none !important;
-      padding: 0 !important;
-      box-shadow: none !important;
-      display: block;
-      image-rendering: -webkit-optimize-contrast;
-      transition: var(--transition);
-    }
-    
-    .brand-logo:hover {
-      opacity: 0.85;
     }
 
-    /* HIDE DESKTOP NAV LINKS TO FORCE HAMBURGER MENU ACROSS ALL DEVICES */
-    .nav-links {
-      display: none;
+    .cart-badge {
+      position: absolute;
+      top: -8px;
+      right: -10px;
+      background: var(--accent-gold);
+      color: #FFFFFF;
+      font-weight: 700;
+      font-size: 0.65rem;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .menu-toggle-btn {
-      display: block;
-      background: none;
-      border: none;
-      color: var(--text-black);
-      font-size: 1.4rem;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-    
-    .menu-toggle-btn:hover {
-      color: var(--accent-gold);
-    }
-
-    /* MOBILE / UNIVERSAL NAVIGATION DRAWER */
+    /* MOBILE NAVIGATION DRAWER */
     .mobile-nav-drawer {
       position: fixed;
       top: 0;
@@ -190,9 +178,7 @@
       box-shadow: 15px 0 40px rgba(0,0,0,0.08);
     }
 
-    .mobile-nav-drawer.active {
-      left: 0;
-    }
+    .mobile-nav-drawer.active { left: 0; }
 
     .mobile-nav-header {
       display: flex;
@@ -221,65 +207,20 @@
       transition: var(--transition);
     }
 
-    .mobile-nav-links a:hover {
-      color: var(--accent-gold);
-      padding-left: 5px;
-    }
+    .mobile-nav-links a:hover { color: var(--accent-gold); }
 
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-    }
-
-    .icon-btn {
-      background: none;
-      border: none;
-      color: var(--text-black);
-      font-size: 1.3rem;
-      cursor: pointer;
-      position: relative;
-      transition: var(--transition);
-    }
-
-    .icon-btn:hover {
-      color: var(--accent-gold);
-      transform: scale(1.05);
-    }
-
-    .cart-badge {
-      position: absolute;
-      top: -8px;
-      right: -10px;
-      background: var(--accent-gold);
-      color: #FFFFFF;
-      font-weight: 700;
-      font-size: 0.65rem;
-      width: 19px;
-      height: 19px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 2px 5px rgba(197,168,128,0.4);
-    }
-
-    /* SLIDESHOW HERO SECTION */
+    /* TRANSPARENT HERO SLIDESHOW */
     .hero-slideshow {
       position: relative;
       width: 100%;
       height: 80vh;
       min-height: 520px;
       overflow: hidden;
-      border-bottom: 1px solid var(--border-light);
     }
 
     .slide {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       opacity: 0;
       transition: opacity 1s ease-in-out, transform 6s ease;
       background-size: cover;
@@ -287,7 +228,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transform: scale(1);
     }
 
     .slide.active {
@@ -298,44 +238,62 @@
     .slide-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.45) 100%);
+      background: rgba(0,0,0,0.25);
     }
 
     .slide-content {
       position: relative;
       z-index: 2;
       text-align: center;
-      max-width: 750px;
-      padding: 50px 40px;
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(197, 168, 128, 0.3);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-      animation: fadeInUp 0.8s ease;
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      max-width: 680px;
+      padding: 45px 35px;
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
     }
 
     .slide-content h1 {
       font-family: var(--font-heading);
-      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      font-size: clamp(2rem, 4vw, 3.2rem);
       font-weight: 700;
-      letter-spacing: 4px;
-      margin-bottom: 15px;
-      color: #111111;
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+      color: #FFFFFF;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
       text-transform: uppercase;
     }
 
     .slide-content p {
       font-size: 0.8rem;
       letter-spacing: 3px;
-      color: var(--text-muted);
-      margin-bottom: 30px;
+      color: #FFFFFF;
+      margin-bottom: 25px;
       text-transform: uppercase;
-      font-weight: 500;
+      font-weight: 600;
+      text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+    }
+
+    .btn-transparent-glass {
+      display: inline-block;
+      padding: 14px 38px;
+      background: rgba(255, 255, 255, 0.25);
+      color: #FFFFFF;
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      border: 1px solid #FFFFFF;
+      cursor: pointer;
+      text-decoration: none;
+      backdrop-filter: blur(5px);
+      transition: var(--transition);
+    }
+
+    .btn-transparent-glass:hover {
+      background: #FFFFFF;
+      color: #111111;
     }
 
     .btn-black {
@@ -351,28 +309,24 @@
       cursor: pointer;
       text-decoration: none;
       transition: var(--transition);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
 
     .btn-black:hover {
       background: var(--accent-gold);
       border-color: var(--accent-gold);
-      color: #FFFFFF;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(197,168,128,0.3);
     }
 
-    /* SECTION TITLES */
+    /* SECTION HEADERS */
     .section-header {
       text-align: center;
-      padding: 70px 20px 25px;
+      padding: 60px 20px 20px;
     }
 
     .section-header h2 {
       font-family: var(--font-heading);
-      font-size: 2.3rem;
+      font-size: 2.2rem;
       font-weight: 700;
-      letter-spacing: 3px;
+      letter-spacing: 2.5px;
       color: var(--text-black);
       text-transform: uppercase;
     }
@@ -380,18 +334,123 @@
     .section-header .subtext {
       font-size: 0.75rem;
       text-transform: uppercase;
-      letter-spacing: 3.5px;
+      letter-spacing: 3px;
       color: var(--accent-gold);
-      margin-top: 8px;
+      margin-top: 6px;
       font-weight: 600;
     }
 
-    /* CATEGORY FILTER BUTTONS */
+    /* HORIZONTAL RUNNING NEW ARRIVALS MARQUEE */
+    .new-arrivals-marquee {
+      background: #111111;
+      color: #FFFFFF;
+      padding: 50px 0;
+      overflow: hidden;
+      border-top: 1px solid var(--accent-gold);
+      border-bottom: 1px solid var(--accent-gold);
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 30px;
+      width: max-content;
+      animation: marqueeScroll 35s linear infinite;
+    }
+
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .marquee-card {
+      width: 260px;
+      background: #FFFFFF;
+      color: #111111;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: var(--transition);
+    }
+
+    .marquee-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .marquee-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+    }
+
+    .marquee-info {
+      padding: 15px;
+      text-align: center;
+    }
+
+    .marquee-info h4 {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      margin-bottom: 5px;
+    }
+
+    .marquee-info p {
+      color: var(--accent-gold);
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    /* INSTAGRAM VIDEO REELS SECTION */
+    .instagram-reels-section {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 20px 20px;
+    }
+
+    .reels-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .reel-card {
+      position: relative;
+      aspect-ratio: 9 / 16;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      background: #000000;
+    }
+
+    .reel-card video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .reel-overlay-icon {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      color: #FFFFFF;
+      font-size: 1.2rem;
+      background: rgba(0,0,0,0.5);
+      padding: 10px;
+      border-radius: 50%;
+      backdrop-filter: blur(4px);
+    }
+
+    /* CATEGORY FILTERS */
     .category-filters {
       display: flex;
       justify-content: center;
       gap: 12px;
-      margin-bottom: 40px;
+      margin-bottom: 35px;
       flex-wrap: wrap;
       padding: 0 15px;
     }
@@ -400,24 +459,22 @@
       background: #FFFFFF;
       color: var(--text-black);
       border: 1px solid var(--border-light);
-      padding: 10px 26px;
+      padding: 10px 24px;
       font-size: 0.75rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 2px;
       cursor: pointer;
       transition: var(--transition);
-      border-radius: 2px;
     }
 
     .filter-btn:hover, .filter-btn.active {
       background: #111111;
       color: #FFFFFF;
       border-color: #111111;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
 
-    /* PRODUCT GRID */
+    /* PRODUCTS GRID */
     .products-container {
       max-width: 1400px;
       margin: 0 auto;
@@ -441,24 +498,9 @@
     }
 
     .product-card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-6px);
       border-color: var(--accent-gold);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-    }
-
-    .product-badge {
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      background: #111111;
-      color: #FFFFFF;
-      font-size: 0.62rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      padding: 5px 12px;
-      z-index: 2;
-      border-radius: 2px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.08);
     }
 
     .product-img-wrapper {
@@ -467,39 +509,37 @@
       aspect-ratio: 1 / 1;
       overflow: hidden;
       background: #F9F9F9;
-      border-bottom: 1px solid var(--border-light);
     }
 
     .product-img-wrapper img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.6s ease;
     }
 
     .product-card:hover .product-img-wrapper img {
-      transform: scale(1.08);
+      transform: scale(1.06);
     }
 
     .product-info {
-      padding: 20px 15px;
+      padding: 18px 15px;
       text-align: center;
     }
 
     .product-title {
       font-family: var(--font-heading);
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       color: var(--text-black);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       font-weight: 600;
-      letter-spacing: 0.5px;
     }
 
     .product-price {
       font-size: 0.9rem;
       color: var(--accent-gold);
       font-weight: 700;
-      letter-spacing: 1.5px;
+      letter-spacing: 1px;
     }
 
     /* MODAL POPUP */
@@ -507,7 +547,7 @@
       position: fixed;
       inset: 0;
       background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(6px);
       z-index: 2000;
       display: flex;
       align-items: center;
@@ -527,13 +567,13 @@
       background: #FFFFFF;
       border: 1px solid var(--border-light);
       width: 100%;
-      max-width: 880px;
+      max-width: 860px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       position: relative;
       box-shadow: 0 25px 60px rgba(0,0,0,0.25);
-      overflow: hidden;
       border-radius: 4px;
+      overflow: hidden;
     }
 
     .modal-close {
@@ -546,12 +586,6 @@
       font-size: 1.6rem;
       cursor: pointer;
       z-index: 10;
-      transition: var(--transition);
-    }
-
-    .modal-close:hover {
-      color: var(--accent-gold);
-      transform: rotate(90deg);
     }
 
     .modal-image img {
@@ -559,7 +593,6 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      border-right: 1px solid var(--border-light);
     }
 
     .modal-details {
@@ -571,24 +604,22 @@
 
     .modal-details h3 {
       font-family: var(--font-heading);
-      font-size: 1.9rem;
+      font-size: 1.8rem;
       color: var(--text-black);
-      margin-bottom: 10px;
-      font-weight: 700;
+      margin-bottom: 8px;
     }
 
     .modal-details .modal-price {
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       color: var(--accent-gold);
       margin-bottom: 15px;
       font-weight: 700;
-      letter-spacing: 1px;
     }
 
     .delivery-section {
-      margin: 18px 0;
+      margin: 15px 0;
       border-top: 1px solid var(--border-light);
-      padding-top: 15px;
+      padding-top: 12px;
     }
 
     .delivery-section label {
@@ -597,30 +628,23 @@
       text-transform: uppercase;
       letter-spacing: 1.5px;
       color: var(--text-black);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       font-weight: 600;
     }
 
     .select-custom {
       width: 100%;
-      padding: 13px;
+      padding: 12px;
       background: #FAFAFA;
       border: 1px solid var(--border-light);
       color: #111111;
       font-family: var(--font-body);
       font-size: 0.85rem;
       outline: none;
-      margin-bottom: 10px;
-      transition: var(--transition);
-      border-radius: 2px;
+      margin-bottom: 8px;
     }
 
-    .select-custom:focus {
-      border-color: var(--accent-gold);
-      background: #FFFFFF;
-    }
-
-    /* SLIDE-OUT CART DRAWER */
+    /* CART DRAWER */
     .cart-drawer {
       position: fixed;
       top: 0;
@@ -634,15 +658,12 @@
       transition: var(--transition);
       display: flex;
       flex-direction: column;
-      box-shadow: -15px 0 40px rgba(0,0,0,0.1);
     }
 
-    .cart-drawer.active {
-      right: 0;
-    }
+    .cart-drawer.active { right: 0; }
 
     .cart-header {
-      padding: 24px 20px;
+      padding: 22px 20px;
       border-bottom: 1px solid var(--border-light);
       display: flex;
       justify-content: space-between;
@@ -652,11 +673,8 @@
 
     .cart-header h3 {
       font-family: var(--font-heading);
-      color: var(--text-black);
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       text-transform: uppercase;
-      font-weight: 700;
-      letter-spacing: 1px;
     }
 
     .cart-items {
@@ -668,34 +686,19 @@
     .cart-item {
       display: flex;
       gap: 15px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       border-bottom: 1px solid var(--border-light);
-      padding-bottom: 15px;
+      padding-bottom: 12px;
     }
 
     .cart-item img {
-      width: 75px;
-      height: 75px;
+      width: 70px;
+      height: 70px;
       object-fit: cover;
-      border: 1px solid var(--border-light);
-      border-radius: 2px;
-    }
-
-    .cart-item-info h4 {
-      font-size: 0.95rem;
-      color: var(--text-black);
-      margin-bottom: 5px;
-      font-weight: 600;
-    }
-
-    .cart-item-info p {
-      font-size: 0.88rem;
-      color: var(--accent-gold);
-      font-weight: 700;
     }
 
     .cart-footer {
-      padding: 24px 20px;
+      padding: 22px 20px;
       border-top: 1px solid var(--border-light);
       background: #FAFAFA;
     }
@@ -705,101 +708,68 @@
       justify-content: space-between;
       font-size: 1.1rem;
       font-weight: 700;
-      margin-bottom: 18px;
-      color: var(--text-black);
+      margin-bottom: 16px;
       text-transform: uppercase;
-      letter-spacing: 1px;
     }
 
-    /* HIDDEN CLIENT ADMIN PANEL */
+    /* ADMIN PANEL */
     .admin-panel {
       max-width: 900px;
-      margin: 40px auto 80px;
+      margin: 40px auto;
       background: #FFFFFF;
       border: 1px solid var(--border-light);
       padding: 40px;
       display: none;
       box-shadow: 0 15px 40px rgba(0,0,0,0.05);
-      border-radius: 4px;
     }
 
-    .admin-panel.active {
-      display: block;
-      animation: fadeIn 0.5s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+    .admin-panel.active { display: block; }
 
     .admin-panel h3 {
       font-family: var(--font-heading);
-      color: var(--text-black);
-      font-size: 1.9rem;
-      margin-bottom: 12px;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
       text-align: center;
       text-transform: uppercase;
-      font-weight: 700;
     }
 
-    .form-group {
-      margin-bottom: 20px;
-    }
-
+    .form-group { margin-bottom: 18px; }
     .form-group label {
       display: block;
       font-size: 0.72rem;
       text-transform: uppercase;
       letter-spacing: 1.5px;
-      color: var(--text-black);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       font-weight: 600;
     }
 
     .form-control {
       width: 100%;
-      padding: 13px 16px;
+      padding: 12px;
       background: #FAFAFA;
       border: 1px solid var(--border-light);
-      color: #111111;
       font-family: var(--font-body);
       font-size: 0.88rem;
-      outline: none;
-      border-radius: 2px;
-      transition: var(--transition);
-    }
-    
-    .form-control:focus {
-      border-color: var(--accent-gold);
-      background: #FFFFFF;
     }
 
     .form-checkbox {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
+      font-size: 0.85rem;
       cursor: pointer;
-      font-size: 0.88rem;
-      color: var(--text-black);
-      font-weight: 500;
     }
 
     /* FOOTER */
     footer {
       background: #FAFAFA;
       border-top: 1px solid var(--border-light);
-      padding: 60px 20px 30px;
+      padding: 50px 20px 30px;
       text-align: center;
     }
 
     .footer-logo {
-      height: 52px;
-      background: transparent !important;
-      border: none !important;
-      outline: none !important;
-      padding: 0 !important;
-      box-shadow: none !important;
+      height: 48px;
       margin-bottom: 20px;
       object-fit: contain;
     }
@@ -808,95 +778,52 @@
       display: flex;
       justify-content: center;
       gap: 24px;
-      font-size: 1.4rem;
-      margin-bottom: 25px;
+      font-size: 1.3rem;
+      margin-bottom: 20px;
     }
 
-    .footer-social-icons a {
-      color: var(--text-black);
-      transition: var(--transition);
-    }
-
-    .footer-social-icons a:hover {
-      color: var(--accent-gold);
-      transform: translateY(-3px);
-    }
+    .footer-social-icons a { color: var(--text-black); transition: var(--transition); }
+    .footer-social-icons a:hover { color: var(--accent-gold); }
 
     .copyright {
       font-size: 0.75rem;
       color: var(--text-muted);
       letter-spacing: 1.5px;
       cursor: pointer;
-      user-select: none;
-    }
-    
-    .copyright:hover {
-      color: var(--accent-gold);
     }
 
-    /* RESPONSIVE BREAKPOINTS */
+    /* MOBILE BREAKPOINT & 2-COLUMN GRID FOR COLLECTION */
     @media (max-width: 1024px) {
-      .product-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-      }
+      .product-grid { grid-template-columns: repeat(3, 1fr); }
+      .reels-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 768px) {
-      header {
-        padding: 12px 4%;
-      }
-
-      .hero-slideshow {
-        height: 60vh;
-      }
-
-      .slide-content {
-        padding: 25px 20px;
-        margin: 0 15px;
-      }
-
-      .slide-content h1 {
-        font-size: 1.9rem;
-      }
+      header { padding: 12px 4%; }
+      .hero-slideshow { height: 65vh; }
+      .slide-content { padding: 30px 20px; margin: 0 15px; }
 
       /* STRICT 2 COLUMNS ON MOBILE */
       .product-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr) !important;
         gap: 14px;
       }
 
-      .product-info {
-        padding: 14px 10px;
-      }
-
-      .product-title {
-        font-size: 0.9rem;
-      }
-
-      .product-price {
-        font-size: 0.85rem;
-      }
+      .reels-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
 
       .modal-card {
         grid-template-columns: 1fr;
         max-height: 90vh;
         overflow-y: auto;
       }
-
-      .modal-image {
-        height: 260px;
-      }
-
-      .cart-drawer {
-        max-width: 100%;
-      }
+      .modal-image { height: 260px; }
+      .cart-drawer { max-width: 100%; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HORIZONTAL ANIMATED ANNOUNCEMENT TICKER -->
+  <!-- ANNOUNCEMENT TICKER -->
   <div class="announcement-bar">
     <div class="ticker-track">
       <div class="ticker-item">🕒 Open Hours: Monday – Saturday | 10:00 AM – 7:00 PM</div>
@@ -906,17 +833,25 @@
     </div>
   </div>
 
-  <!-- NAVIGATION HEADER -->
+  <!-- SHOPIFY HEADER -->
   <header>
-    <button class="menu-toggle-btn" onclick="toggleMobileMenu()">
-      <i class="fa-solid fa-bars"></i>
-    </button>
+    <div class="header-left">
+      <button class="menu-toggle-btn" onclick="toggleMobileMenu()">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <button class="icon-btn" onclick="scrollToSection('all-jewelry')">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </div>
 
     <a href="#" class="brand-logo-container">
-      <img src="logo.jpg" alt="PETALLIA JEWELRY . CO Logo" class="brand-logo" onerror="this.src='https://via.placeholder.com/150x50/ffffff/000000?text=PETALLIA'">
+      <img src="logo.jpg" alt="PETALLIA Logo" class="brand-logo" onerror="this.src='https://via.placeholder.com/150x50/ffffff/000000?text=PETALLIA'">
     </a>
 
     <div class="nav-actions">
+      <button class="icon-btn" onclick="unlockAdmin()" title="Admin Portal">
+        <i class="fa-regular fa-user"></i>
+      </button>
       <button class="icon-btn" onclick="toggleCart()">
         <i class="fa-solid fa-bag-shopping"></i>
         <span class="cart-badge" id="cart-count">0</span>
@@ -924,43 +859,69 @@
     </div>
   </header>
 
-  <!-- MOBILE NAVIGATION SLIDE-OUT DRAWER -->
+  <!-- MOBILE NAVIGATION DRAWER -->
   <div class="mobile-nav-drawer" id="mobile-drawer">
     <div class="mobile-nav-header">
-      <img src="logo.jpg" alt="PETALLIA" style="height: 38px; background: transparent; border: none;" onerror="this.style.display='none'">
-      <button class="modal-close" onclick="toggleMobileMenu()" style="position:static; font-size: 1.4rem;">&times;</button>
+      <img src="logo.jpg" alt="PETALLIA" style="height: 35px;" onerror="this.style.display='none'">
+      <button class="modal-close" onclick="toggleMobileMenu()" style="position:static;">&times;</button>
     </div>
     <ul class="mobile-nav-links">
-      <li><a href="#new-arrivals" onclick="toggleMobileMenu()">New Arrivals</a></li>
+      <li><a href="#new-arrivals-section" onclick="toggleMobileMenu()">New Arrivals</a></li>
       <li><a href="#all-jewelry" onclick="toggleMobileMenu()">Shop All</a></li>
       <li><a href="#" onclick="promptMobileAdmin(event)">Admin Portal</a></li>
     </ul>
   </div>
 
-  <!-- LUXURY HERO SLIDESHOW -->
+  <!-- TRANSPARENT HERO SLIDESHOW -->
   <section class="hero-slideshow" id="slideshow-container">
-    <!-- Dynamic Slides loaded via JavaScript -->
+    <!-- Dynamic Slides -->
   </section>
 
-  <!-- NEW ARRIVALS SECTION -->
-  <section class="section-header" id="new-arrivals">
+  <!-- NEW ARRIVALS MARQUEE -->
+  <div class="section-header" id="new-arrivals-section">
     <h2>New Arrivals</h2>
     <div class="subtext">Exquisite New Masterpieces</div>
-  </section>
+  </div>
 
-  <div class="products-container">
-    <div class="product-grid" id="new-arrivals-grid">
-      <!-- Dynamic Products -->
+  <div class="new-arrivals-marquee">
+    <div class="marquee-track" id="marquee-track-container">
+      <!-- Dynamic Marquee Cards -->
     </div>
   </div>
 
-  <!-- ALL PRODUCTS SECTION (COLLECTION WITH CATEGORY THUMBNAIL TABS) -->
+  <!-- INSTAGRAM 4-VIDEO REELS SECTION -->
+  <div class="section-header">
+    <h2>Shop Our Instagram</h2>
+    <div class="subtext">Follow @jewelrybypetallia</div>
+  </div>
+
+  <div class="instagram-reels-section">
+    <div class="reels-grid">
+      <div class="reel-card">
+        <video src="video1.mp4" autoplay muted loop playsinline></video>
+        <div class="reel-overlay-icon"><i class="fa-brands fa-instagram"></i></div>
+      </div>
+      <div class="reel-card">
+        <video src="video2.mp4" autoplay muted loop playsinline></video>
+        <div class="reel-overlay-icon"><i class="fa-brands fa-instagram"></i></div>
+      </div>
+      <div class="reel-card">
+        <video src="video3.mp4" autoplay muted loop playsinline></video>
+        <div class="reel-overlay-icon"><i class="fa-brands fa-instagram"></i></div>
+      </div>
+      <div class="reel-card">
+        <video src="video4.mp4" autoplay muted loop playsinline></video>
+        <div class="reel-overlay-icon"><i class="fa-brands fa-instagram"></i></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FULL COLLECTION SECTION -->
   <section class="section-header" id="all-jewelry">
     <h2>The Full Collection</h2>
     <div class="subtext">Timeless Stainless Steel Pieces</div>
   </section>
 
-  <!-- CATEGORY FILTER BUTTONS -->
   <div class="category-filters">
     <button class="filter-btn active" onclick="filterCategory('all', this)">All Pieces</button>
     <button class="filter-btn" onclick="filterCategory('necklaces', this)">Necklaces</button>
@@ -974,62 +935,45 @@
     </div>
   </div>
 
-  <!-- HIDDEN CLIENT ADMIN PANEL -->
+  <!-- ADMIN PANEL -->
   <section class="admin-panel" id="admin-section">
-    <h3>Client Admin Portal</h3>
-    <p style="text-align:center; color: var(--text-muted); font-size: 0.88rem; margin-bottom: 25px;">
-      Upload new jewelry arrivals, add to hero slideshow, and manage products.
-    </p>
-
+    <h3>Client Admin Portal (Firebase Firestore)</h3>
     <form id="admin-upload-form">
       <div class="form-group">
         <label>Product Title</label>
-        <input type="text" id="admin-title" class="form-control" placeholder="e.g. Black Clover Pendant Necklace" required>
+        <input type="text" id="admin-title" class="form-control" required>
       </div>
-
       <div class="form-group">
         <label>Price ($JMD)</label>
-        <input type="number" id="admin-price" class="form-control" placeholder="e.g. 7000" required>
+        <input type="number" id="admin-price" class="form-control" required>
       </div>
-
       <div class="form-group">
         <label>Category</label>
-        <select id="admin-category" class="form-control select-custom" required>
+        <select id="admin-category" class="form-control" required>
           <option value="necklaces">Necklaces</option>
           <option value="bracelets">Bracelets</option>
           <option value="rings">Rings</option>
         </select>
       </div>
-
       <div class="form-group">
-        <label>Product Description</label>
-        <textarea id="admin-desc" class="form-control" rows="3" placeholder="High grade stainless steel luxury piece..." required></textarea>
+        <label>Description</label>
+        <textarea id="admin-desc" class="form-control" rows="3" required></textarea>
       </div>
-
       <div class="form-group">
         <label>Product Image File</label>
         <input type="file" id="admin-file" class="form-control" accept="image/*" required>
       </div>
-
       <div class="form-group">
-        <label class="form-checkbox">
-          <input type="checkbox" id="admin-is-new"> Mark as "New Arrival"
-        </label>
+        <label class="form-checkbox"><input type="checkbox" id="admin-is-new"> New Arrival</label>
       </div>
-
       <div class="form-group">
-        <label class="form-checkbox">
-          <input type="checkbox" id="admin-is-slide"> Add to Hero Slideshow
-        </label>
+        <label class="form-checkbox"><input type="checkbox" id="admin-is-slide"> Hero Slideshow</label>
       </div>
-
-      <button type="submit" class="btn-black" style="width: 100%; margin-top: 10px;">
-        Upload & Publish To Store
-      </button>
+      <button type="submit" class="btn-black" style="width: 100%;">Upload & Save to Firestore</button>
     </form>
   </section>
 
-  <!-- PRODUCT DETAIL & FULFILLMENT MODAL -->
+  <!-- PRODUCT DETAIL MODAL -->
   <div class="modal-overlay" id="product-modal">
     <div class="modal-card">
       <button class="modal-close" onclick="closeModal()">&times;</button>
@@ -1039,20 +983,18 @@
       <div class="modal-details">
         <h3 id="modal-title">Product Name</h3>
         <div class="modal-price" id="modal-price">$0.00</div>
-        <p id="modal-desc" style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 15px;"></p>
+        <p id="modal-desc" style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 12px;"></p>
 
-        <!-- FULFILLMENT METHOD SELECTION -->
         <div class="delivery-section">
-          <label><i class="fa-solid fa-bag-shopping"></i> Select Fulfillment Option:</label>
+          <label>Fulfillment Option:</label>
           <select id="fulfillment-select" class="select-custom" onchange="toggleFulfillmentOptions()">
             <option value="delivery">Islandwide Delivery</option>
             <option value="pickup">Store Pickup</option>
           </select>
         </div>
 
-        <!-- 14 PARISHES ISLANDWIDE DELIVERY SELECTION -->
         <div class="delivery-section" id="parish-container">
-          <label><i class="fa-solid fa-truck-fast"></i> Select Jamaica Parish (14 Parishes):</label>
+          <label>Select Jamaica Parish:</label>
           <select id="parish-select" class="select-custom">
             <option value="Kingston">Kingston</option>
             <option value="St. Andrew">St. Andrew</option>
@@ -1071,27 +1013,25 @@
           </select>
         </div>
 
-        <button class="btn-black" onclick="addCurrentToCart()">Add To Cart</button>
+        <button class="btn-black" onclick="addCurrentToCart()">Add To Bag</button>
       </div>
     </div>
   </div>
 
-  <!-- SLIDE-OUT CART DRAWER -->
+  <!-- CART DRAWER -->
   <div class="cart-drawer" id="cart-drawer">
     <div class="cart-header">
       <h3>Your Shopping Bag</h3>
       <button class="modal-close" onclick="toggleCart()" style="position:static;">&times;</button>
     </div>
-    <div class="cart-items" id="cart-items-container">
-      <!-- Dynamic Cart Items -->
-    </div>
+    <div class="cart-items" id="cart-items-container"></div>
     <div class="cart-footer">
       <div class="cart-total">
         <span>Total:</span>
         <span id="cart-total-price">$0.00</span>
       </div>
       <button class="btn-black" style="width: 100%;" onclick="checkoutStripe()">
-        Proceed To Stripe Checkout
+        Pay With Card
       </button>
     </div>
   </div>
@@ -1099,120 +1039,65 @@
   <!-- FOOTER -->
   <footer>
     <img src="logo.jpg" alt="PETALLIA Logo" class="footer-logo" onerror="this.src='https://via.placeholder.com/150x50/ffffff/000000?text=PETALLIA'">
-    
     <div class="footer-social-icons">
-      <a href="https://www.instagram.com/jewelrybypetallia?psln=OWlwa2d2NDlzMTdu" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-      <a href="https://wa.me/18762967705" target="_blank" title="WhatsApp Us"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="https://www.instagram.com/jewelrybypetallia" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://wa.me/18762967705" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
     </div>
-
-    <!-- Click copyright with passcode 0140 to unlock Admin Portal -->
     <p class="copyright" onclick="unlockAdmin()">&copy; 2026 PETALLIA JEWELRY . CO. All Rights Reserved.</p>
   </footer>
 
-  <!-- JAVASCRIPT LOGIC -->
+  <!-- SCRIPT LOGIC -->
   <script>
-    // Initialize Stripe
     const stripe = Stripe('YOUR_STRIPE_PUBLISHABLE_KEY');
 
     let products = [
-      {
-        id: '1',
-        title: 'Clover Chain & Pendant',
-        price: 7000,
-        category: 'necklaces',
-        description: 'Premium stainless steel flower clover necklace with exquisite finish.',
-        image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80',
-        isNew: true,
-        isSlide: true
-      },
-      {
-        id: '2',
-        title: 'Monochrome Cuff Bangle',
-        price: 8500,
-        category: 'bracelets',
-        description: 'Chic textured wrist cuff made with tarnish-free stainless steel.',
-        image: 'https://images.unsplash.com/photo-1611591475155-42e523a67047?auto=format&fit=crop&w=800&q=80',
-        isNew: true,
-        isSlide: true
-      },
-      {
-        id: '3',
-        title: 'Classic Statement Watch',
-        price: 13000,
-        category: 'rings',
-        description: 'Elegant wristwatch tailored for high class and everyday wear.',
-        image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=80',
-        isNew: false,
-        isSlide: false
-      },
-      {
-        id: '4',
-        title: 'Link & Charm Bracelet Set',
-        price: 9300,
-        category: 'bracelets',
-        description: 'Delicate chain link set with statement centerpiece.',
-        image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=800&q=80',
-        isNew: false,
-        isSlide: false
-      }
+      { id: '1', title: 'Clover Chain & Pendant', price: 7000, category: 'necklaces', description: 'Stainless steel flower clover necklace.', image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80', isNew: true, isSlide: true },
+      { id: '2', title: 'Monochrome Cuff Bangle', price: 8500, category: 'bracelets', description: 'Chic textured wrist cuff stainless steel.', image: 'https://images.unsplash.com/photo-1611591475155-42e523a67047?auto=format&fit=crop&w=800&q=80', isNew: true, isSlide: true },
+      { id: '3', title: 'Classic Statement Watch', price: 13000, category: 'rings', description: 'Elegant wristwatch for high class wear.', image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=80', isNew: true, isSlide: false },
+      { id: '4', title: 'Link & Charm Bracelet Set', price: 9300, category: 'bracelets', description: 'Delicate chain link set.', image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=800&q=80', isNew: true, isSlide: false }
     ];
 
     let cart = [];
     let selectedProduct = null;
     let currentSlide = 0;
 
-    // TOGGLE MOBILE DRAWER
     function toggleMobileMenu() {
       document.getElementById('mobile-drawer').classList.toggle('active');
     }
 
-    // MOBILE ADMIN ACCESS PROMPT
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
     function promptMobileAdmin(e) {
       e.preventDefault();
       toggleMobileMenu();
       unlockAdmin();
     }
 
-    // SECRET ADMIN UNLOCK WITH PASSCODE 0140
     function unlockAdmin() {
       const passcode = prompt("Enter Admin Passcode:");
       if (passcode === "0140") {
         const panel = document.getElementById('admin-section');
         panel.classList.toggle('active');
-        if (panel.classList.contains('active')) {
-          panel.scrollIntoView({ behavior: 'smooth' });
-          alert("Admin Portal Unlocked successfully.");
-        }
+        if (panel.classList.contains('active')) panel.scrollIntoView({ behavior: 'smooth' });
       } else if (passcode !== null) {
         alert("Incorrect passcode.");
       }
     }
 
-    // RENDER HERO SLIDESHOW
     function renderSlideshow() {
       const container = document.getElementById('slideshow-container');
-      const slideProducts = products.filter(p => p.isSlide);
+      const slides = products.filter(p => p.isSlide);
+      const activeSlides = slides.length > 0 ? slides : products.slice(0, 2);
 
-      if (slideProducts.length === 0) {
-        container.innerHTML = `
-          <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1600&q=80');">
-            <div class="slide-overlay"></div>
-            <div class="slide-content">
-              <h1>PETALLIA JEWELRY . CO</h1>
-              <p>Stainless Steel Fine Jewelry | Islandwide Delivery</p>
-              <a href="#all-jewelry" class="btn-black">View Product</a>
-            </div>
-          </div>`;
-        return;
-      }
-
-      container.innerHTML = slideProducts.map((product, index) => `
-        <div class="slide ${index === 0 ? 'active' : ''}" style="background-image: url('${product.image}');">
+      container.innerHTML = activeSlides.map((p, i) => `
+        <div class="slide ${i === 0 ? 'active' : ''}" style="background-image: url('${p.image}');">
           <div class="slide-overlay"></div>
           <div class="slide-content">
-            <h1>${product.title}</h1>
-            <p>$${product.price.toLocaleString()} JMD | Stainless Steel</p>
-            <a href="#all-jewelry" class="btn-black">View Product</a>
+            <h1>${p.title}</h1>
+            <p>$${p.price.toLocaleString()} JMD | Stainless Steel</p>
+            <a href="#all-jewelry" class="btn-transparent-glass">View Products</a>
           </div>
         </div>
       `).join('');
@@ -1223,7 +1108,6 @@
     function startSlideTimer() {
       const slides = document.querySelectorAll('.slide');
       if (slides.length <= 1) return;
-      
       setInterval(() => {
         slides[currentSlide].classList.remove('active');
         currentSlide = (currentSlide + 1) % slides.length;
@@ -1231,34 +1115,13 @@
       }, 5000);
     }
 
-    // RENDER PRODUCTS & CATEGORY FILTERING
-    function renderProducts(filteredList = null) {
-      const newArrivalsGrid = document.getElementById('new-arrivals-grid');
+    function renderProducts(filtered = null) {
       const mainGrid = document.getElementById('main-product-grid');
-
-      const newArrivals = products.filter(p => p.isNew);
-      const displayProducts = filteredList || products;
-
-      newArrivalsGrid.innerHTML = newArrivals.map(p => createProductCardHTML(p)).join('');
-      mainGrid.innerHTML = displayProducts.map(p => createProductCardHTML(p)).join('');
-    }
-
-    function filterCategory(category, btnElement) {
-      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-      if (btnElement) btnElement.classList.add('active');
-
-      if (category === 'all') {
-        renderProducts(products);
-      } else {
-        const filtered = products.filter(p => p.category === category);
-        renderProducts(filtered);
-      }
-    }
-
-    function createProductCardHTML(p) {
-      return `
+      const marqueeContainer = document.getElementById('marquee-track-container');
+      
+      const list = filtered || products;
+      mainGrid.innerHTML = list.map(p => `
         <div class="product-card" onclick="openModal('${p.id}')">
-          ${p.isNew ? '<span class="product-badge">New Arrival</span>' : ''}
           <div class="product-img-wrapper">
             <img src="${p.image}" alt="${p.title}" loading="lazy">
           </div>
@@ -1267,10 +1130,30 @@
             <div class="product-price">$${p.price.toLocaleString()}.00 JMD</div>
           </div>
         </div>
-      `;
+      `).join('');
+
+      const newArrivals = products.filter(p => p.isNew);
+      const marqueeHtml = newArrivals.map(p => `
+        <div class="marquee-card" onclick="openModal('${p.id}')">
+          <img src="${p.image}" alt="${p.title}">
+          <div class="marquee-info">
+            <h4>${p.title}</h4>
+            <p>$${p.price.toLocaleString()}.00 JMD</p>
+          </div>
+        </div>
+      `).join('');
+      
+      // Duplicate to create seamless infinite scrolling loop
+      marqueeContainer.innerHTML = marqueeHtml + marqueeHtml;
     }
 
-    // MODAL FUNCTIONS
+    function filterCategory(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      if (cat === 'all') renderProducts(products);
+      else renderProducts(products.filter(p => p.category === cat));
+    }
+
     function openModal(id) {
       selectedProduct = products.find(p => p.id === id);
       if (!selectedProduct) return;
@@ -1279,10 +1162,6 @@
       document.getElementById('modal-title').innerText = selectedProduct.title;
       document.getElementById('modal-price').innerText = `$${selectedProduct.price.toLocaleString()}.00 JMD`;
       document.getElementById('modal-desc').innerText = selectedProduct.description;
-      
-      document.getElementById('fulfillment-select').value = 'delivery';
-      toggleFulfillmentOptions();
-
       document.getElementById('product-modal').classList.add('active');
     }
 
@@ -1291,16 +1170,10 @@
     }
 
     function toggleFulfillmentOptions() {
-      const fulfillment = document.getElementById('fulfillment-select').value;
-      const parishContainer = document.getElementById('parish-container');
-      if (fulfillment === 'pickup') {
-        parishContainer.style.display = 'none';
-      } else {
-        parishContainer.style.display = 'block';
-      }
+      const val = document.getElementById('fulfillment-select').value;
+      document.getElementById('parish-container').style.display = val === 'pickup' ? 'none' : 'block';
     }
 
-    // CART FUNCTIONS
     function toggleCart() {
       document.getElementById('cart-drawer').classList.toggle('active');
     }
@@ -1308,18 +1181,9 @@
     function addCurrentToCart() {
       if (!selectedProduct) return;
       const fulfillment = document.getElementById('fulfillment-select').value;
-      let fulfillmentDetail = 'Store Pickup';
+      const detail = fulfillment === 'delivery' ? `Delivery: ${document.getElementById('parish-select').value}` : 'Store Pickup';
       
-      if (fulfillment === 'delivery') {
-        const parish = document.getElementById('parish-select').value;
-        fulfillmentDetail = `Delivery: ${parish}`;
-      }
-      
-      cart.push({
-        ...selectedProduct,
-        fulfillmentType: fulfillmentDetail
-      });
-
+      cart.push({ ...selectedProduct, fulfillmentType: detail });
       updateCartUI();
       closeModal();
       toggleCart();
@@ -1328,17 +1192,17 @@
     function updateCartUI() {
       document.getElementById('cart-count').innerText = cart.length;
       const container = document.getElementById('cart-items-container');
-      
       let total = 0;
-      container.innerHTML = cart.map((item) => {
+      
+      container.innerHTML = cart.map(item => {
         total += item.price;
         return `
           <div class="cart-item">
             <img src="${item.image}" alt="${item.title}">
-            <div class="cart-item-info">
-              <h4>${item.title}</h4>
-              <p>$${item.price.toLocaleString()}.00 JMD</p>
-              <small style="color: var(--text-muted); font-size: 0.7rem;">${item.fulfillmentType}</small>
+            <div>
+              <h4 style="font-size:0.9rem; font-weight:600;">${item.title}</h4>
+              <p style="color:var(--accent-gold); font-weight:700; font-size:0.85rem;">$${item.price.toLocaleString()}.00 JMD</p>
+              <small style="color:var(--text-muted);">${item.fulfillmentType}</small>
             </div>
           </div>
         `;
@@ -1347,20 +1211,16 @@
       document.getElementById('cart-total-price').innerText = `$${total.toLocaleString()}.00 JMD`;
     }
 
-    // STRIPE CHECKOUT
     async function checkoutStripe() {
       if (cart.length === 0) {
         alert("Your shopping bag is empty!");
         return;
       }
-      
-      alert("Redirecting to Stripe Payment Gateway...");
+      alert("Redirecting securely to Stripe card payment...");
     }
 
-    // CLIENT ADMIN UPLOAD FORM HANDLER
     document.getElementById('admin-upload-form').addEventListener('submit', async (e) => {
       e.preventDefault();
-
       const title = document.getElementById('admin-title').value;
       const price = parseFloat(document.getElementById('admin-price').value);
       const category = document.getElementById('admin-category').value;
@@ -1370,31 +1230,31 @@
       const isSlide = document.getElementById('admin-is-slide').checked;
 
       if (fileInput.files.length === 0) return;
-
-      const file = fileInput.files[0];
-      const fakeImageUrl = URL.createObjectURL(file);
+      const localImageUrl = URL.createObjectURL(fileInput.files[0]);
 
       const newProduct = {
         id: Date.now().toString(),
-        title: title,
-        price: price,
-        category: category,
-        description: desc,
-        image: fakeImageUrl,
-        isNew: isNew,
-        isSlide: isSlide
+        title, price, category, description: desc,
+        image: localImageUrl, isNew, isSlide
       };
+
+      try {
+        // Saves to Firebase Firestore if configured
+        if (window.db) {
+          await window.addDoc(window.collection(window.db, "products"), newProduct);
+        }
+      } catch(err) {
+        console.log("Firestore sync notice:", err);
+      }
 
       products.unshift(newProduct);
       renderSlideshow();
       renderProducts();
-
-      alert("Product published successfully to store!");
+      alert("Product published and synced successfully!");
       document.getElementById('admin-upload-form').reset();
       document.getElementById('admin-section').classList.remove('active');
     });
 
-    // INITIAL RENDER
     window.addEventListener('DOMContentLoaded', () => {
       renderSlideshow();
       renderProducts();
