@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PETALLIA JEWELRY . CO | Fine Stainless Steel & Luxury Jewelry</title>
+  <title>PETALLIA JEWELRY . CO | Fine Luxury & High-End Collections</title>
   
   <!-- Google Fonts: Playfair Display & Montserrat -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,11 +39,14 @@
   <style>
     :root {
       --bg-main: #FFFFFF;
+      --bg-dark: #0B0B0B;
       --bg-card: #FFFFFF;
       --text-black: #111111;
-      --text-muted: #666666;
-      --accent-gold: #C5A880;
-      --border-light: #E5E5E5;
+      --text-muted: #777777;
+      --accent-gold: #D4AF37;
+      --accent-gold-light: #F3E5AB;
+      --border-light: #EAEAEA;
+      --border-gold: rgba(212, 175, 55, 0.3);
       --font-heading: 'Playfair Display', serif;
       --font-body: 'Montserrat', sans-serif;
       --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -64,20 +67,20 @@
       line-height: 1.6;
     }
 
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--bg-main); }
-    ::-webkit-scrollbar-thumb { background: var(--accent-gold); }
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg-dark); }
+    ::-webkit-scrollbar-thumb { background: var(--accent-gold); border-radius: 3px; }
 
-    /* ANNOUNCEMENT TICKER */
+    /* WORLDWIDE ANNOUNCEMENT BAR */
     .announcement-bar {
-      background: linear-gradient(135deg, #111111 0%, #2A2A2A 100%);
-      color: #FFFFFF;
+      background: var(--bg-dark);
+      color: var(--accent-gold-light);
       font-size: 0.72rem;
-      font-weight: 600;
+      font-weight: 500;
       text-transform: uppercase;
-      letter-spacing: 3px;
-      padding: 11px 0;
-      border-bottom: 1px solid var(--accent-gold);
+      letter-spacing: 3.5px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border-gold);
       overflow: hidden;
       white-space: nowrap;
       position: relative;
@@ -87,13 +90,13 @@
     .ticker-track {
       display: inline-flex;
       align-items: center;
-      animation: scrollHorizontal 25s linear infinite;
+      animation: scrollHorizontal 30s linear infinite;
     }
 
     .ticker-item {
       display: inline-flex;
       align-items: center;
-      padding-right: 60px;
+      padding-right: 80px;
     }
 
     @keyframes scrollHorizontal {
@@ -101,27 +104,27 @@
       100% { transform: translateX(-50%); }
     }
 
-    /* TRANSPARENT TO SOLID HEADER ON SCROLL */
+    /* TRANSPARENT TO SOLID LUXURY HEADER */
     header {
       position: sticky;
       top: 0;
       z-index: 1000;
       background: transparent;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-      padding: 18px 5%;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 22px 5%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      transition: background 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+      transition: all 0.4s ease;
     }
 
     header.scrolled {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-light);
-      padding: 14px 5%;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-gold);
+      padding: 15px 5%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
     }
 
     header.scrolled .menu-toggle-btn,
@@ -132,7 +135,7 @@
     .header-left, .nav-actions {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 22px;
     }
 
     .menu-toggle-btn, .icon-btn {
@@ -143,11 +146,12 @@
       cursor: pointer;
       transition: var(--transition);
       position: relative;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+      text-shadow: 0 2px 6px rgba(0,0,0,0.5);
     }
 
     .menu-toggle-btn:hover, .icon-btn:hover {
       color: var(--accent-gold);
+      transform: translateY(-1px);
     }
 
     .brand-logo-container {
@@ -157,10 +161,10 @@
     }
 
     .brand-logo {
-      height: 42px;
+      height: 45px;
       width: auto;
       object-fit: contain;
-      filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
       transition: filter 0.4s ease;
     }
 
@@ -173,9 +177,9 @@
       top: -8px;
       right: -10px;
       background: var(--accent-gold);
-      color: #FFFFFF;
+      color: var(--bg-dark);
       font-weight: 700;
-      font-size: 0.65rem;
+      font-size: 0.62rem;
       width: 18px;
       height: 18px;
       border-radius: 50%;
@@ -188,13 +192,13 @@
     .search-modal {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.85);
-      backdrop-filter: blur(10px);
+      background: rgba(11,11,11,0.92);
+      backdrop-filter: blur(12px);
       z-index: 3000;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 80px 20px;
+      padding: 90px 20px;
       opacity: 0;
       pointer-events: none;
       transition: var(--transition);
@@ -207,44 +211,44 @@
 
     .search-input-wrapper {
       width: 100%;
-      max-width: 700px;
+      max-width: 750px;
       position: relative;
-      margin-bottom: 30px;
+      margin-bottom: 35px;
     }
 
     .search-input-wrapper input {
       width: 100%;
-      padding: 18px 25px;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.3);
+      padding: 20px 30px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border-gold);
       color: #FFFFFF;
       font-size: 1.2rem;
       font-family: var(--font-body);
       outline: none;
-      border-radius: 4px;
+      border-radius: 2px;
       transition: var(--transition);
     }
 
     .search-input-wrapper input:focus {
       border-color: var(--accent-gold);
-      background: rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.09);
     }
 
     .search-close-btn {
       position: absolute;
-      top: 30px;
-      right: 40px;
+      top: 35px;
+      right: 45px;
       background: none;
       border: none;
-      color: #FFFFFF;
-      font-size: 2rem;
+      color: var(--accent-gold);
+      font-size: 2.2rem;
       cursor: pointer;
     }
 
     .search-results-container {
       width: 100%;
-      max-width: 900px;
-      max-height: 70vh;
+      max-width: 950px;
+      max-height: 65vh;
       overflow-y: auto;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -255,17 +259,17 @@
     .mobile-nav-drawer {
       position: fixed;
       top: 0;
-      left: -320px;
-      width: 300px;
+      left: -340px;
+      width: 320px;
       height: 100vh;
       background: #FFFFFF;
-      border-right: 1px solid var(--border-light);
+      border-right: 1px solid var(--border-gold);
       z-index: 2200;
       transition: var(--transition);
       display: flex;
       flex-direction: column;
-      padding: 35px 25px;
-      box-shadow: 15px 0 40px rgba(0,0,0,0.08);
+      padding: 40px 30px;
+      box-shadow: 20px 0 50px rgba(0,0,0,0.15);
     }
 
     .mobile-nav-drawer.active { left: 0; }
@@ -274,46 +278,63 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 40px;
+      margin-bottom: 45px;
     }
 
     .mobile-nav-links {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 22px;
+      gap: 25px;
     }
 
     .mobile-nav-links a {
       color: var(--text-black);
       text-decoration: none;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       text-transform: uppercase;
-      letter-spacing: 2.5px;
+      letter-spacing: 3px;
       font-weight: 600;
       display: block;
-      padding-bottom: 10px;
+      padding-bottom: 12px;
       border-bottom: 1px solid var(--border-light);
       transition: var(--transition);
     }
 
-    .mobile-nav-links a:hover { color: var(--accent-gold); }
+    .mobile-nav-links a:hover { color: var(--accent-gold); padding-left: 6px; }
 
-    /* TRANSPARENT HERO SLIDESHOW */
+    .nav-sub-menu {
+      padding-left: 15px;
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .nav-sub-menu a {
+      font-size: 0.8rem !important;
+      letter-spacing: 2px !important;
+      color: var(--text-muted) !important;
+      border-bottom: none !important;
+      padding-bottom: 0 !important;
+    }
+
+    /* LUXURIOUS HERO SLIDESHOW */
     .hero-slideshow {
       position: relative;
       width: 100%;
-      height: 85vh;
-      min-height: 560px;
-      margin-top: -85px;
+      height: 88vh;
+      min-height: 600px;
+      margin-top: -91px;
       overflow: hidden;
+      background: var(--bg-dark);
     }
 
     .slide {
       position: absolute;
       inset: 0;
       opacity: 0;
-      transition: opacity 1.2s ease-in-out, transform 7s ease;
+      transition: opacity 1.4s ease-in-out, transform 8s cubic-bezier(0.16, 1, 0.3, 1);
       background-size: cover;
       background-position: center;
       display: flex;
@@ -323,60 +344,62 @@
 
     .slide.active {
       opacity: 1;
-      transform: scale(1.03);
+      transform: scale(1.04);
     }
 
     .slide-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.5) 100%);
+      background: linear-gradient(180deg, rgba(11,11,11,0.4) 0%, rgba(11,11,11,0.65) 100%);
     }
 
     .slide-content {
       position: relative;
       z-index: 2;
       text-align: center;
-      max-width: 720px;
-      padding: 50px 40px;
-      background: rgba(255, 255, 255, 0.14);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-      border-radius: 4px;
+      max-width: 780px;
+      padding: 60px 45px;
+      background: rgba(11, 11, 11, 0.45);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-gold);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+      border-radius: 2px;
     }
 
     .slide-content h1 {
       font-family: var(--font-heading);
-      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      font-size: clamp(2.3rem, 5vw, 3.8rem);
       font-weight: 700;
-      letter-spacing: 3px;
-      margin-bottom: 12px;
+      letter-spacing: 4px;
+      margin-bottom: 14px;
       color: #FFFFFF;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.4);
       text-transform: uppercase;
+    }
+
+    .slide-content h1 span {
+      color: var(--accent-gold);
     }
 
     .slide-content p {
-      font-size: 0.82rem;
-      letter-spacing: 3px;
-      color: #FFFFFF;
-      margin-bottom: 25px;
+      font-size: 0.85rem;
+      letter-spacing: 3.5px;
+      color: #E2E2E2;
+      margin-bottom: 30px;
       text-transform: uppercase;
-      font-weight: 600;
-      text-shadow: 0 1px 6px rgba(0,0,0,0.4);
+      font-weight: 500;
     }
 
-    .btn-transparent-glass {
+    .btn-gold-glass {
       display: inline-block;
-      padding: 14px 38px;
-      background: rgba(255, 255, 255, 0.2);
+      padding: 15px 42px;
+      background: rgba(212, 175, 55, 0.15);
       color: #FFFFFF;
       font-weight: 600;
       font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 3px;
-      border: 1px solid #FFFFFF;
+      border: 1px solid var(--accent-gold);
       cursor: pointer;
       text-decoration: none;
       backdrop-filter: blur(6px);
@@ -384,128 +407,132 @@
       border-radius: 2px;
     }
 
-    .btn-transparent-glass:hover {
-      background: #FFFFFF;
-      color: #111111;
+    .btn-gold-glass:hover {
+      background: var(--accent-gold);
+      color: var(--bg-dark);
       transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(212,175,55,0.4);
     }
 
-    .btn-black {
+    .btn-black-gold {
       display: inline-block;
-      padding: 15px 42px;
-      background: #111111;
+      padding: 16px 45px;
+      background: var(--bg-dark);
       color: #FFFFFF;
       font-weight: 600;
       font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 3px;
-      border: 1px solid #111111;
+      border: 1px solid var(--accent-gold);
       cursor: pointer;
       text-decoration: none;
       transition: var(--transition);
       border-radius: 2px;
     }
 
-    .btn-black:hover {
+    .btn-black-gold:hover {
       background: var(--accent-gold);
-      border-color: var(--accent-gold);
+      color: var(--bg-dark);
       transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(212,175,55,0.3);
     }
 
     /* SECTION HEADERS */
     .section-header {
       text-align: center;
-      padding: 70px 20px 20px;
+      padding: 80px 20px 25px;
     }
 
     .section-header h2 {
       font-family: var(--font-heading);
-      font-size: 2.3rem;
+      font-size: 2.5rem;
       font-weight: 700;
-      letter-spacing: 2.5px;
+      letter-spacing: 3px;
       color: var(--text-black);
       text-transform: uppercase;
     }
 
     .section-header .subtext {
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       text-transform: uppercase;
-      letter-spacing: 3.5px;
+      letter-spacing: 4px;
       color: var(--accent-gold);
-      margin-top: 8px;
+      margin-top: 10px;
       font-weight: 600;
     }
 
-    /* MANUAL SCROLLABLE NEW ARRIVALS (SCROLLBAR HIDDEN) */
+    /* LUXURIOUS SIDEWAYS NEW ARRIVALS */
     .new-arrivals-container {
-      background: var(--bg-main);
-      padding: 30px 0 50px;
+      background: #FAFAFA;
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+      padding: 40px 0 60px;
     }
 
     .scrollable-track {
       display: flex;
-      gap: 30px;
+      gap: 32px;
       overflow-x: auto;
-      padding: 10px 5% 20px;
+      padding: 15px 5% 25px;
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
-      scrollbar-width: none; /* Hides scrollbar in Firefox */
-      -ms-overflow-style: none; /* Hides scrollbar in IE/Edge */
+      scrollbar-width: none;
+      -ms-overflow-style: none;
     }
 
-    .scrollable-track::-webkit-scrollbar {
-      display: none; /* Hides scrollbar in Chrome, Safari, and Opera */
-    }
+    .scrollable-track::-webkit-scrollbar { display: none; }
 
     .marquee-card {
-      width: 280px;
+      width: 300px;
       background: #FFFFFF;
-      color: #111111;
-      border: 1px solid var(--border-light);
+      color: var(--text-black);
+      border: 1px solid var(--border-gold);
       border-radius: 4px;
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.04);
       cursor: pointer;
       flex-shrink: 0;
       scroll-snap-align: start;
       transition: var(--transition);
+      position: relative;
     }
 
     .marquee-card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-8px);
       border-color: var(--accent-gold);
-      box-shadow: 0 15px 35px rgba(197,168,128,0.2);
+      box-shadow: 0 20px 45px rgba(212,175,55,0.2);
     }
 
     .marquee-card img {
       width: 100%;
-      height: 260px;
+      height: 280px;
       object-fit: cover;
     }
 
     .marquee-info {
-      padding: 18px 15px;
+      padding: 22px 18px;
       text-align: center;
+      background: #FFFFFF;
     }
 
     .marquee-info h4 {
       font-family: var(--font-heading);
-      font-size: 1.05rem;
-      margin-bottom: 6px;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
       font-weight: 600;
     }
 
     .marquee-info p {
       color: var(--accent-gold);
       font-weight: 700;
-      font-size: 0.9rem;
-      letter-spacing: 1px;
+      font-size: 0.95rem;
+      letter-spacing: 1.5px;
     }
 
-    /* CONTINUOUS MOVING INSTAGRAM VIDEOS */
+    /* INSTAGRAM REELS CONTINUOUS MARQUEE */
     .instagram-reels-section {
       background: var(--bg-main);
-      padding: 30px 0 60px;
+      padding: 20px 0 70px;
       overflow: hidden;
     }
 
@@ -513,12 +540,10 @@
       display: flex;
       gap: 24px;
       width: max-content;
-      animation: marqueeScroll 28s linear infinite;
+      animation: marqueeScroll 26s linear infinite;
     }
 
-    .reels-marquee-track:hover {
-      animation-play-state: paused;
-    }
+    .reels-marquee-track:hover { animation-play-state: paused; }
 
     @keyframes marqueeScroll {
       0% { transform: translateX(0); }
@@ -527,22 +552,22 @@
 
     .reel-card {
       position: relative;
-      width: 230px;
+      width: 240px;
       aspect-ratio: 9 / 16;
       border-radius: 6px;
       overflow: hidden;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.1);
-      background: #F5F5F5;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+      background: #111;
       flex-shrink: 0;
       cursor: pointer;
       transition: var(--transition);
-      border: 1px solid var(--border-light);
+      border: 1px solid var(--border-gold);
     }
 
     .reel-card:hover {
-      transform: scale(1.03);
+      transform: scale(1.04);
       border-color: var(--accent-gold);
-      box-shadow: 0 18px 35px rgba(197,168,128,0.25);
+      box-shadow: 0 20px 45px rgba(212,175,55,0.3);
     }
 
     .reel-card video {
@@ -552,12 +577,27 @@
       pointer-events: none;
     }
 
-    /* VIDEO BIG VIEW MODAL */
+    .reel-overlay-icon {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      font-size: 2.2rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .reel-card:hover .reel-overlay-icon { opacity: 1; }
+
+    /* CINEMATIC VIDEO BIG VIEW MODAL */
     .video-modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.85);
-      backdrop-filter: blur(10px);
+      background: rgba(11,11,11,0.92);
+      backdrop-filter: blur(14px);
       z-index: 2500;
       display: flex;
       align-items: center;
@@ -576,13 +616,13 @@
     .video-modal-content {
       position: relative;
       width: 100%;
-      max-width: 420px;
+      max-width: 450px;
       aspect-ratio: 9 / 16;
       background: #000;
       border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 30px 70px rgba(0,0,0,0.6);
-      border: 1px solid rgba(197,168,128,0.4);
+      box-shadow: 0 40px 80px rgba(0,0,0,0.8);
+      border: 1px solid var(--accent-gold);
     }
 
     .video-modal-content video {
@@ -591,12 +631,12 @@
       object-fit: cover;
     }
 
-    /* CATEGORY FILTERS */
+    /* HIGH-END CATEGORY FILTER TABS */
     .category-filters {
       display: flex;
       justify-content: center;
       gap: 12px;
-      margin-bottom: 40px;
+      margin-bottom: 45px;
       flex-wrap: wrap;
       padding: 0 15px;
     }
@@ -604,35 +644,35 @@
     .filter-btn {
       background: #FFFFFF;
       color: var(--text-black);
-      border: 1px solid var(--border-light);
-      padding: 11px 26px;
-      font-size: 0.75rem;
+      border: 1px solid var(--border-gold);
+      padding: 12px 28px;
+      font-size: 0.72rem;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 2.5px;
       cursor: pointer;
       transition: var(--transition);
       border-radius: 2px;
     }
 
     .filter-btn:hover, .filter-btn.active {
-      background: #111111;
-      color: #FFFFFF;
-      border-color: #111111;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      background: var(--bg-dark);
+      color: var(--accent-gold-light);
+      border-color: var(--accent-gold);
+      box-shadow: 0 8px 20px rgba(212,175,55,0.2);
     }
 
     /* PRODUCTS GRID */
     .products-container {
       max-width: 1400px;
       margin: 0 auto;
-      padding: 0 20px 80px;
+      padding: 0 20px 90px;
     }
 
     .product-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 30px;
+      gap: 32px;
     }
 
     .product-card {
@@ -648,7 +688,7 @@
     .product-card:hover {
       transform: translateY(-8px);
       border-color: var(--accent-gold);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
     }
 
     .product-img-wrapper {
@@ -656,7 +696,7 @@
       width: 100%;
       aspect-ratio: 1 / 1;
       overflow: hidden;
-      background: #F9F9F9;
+      background: #F8F8F8;
     }
 
     .product-img-wrapper img {
@@ -670,32 +710,55 @@
       transform: scale(1.08);
     }
 
+    .stock-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(11,11,11,0.85);
+      color: var(--accent-gold-light);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      padding: 5px 10px;
+      text-transform: uppercase;
+      border: 1px solid var(--border-gold);
+      border-radius: 2px;
+      z-index: 2;
+    }
+
     .product-info {
-      padding: 20px 15px;
+      padding: 22px 18px;
       text-align: center;
     }
 
     .product-title {
       font-family: var(--font-heading);
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       color: var(--text-black);
       margin-bottom: 8px;
       font-weight: 600;
     }
 
     .product-price {
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       color: var(--accent-gold);
       font-weight: 700;
       letter-spacing: 1.5px;
     }
 
-    /* MODAL POPUP */
+    .product-stock-left {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+      font-weight: 500;
+    }
+
+    /* PRODUCT DETAIL MODAL */
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(8px);
+      background: rgba(11, 11, 11, 0.85);
+      backdrop-filter: blur(10px);
       z-index: 2000;
       display: flex;
       align-items: center;
@@ -713,25 +776,25 @@
 
     .modal-card {
       background: #FFFFFF;
-      border: 1px solid var(--border-light);
+      border: 1px solid var(--border-gold);
       width: 100%;
-      max-width: 880px;
+      max-width: 900px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       position: relative;
-      box-shadow: 0 30px 70px rgba(0,0,0,0.3);
+      box-shadow: 0 35px 80px rgba(0,0,0,0.4);
       border-radius: 4px;
       overflow: hidden;
     }
 
     .modal-close {
       position: absolute;
-      top: 15px;
-      right: 20px;
+      top: 18px;
+      right: 22px;
       background: none;
       border: none;
       color: #111111;
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       cursor: pointer;
       z-index: 10;
       transition: var(--transition);
@@ -751,7 +814,7 @@
     }
 
     .modal-details {
-      padding: 40px 35px;
+      padding: 45px 38px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -759,16 +822,16 @@
 
     .modal-details h3 {
       font-family: var(--font-heading);
-      font-size: 1.9rem;
+      font-size: 2rem;
       color: var(--text-black);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       font-weight: 700;
     }
 
     .modal-details .modal-price {
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       color: var(--accent-gold);
-      margin-bottom: 15px;
+      margin-bottom: 12px;
       font-weight: 700;
       letter-spacing: 1px;
     }
@@ -802,27 +865,27 @@
       border-radius: 2px;
     }
 
-    /* CART DRAWER */
+    /* CART DRAWER WITH QUANTITY CONTROLS & AUTO CALCULATION */
     .cart-drawer {
       position: fixed;
       top: 0;
-      right: -450px;
+      right: -460px;
       width: 100%;
-      max-width: 420px;
+      max-width: 440px;
       height: 100vh;
       background: #FFFFFF;
-      border-left: 1px solid var(--border-light);
+      border-left: 1px solid var(--border-gold);
       z-index: 2100;
       transition: var(--transition);
       display: flex;
       flex-direction: column;
-      box-shadow: -20px 0 50px rgba(0,0,0,0.15);
+      box-shadow: -25px 0 60px rgba(0,0,0,0.2);
     }
 
     .cart-drawer.active { right: 0; }
 
     .cart-header {
-      padding: 24px 20px;
+      padding: 26px 22px;
       border-bottom: 1px solid var(--border-light);
       display: flex;
       justify-content: space-between;
@@ -832,34 +895,55 @@
 
     .cart-header h3 {
       font-family: var(--font-heading);
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
     }
 
     .cart-items {
       flex: 1;
       overflow-y: auto;
-      padding: 20px;
+      padding: 22px;
     }
 
     .cart-item {
       display: flex;
-      gap: 15px;
-      margin-bottom: 20px;
+      gap: 16px;
+      margin-bottom: 22px;
       border-bottom: 1px solid var(--border-light);
-      padding-bottom: 15px;
+      padding-bottom: 18px;
+      align-items: center;
     }
 
     .cart-item img {
-      width: 75px;
-      height: 75px;
+      width: 80px;
+      height: 80px;
       object-fit: cover;
       border-radius: 2px;
     }
 
+    .qty-control {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .qty-btn {
+      background: #F0F0F0;
+      border: none;
+      width: 24px;
+      height: 24px;
+      font-weight: 700;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    .qty-btn:hover { background: var(--accent-gold); color: #fff; }
+
     .cart-footer {
-      padding: 24px 20px;
+      padding: 26px 22px;
       border-top: 1px solid var(--border-light);
       background: #FAFAFA;
     }
@@ -867,22 +951,22 @@
     .cart-total {
       display: flex;
       justify-content: space-between;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 700;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
     }
 
     /* ADMIN PANEL */
     .admin-panel {
-      max-width: 900px;
+      max-width: 950px;
       margin: 40px auto;
       background: #FFFFFF;
-      border: 1px solid var(--border-light);
-      padding: 40px;
+      border: 1px solid var(--border-gold);
+      padding: 45px;
       display: none;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.06);
       border-radius: 4px;
     }
 
@@ -890,13 +974,14 @@
 
     .admin-panel h3 {
       font-family: var(--font-heading);
-      font-size: 1.9rem;
-      margin-bottom: 20px;
+      font-size: 2rem;
+      margin-bottom: 25px;
       text-align: center;
       text-transform: uppercase;
+      letter-spacing: 2px;
     }
 
-    .form-group { margin-bottom: 20px; }
+    .form-group { margin-bottom: 22px; }
     .form-group label {
       display: block;
       font-size: 0.72rem;
@@ -908,13 +993,16 @@
 
     .form-control {
       width: 100%;
-      padding: 13px;
+      padding: 14px;
       background: #FAFAFA;
       border: 1px solid var(--border-light);
       font-family: var(--font-body);
       font-size: 0.88rem;
       border-radius: 2px;
+      outline: none;
     }
+
+    .form-control:focus { border-color: var(--accent-gold); }
 
     .form-checkbox {
       display: flex;
@@ -926,33 +1014,35 @@
 
     /* FOOTER */
     footer {
-      background: #FAFAFA;
-      border-top: 1px solid var(--border-light);
-      padding: 60px 20px 30px;
+      background: var(--bg-dark);
+      color: #FFFFFF;
+      border-top: 1px solid var(--border-gold);
+      padding: 70px 20px 35px;
       text-align: center;
     }
 
     .footer-logo {
-      height: 52px;
-      margin-bottom: 20px;
+      height: 55px;
+      margin-bottom: 22px;
       object-fit: contain;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
     }
 
     .footer-social-icons {
       display: flex;
       justify-content: center;
-      gap: 24px;
-      font-size: 1.4rem;
-      margin-bottom: 25px;
+      gap: 26px;
+      font-size: 1.5rem;
+      margin-bottom: 30px;
     }
 
-    .footer-social-icons a { color: var(--text-black); transition: var(--transition); }
+    .footer-social-icons a { color: var(--accent-gold-light); transition: var(--transition); }
     .footer-social-icons a:hover { color: var(--accent-gold); transform: translateY(-3px); }
 
     .copyright {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      letter-spacing: 1.5px;
+      font-size: 0.72rem;
+      color: #999;
+      letter-spacing: 2px;
       cursor: pointer;
     }
 
@@ -963,8 +1053,8 @@
 
     @media (max-width: 768px) {
       header { padding: 14px 4%; }
-      .hero-slideshow { height: 70vh; margin-top: -75px; }
-      .slide-content { padding: 30px 20px; margin: 0 15px; }
+      .hero-slideshow { height: 72vh; margin-top: -80px; }
+      .slide-content { padding: 35px 22px; margin: 0 15px; }
 
       /* STRICT 2 COLUMNS ON MOBILE */
       .product-grid {
@@ -988,13 +1078,13 @@
 </head>
 <body>
 
-  <!-- ANNOUNCEMENT TICKER -->
+  <!-- WORLDWIDE ANNOUNCEMENT TICKER -->
   <div class="announcement-bar">
     <div class="ticker-track">
-      <div class="ticker-item">🕒 Open Hours: Monday – Saturday | 10:00 AM – 7:00 PM</div>
-      <div class="ticker-item">📦 Islandwide Delivery Across Jamaica 📦</div>
-      <div class="ticker-item">🕒 Open Hours: Monday – Saturday | 10:00 AM – 7:00 PM</div>
-      <div class="ticker-item">📦 Islandwide Delivery Across Jamaica 📦</div>
+      <div class="ticker-item">✨ Worldwide Insured Express Shipping Available ✨</div>
+      <div class="ticker-item">💎 Crafted in Fine Stainless Steel & 18k Gold Plating 💎</div>
+      <div class="ticker-item">✨ Worldwide Insured Express Shipping Available ✨</div>
+      <div class="ticker-item">💎 Crafted in Fine Stainless Steel & 18k Gold Plating 💎</div>
     </div>
   </div>
 
@@ -1004,7 +1094,7 @@
       <button class="menu-toggle-btn" onclick="toggleMobileMenu()">
         <i class="fa-solid fa-bars"></i>
       </button>
-      <button class="icon-btn" onclick="openSearchModal()" title="Search Products">
+      <button class="icon-btn" onclick="openSearchModal()" title="Search Collections">
         <i class="fa-solid fa-magnifying-glass"></i>
       </button>
     </div>
@@ -1014,10 +1104,10 @@
     </a>
 
     <div class="nav-actions">
-      <button class="icon-btn" onclick="unlockAdmin()" title="Admin Portal">
+      <button class="icon-btn" onclick="unlockAdmin()" title="Client Admin Portal">
         <i class="fa-regular fa-user"></i>
       </button>
-      <button class="icon-btn" onclick="toggleCart()">
+      <button class="icon-btn" onclick="toggleCart()" title="Shopping Bag">
         <i class="fa-solid fa-bag-shopping"></i>
         <span class="cart-badge" id="cart-count">0</span>
       </button>
@@ -1028,7 +1118,7 @@
   <div class="search-modal" id="search-modal">
     <button class="search-close-btn" onclick="closeSearchModal()">&times;</button>
     <div class="search-input-wrapper">
-      <input type="text" id="search-box" placeholder="Search fine jewelry pieces..." oninput="handleLiveSearch(this.value)">
+      <input type="text" id="search-box" placeholder="Search luxury jewelry, watches, handbags..." oninput="handleLiveSearch(this.value)">
     </div>
     <div class="search-results-container" id="search-results"></div>
   </div>
@@ -1036,22 +1126,36 @@
   <!-- MOBILE NAVIGATION DRAWER -->
   <div class="mobile-nav-drawer" id="mobile-drawer">
     <div class="mobile-nav-header">
-      <img src="logo.jpg" alt="PETALLIA" style="height: 35px;" onerror="this.style.display='none'">
+      <img src="logo.jpg" alt="PETALLIA" style="height: 38px;" onerror="this.style.display='none'">
       <button class="modal-close" onclick="toggleMobileMenu()" style="position:static;">&times;</button>
     </div>
     <ul class="mobile-nav-links">
-      <li><a href="#new-arrivals-section" onclick="toggleMobileMenu()">New Arrivals</a></li>
-      <li><a href="#all-jewelry" onclick="toggleMobileMenu()">Shop All</a></li>
+      <li>
+        <a href="#all-jewelry" onclick="toggleMobileMenu()">Jewelry</a>
+        <div class="nav-sub-menu">
+          <a href="#all-jewelry" onclick="filterCategory('watches', this); toggleMobileMenu();">Watches</a>
+          <a href="#all-jewelry" onclick="filterCategory('chain', this); toggleMobileMenu();">Chains</a>
+          <a href="#all-jewelry" onclick="filterCategory('bracelets', this); toggleMobileMenu();">Bracelets</a>
+          <a href="#all-jewelry" onclick="filterCategory('anklet', this); toggleMobileMenu();">Anklets</a>
+        </div>
+      </li>
+      <li>
+        <a href="#all-jewelry" onclick="toggleMobileMenu()">Accessories</a>
+        <div class="nav-sub-menu">
+          <a href="#all-jewelry" onclick="filterCategory('handbags', this); toggleMobileMenu();">Handbags</a>
+          <a href="#all-jewelry" onclick="filterCategory('shoes', this); toggleMobileMenu();">Shoes</a>
+        </div>
+      </li>
       <li><a href="#" onclick="promptMobileAdmin(event)">Admin Portal</a></li>
     </ul>
   </div>
 
-  <!-- TRANSPARENT HERO SLIDESHOW -->
+  <!-- LUXURIOUS HERO SLIDESHOW -->
   <section class="hero-slideshow" id="slideshow-container">
     <!-- Dynamic Slides -->
   </section>
 
-  <!-- MANUAL SCROLLABLE NEW ARRIVALS -->
+  <!-- SIDEWAYS NEW ARRIVALS SECTION -->
   <div class="section-header" id="new-arrivals-section">
     <h2>New Arrivals</h2>
     <div class="subtext">Exquisite New Masterpieces</div>
@@ -1063,7 +1167,7 @@
     </div>
   </div>
 
-  <!-- INSTAGRAM CONTINUOUS MOVING VIDEO MARQUEE (4 VIDEOS) -->
+  <!-- INSTAGRAM CONTINUOUS MOVING VIDEO MARQUEE -->
   <div class="section-header">
     <h2>Shop Our Instagram</h2>
     <div class="subtext">Follow @jewelrybypetallia</div>
@@ -1073,24 +1177,29 @@
     <div class="reels-marquee-track">
       <div class="reel-card" onclick="openVideoModal('https://assets.mixkit.co/videos/preview/mixkit-hands-wearing-gold-bracelets-and-rings-41586-large.mp4')">
         <video src="video1.mp4" autoplay muted loop playsinline></video>
+        <div class="reel-overlay-icon"><i class="fa-solid fa-play"></i></div>
       </div>
       <div class="reel-card" onclick="openVideoModal('https://assets.mixkit.co/videos/preview/mixkit-close-up-of-a-woman-wearing-a-gold-necklace-41585-large.mp4')">
         <video src="video2.mp4" autoplay muted loop playsinline></video>
+        <div class="reel-overlay-icon"><i class="fa-solid fa-play"></i></div>
       </div>
       <div class="reel-card" onclick="openVideoModal('https://assets.mixkit.co/videos/preview/mixkit-woman-showing-luxury-accessories-41584-large.mp4')">
         <video src="video3.mp4" autoplay muted loop playsinline></video>
+        <div class="reel-overlay-icon"><i class="fa-solid fa-play"></i></div>
       </div>
       <div class="reel-card" onclick="openVideoModal('https://assets.mixkit.co/videos/preview/mixkit-elegant-jewelry-on-display-41587-large.mp4')">
         <video src="video4.mp4" autoplay muted loop playsinline></video>
+        <div class="reel-overlay-icon"><i class="fa-solid fa-play"></i></div>
       </div>
-      <!-- Loop duplicates for infinite seamless animation -->
+      <!-- Loop duplicates for seamless continuous loop -->
       <div class="reel-card" onclick="openVideoModal('https://assets.mixkit.co/videos/preview/mixkit-hands-wearing-gold-bracelets-and-rings-41586-large.mp4')">
         <video src="video1.mp4" autoplay muted loop playsinline></video>
+        <div class="reel-overlay-icon"><i class="fa-solid fa-play"></i></div>
       </div>
     </div>
   </div>
 
-  <!-- VIDEO BIG VIEW MODAL -->
+  <!-- CINEMATIC VIDEO BIG VIEW MODAL -->
   <div class="video-modal-overlay" id="video-modal" onclick="closeVideoModal()">
     <div class="video-modal-content" onclick="event.stopPropagation()">
       <button class="modal-close" onclick="closeVideoModal()" style="color:#fff; right: 15px; top: 10px; z-index:10;">&times;</button>
@@ -1101,14 +1210,17 @@
   <!-- FULL COLLECTION SECTION -->
   <section class="section-header" id="all-jewelry">
     <h2>The Full Collection</h2>
-    <div class="subtext">Timeless Stainless Steel Pieces</div>
+    <div class="subtext">Timeless Luxury Jewelry & Accessories</div>
   </section>
 
   <div class="category-filters">
-    <button class="filter-btn active" onclick="filterCategory('all', this)">All Pieces</button>
-    <button class="filter-btn" onclick="filterCategory('necklaces', this)">Necklaces</button>
+    <button class="filter-btn active" onclick="filterCategory('all', this)">All Masterpieces</button>
+    <button class="filter-btn" onclick="filterCategory('watches', this)">Watches</button>
+    <button class="filter-btn" onclick="filterCategory('chain', this)">Chains</button>
     <button class="filter-btn" onclick="filterCategory('bracelets', this)">Bracelets</button>
-    <button class="filter-btn" onclick="filterCategory('rings', this)">Rings</button>
+    <button class="filter-btn" onclick="filterCategory('anklet', this)">Anklets</button>
+    <button class="filter-btn" onclick="filterCategory('handbags', this)">Handbags</button>
+    <button class="filter-btn" onclick="filterCategory('shoes', this)">Shoes</button>
   </div>
 
   <div class="products-container">
@@ -1117,24 +1229,31 @@
     </div>
   </div>
 
-  <!-- ADMIN PANEL -->
+  <!-- ADMIN PANEL WITH INVENTORY MANAGEMENT -->
   <section class="admin-panel" id="admin-section">
-    <h3>Client Admin Portal (Firebase Firestore)</h3>
+    <h3>Inventory & Product Management</h3>
     <form id="admin-upload-form">
       <div class="form-group">
         <label>Product Title</label>
         <input type="text" id="admin-title" class="form-control" required>
       </div>
       <div class="form-group">
-        <label>Price ($JMD)</label>
+        <label>Price ($USD)</label>
         <input type="number" id="admin-price" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label>Stock Quantity</label>
+        <input type="number" id="admin-stock" class="form-control" value="10" min="0" required>
       </div>
       <div class="form-group">
         <label>Category</label>
         <select id="admin-category" class="form-control" required>
-          <option value="necklaces">Necklaces</option>
+          <option value="watches">Watches</option>
+          <option value="chain">Chains</option>
           <option value="bracelets">Bracelets</option>
-          <option value="rings">Rings</option>
+          <option value="anklet">Anklets</option>
+          <option value="handbags">Handbags</option>
+          <option value="shoes">Shoes</option>
         </select>
       </div>
       <div class="form-group">
@@ -1151,7 +1270,7 @@
       <div class="form-group">
         <label class="form-checkbox"><input type="checkbox" id="admin-is-slide"> Hero Slideshow</label>
       </div>
-      <button type="submit" class="btn-black" style="width: 100%;">Upload & Save to Firestore</button>
+      <button type="submit" class="btn-black-gold" style="width: 100%;">Upload & Sync Inventory</button>
     </form>
   </section>
 
@@ -1166,41 +1285,22 @@
         <h3 id="modal-title">Product Name</h3>
         <div class="modal-price" id="modal-price">$0.00</div>
         <p id="modal-desc" style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 12px;"></p>
+        <p id="modal-stock-status" style="font-size: 0.8rem; font-weight:600; color:var(--accent-gold); margin-bottom: 15px;"></p>
 
         <div class="delivery-section">
           <label>Fulfillment Option:</label>
           <select id="fulfillment-select" class="select-custom" onchange="toggleFulfillmentOptions()">
-            <option value="delivery">Islandwide Delivery</option>
-            <option value="pickup">Store Pickup</option>
+            <option value="delivery">Worldwide Insured Shipping</option>
+            <option value="pickup">Boutique Store Pickup</option>
           </select>
         </div>
 
-        <div class="delivery-section" id="parish-container">
-          <label>Select Jamaica Parish:</label>
-          <select id="parish-select" class="select-custom">
-            <option value="Kingston">Kingston</option>
-            <option value="St. Andrew">St. Andrew</option>
-            <option value="St. Catherine">St. Catherine</option>
-            <option value="Clarendon">Clarendon</option>
-            <option value="Manchester">Manchester</option>
-            <option value="St. Elizabeth">St. Elizabeth</option>
-            <option value="Westmoreland">Westmoreland</option>
-            <option value="Hanover">Hanover</option>
-            <option value="St. James">St. James</option>
-            <option value="Trelawny">Trelawny</option>
-            <option value="St. Ann">St. Ann</option>
-            <option value="St. Mary">St. Mary</option>
-            <option value="Portland">Portland</option>
-            <option value="St. Thomas">St. Thomas</option>
-          </select>
-        </div>
-
-        <button class="btn-black" onclick="addCurrentToCart()">Add To Bag</button>
+        <button class="btn-black-gold" id="add-to-bag-btn" onclick="addCurrentToCart()">Add To Bag</button>
       </div>
     </div>
   </div>
 
-  <!-- CART DRAWER -->
+  <!-- CART DRAWER WITH AUTO CALCULATION & QUANTITY CONTROLS -->
   <div class="cart-drawer" id="cart-drawer">
     <div class="cart-header">
       <h3>Your Shopping Bag</h3>
@@ -1212,8 +1312,8 @@
         <span>Total:</span>
         <span id="cart-total-price">$0.00</span>
       </div>
-      <button class="btn-black" style="width: 100%;" onclick="checkoutStripe()">
-        Pay With Card
+      <button class="btn-black-gold" style="width: 100%;" onclick="checkoutStripe()">
+        Proceed To Stripe Checkout
       </button>
     </div>
   </div>
@@ -1233,10 +1333,11 @@
     const stripe = Stripe('YOUR_STRIPE_PUBLISHABLE_KEY');
 
     let products = [
-      { id: '1', title: 'Clover Chain & Pendant', price: 7000, category: 'necklaces', description: 'Stainless steel flower clover necklace.', image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80', isNew: true, isSlide: true },
-      { id: '2', title: 'Monochrome Cuff Bangle', price: 8500, category: 'bracelets', description: 'Chic textured wrist cuff stainless steel.', image: 'https://images.unsplash.com/photo-1611591475155-42e523a67047?auto=format&fit=crop&w=800&q=80', isNew: true, isSlide: true },
-      { id: '3', title: 'Classic Statement Watch', price: 13000, category: 'rings', description: 'Elegant wristwatch for high class wear.', image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=80', isNew: true, isSlide: false },
-      { id: '4', title: 'Link & Charm Bracelet Set', price: 9300, category: 'bracelets', description: 'Delicate chain link set.', image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=800&q=80', isNew: true, isSlide: false }
+      { id: '1', title: 'Clover Diamond Chain', price: 450, stock: 5, category: 'chain', description: '18k gold plated stainless steel clover masterpiece.', image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80', isNew: true, isSlide: true },
+      { id: '2', title: 'Monochrome Luxe Watch', price: 550, stock: 3, category: 'watches', description: 'Swiss quartz movement with gold stainless steel finish.', image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=80', isNew: true, isSlide: true },
+      { id: '3', title: 'Royal Cuff Bangle', price: 280, stock: 8, category: 'bracelets', description: 'Chic textured wrist cuff in polished gold.', image: 'https://images.unsplash.com/photo-1611591475155-42e523a67047?auto=format&fit=crop&w=800&q=80', isNew: true, isSlide: false },
+      { id: '4', title: 'Velvet Designer Handbag', price: 800, stock: 2, category: 'handbags', description: 'Exquisite luxury evening handbag with gold clasp.', image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=80', isNew: true, isSlide: false },
+      { id: '5', title: 'Gold Stiletto Heel', price: 620, stock: 4, category: 'shoes', description: 'High-end artisan leather heels with metallic accents.', image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=800&q=80', isNew: false, isSlide: false }
     ];
 
     let cart = [];
@@ -1274,7 +1375,7 @@
       const filtered = products.filter(p => p.title.toLowerCase().includes(query.toLowerCase()) || p.description.toLowerCase().includes(query.toLowerCase()));
       
       if (filtered.length === 0) {
-        resultsContainer.innerHTML = '<p style="color:#fff; grid-column:span 3; text-align:center;">No jewelry pieces found.</p>';
+        resultsContainer.innerHTML = '<p style="color:#fff; grid-column:span 3; text-align:center;">No luxury masterpieces found.</p>';
         return;
       }
 
@@ -1283,19 +1384,22 @@
           <div class="product-img-wrapper"><img src="${p.image}" alt="${p.title}"></div>
           <div class="product-info">
             <div class="product-title">${p.title}</div>
-            <div class="product-price">$${p.price.toLocaleString()}.00 JMD</div>
+            <div class="product-price">$${p.price.toLocaleString()}.00 USD</div>
           </div>
         </div>
       `).join('');
     }
 
-    // VIDEO BIG VIEW MODAL
+    // CINEMATIC VIDEO BIG VIEW MODAL (Fixed for reliable playback)
     function openVideoModal(videoSrc) {
       const modal = document.getElementById('video-modal');
       const player = document.getElementById('modal-video-player');
       player.src = videoSrc;
+      player.load(); // Forces browser to load the new video source immediately
       modal.classList.add('active');
-      player.play();
+      player.play().catch(err => {
+        console.log("Autoplay prevented or waiting for user interaction:", err);
+      });
     }
 
     function closeVideoModal() {
@@ -1308,10 +1412,6 @@
 
     function toggleMobileMenu() {
       document.getElementById('mobile-drawer').classList.toggle('active');
-    }
-
-    function scrollToSection(id) {
-      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
     }
 
     function promptMobileAdmin(e) {
@@ -1341,8 +1441,8 @@
           <div class="slide-overlay"></div>
           <div class="slide-content">
             <h1>${p.title}</h1>
-            <p>$${p.price.toLocaleString()} JMD | Stainless Steel</p>
-            <a href="#all-jewelry" class="btn-transparent-glass">View Products</a>
+            <p>$${p.price.toLocaleString()} USD | Luxury Collection</p>
+            <a href="#all-jewelry" class="btn-gold-glass">Explore Masterpieces</a>
           </div>
         </div>
       `).join('');
@@ -1365,17 +1465,22 @@
       const marqueeContainer = document.getElementById('marquee-track-container');
       
       const list = filtered || products;
-      mainGrid.innerHTML = list.map(p => `
-        <div class="product-card" onclick="openModal('${p.id}')">
-          <div class="product-img-wrapper">
-            <img src="${p.image}" alt="${p.title}" loading="lazy">
+      mainGrid.innerHTML = list.map(p => {
+        const stockText = p.stock > 0 ? (p.stock <= 3 ? `Only ${p.stock} left in stock!` : `${p.stock} available`) : `Out of Stock`;
+        return `
+          <div class="product-card" onclick="openModal('${p.id}')">
+            <div class="product-img-wrapper">
+              ${p.stock <= 3 && p.stock > 0 ? `<div class="stock-badge">Low Stock</div>` : ''}
+              <img src="${p.image}" alt="${p.title}" loading="lazy">
+            </div>
+            <div class="product-info">
+              <div class="product-title">${p.title}</div>
+              <div class="product-price">$${p.price.toLocaleString()}.00 USD</div>
+              <div class="product-stock-left">${stockText}</div>
+            </div>
           </div>
-          <div class="product-info">
-            <div class="product-title">${p.title}</div>
-            <div class="product-price">$${p.price.toLocaleString()}.00 JMD</div>
-          </div>
-        </div>
-      `).join('');
+        `;
+      }).join('');
 
       const newArrivals = products.filter(p => p.isNew);
       marqueeContainer.innerHTML = newArrivals.map(p => `
@@ -1383,7 +1488,7 @@
           <img src="${p.image}" alt="${p.title}">
           <div class="marquee-info">
             <h4>${p.title}</h4>
-            <p>$${p.price.toLocaleString()}.00 JMD</p>
+            <p>$${p.price.toLocaleString()}.00 USD</p>
           </div>
         </div>
       `).join('');
@@ -1402,8 +1507,24 @@
 
       document.getElementById('modal-img').src = selectedProduct.image;
       document.getElementById('modal-title').innerText = selectedProduct.title;
-      document.getElementById('modal-price').innerText = `$${selectedProduct.price.toLocaleString()}.00 JMD`;
+      document.getElementById('modal-price').innerText = `$${selectedProduct.price.toLocaleString()}.00 USD`;
       document.getElementById('modal-desc').innerText = selectedProduct.description;
+      
+      const stockStatus = document.getElementById('modal-stock-status');
+      const addBtn = document.getElementById('add-to-bag-btn');
+
+      if (selectedProduct.stock > 0) {
+        stockStatus.innerText = `In Stock: ${selectedProduct.stock} units remaining`;
+        stockStatus.style.color = 'var(--accent-gold)';
+        addBtn.disabled = false;
+        addBtn.style.opacity = '1';
+      } else {
+        stockStatus.innerText = `Currently Sold Out`;
+        stockStatus.style.color = '#cc0000';
+        addBtn.disabled = true;
+        addBtn.style.opacity = '0.5';
+      }
+
       document.getElementById('product-modal').classList.add('active');
     }
 
@@ -1411,46 +1532,78 @@
       document.getElementById('product-modal').classList.remove('active');
     }
 
-    function toggleFulfillmentOptions() {
-      const val = document.getElementById('fulfillment-select').value;
-      document.getElementById('parish-container').style.display = val === 'pickup' ? 'none' : 'block';
-    }
-
     function toggleCart() {
       document.getElementById('cart-drawer').classList.toggle('active');
     }
 
     function addCurrentToCart() {
-      if (!selectedProduct) return;
-      const fulfillment = document.getElementById('fulfillment-select').value;
-      const detail = fulfillment === 'delivery' ? `Delivery: ${document.getElementById('parish-select').value}` : 'Store Pickup';
+      if (!selectedProduct || selectedProduct.stock <= 0) return;
       
-      cart.push({ ...selectedProduct, fulfillmentType: detail });
+      const fulfillment = document.getElementById('fulfillment-select').value;
+      const detail = fulfillment === 'delivery' ? 'Worldwide Shipping' : 'Store Pickup';
+      
+      const existingItem = cart.find(item => item.id === selectedProduct.id && item.fulfillmentType === detail);
+      if (existingItem) {
+        if (existingItem.quantity < selectedProduct.stock) {
+          existingItem.quantity++;
+        } else {
+          alert("Cannot add more than available stock.");
+          return;
+        }
+      } else {
+        cart.push({ ...selectedProduct, quantity: 1, fulfillmentType: detail });
+      }
+
       updateCartUI();
       closeModal();
       toggleCart();
     }
 
+    function changeQuantity(index, delta) {
+      const item = cart[index];
+      const prod = products.find(p => p.id === item.id);
+      
+      const newQty = item.quantity + delta;
+      if (newQty > 0 && newQty <= prod.stock) {
+        item.quantity = newQty;
+      } else if (newQty <= 0) {
+        cart.splice(index, 1);
+      } else {
+        alert("Maximum available stock reached.");
+      }
+      updateCartUI();
+    }
+
     function updateCartUI() {
-      document.getElementById('cart-count').innerText = cart.length;
+      const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+      document.getElementById('cart-count').innerText = totalCount;
       const container = document.getElementById('cart-items-container');
       let total = 0;
       
-      container.innerHTML = cart.map(item => {
-        total += item.price;
-        return `
-          <div class="cart-item">
-            <img src="${item.image}" alt="${item.title}">
-            <div>
-              <h4 style="font-size:0.9rem; font-weight:600;">${item.title}</h4>
-              <p style="color:var(--accent-gold); font-weight:700; font-size:0.85rem;">$${item.price.toLocaleString()}.00 JMD</p>
-              <small style="color:var(--text-muted);">${item.fulfillmentType}</small>
+      if (cart.length === 0) {
+        container.innerHTML = '<p style="text-align:center; color:var(--text-muted); margin-top:30px;">Your shopping bag is empty.</p>';
+      } else {
+        container.innerHTML = cart.map((item, index) => {
+          total += item.price * item.quantity;
+          return `
+            <div class="cart-item">
+              <img src="${item.image}" alt="${item.title}">
+              <div style="flex:1;">
+                <h4 style="font-size:0.9rem; font-weight:600;">${item.title}</h4>
+                <p style="color:var(--accent-gold); font-weight:700; font-size:0.85rem;">$${(item.price * item.quantity).toLocaleString()}.00 USD</p>
+                <small style="color:var(--text-muted);">${item.fulfillmentType}</small>
+                <div class="qty-control">
+                  <button class="qty-btn" onclick="changeQuantity(${index}, -1)">-</button>
+                  <span style="font-size:0.85rem; font-weight:600;">${item.quantity}</span>
+                  <button class="qty-btn" onclick="changeQuantity(${index}, 1)">+</button>
+                </div>
+              </div>
             </div>
-          </div>
-        `;
-      }).join('');
+          `;
+        }).join('');
+      }
 
-      document.getElementById('cart-total-price').innerText = `$${total.toLocaleString()}.00 JMD`;
+      document.getElementById('cart-total-price').innerText = `$${total.toLocaleString()}.00 USD`;
     }
 
     async function checkoutStripe() {
@@ -1458,13 +1611,27 @@
         alert("Your shopping bag is empty!");
         return;
       }
+
+      // Automatically deduct inventory on checkout simulation
+      cart.forEach(cartItem => {
+        const p = products.find(prod => prod.id === cartItem.id);
+        if (p) {
+          p.stock = Math.max(0, p.stock - cartItem.quantity);
+        }
+      });
+
+      renderProducts();
       alert("Redirecting securely to Stripe card payment...");
+      cart = [];
+      updateCartUI();
+      toggleCart();
     }
 
     document.getElementById('admin-upload-form').addEventListener('submit', async (e) => {
       e.preventDefault();
       const title = document.getElementById('admin-title').value;
       const price = parseFloat(document.getElementById('admin-price').value);
+      const stock = parseInt(document.getElementById('admin-stock').value);
       const category = document.getElementById('admin-category').value;
       const desc = document.getElementById('admin-desc').value;
       const fileInput = document.getElementById('admin-file');
@@ -1476,7 +1643,7 @@
 
       const newProduct = {
         id: Date.now().toString(),
-        title, price, category, description: desc,
+        title, price, stock, category, description: desc,
         image: localImageUrl, isNew, isSlide
       };
 
@@ -1491,7 +1658,7 @@
       products.unshift(newProduct);
       renderSlideshow();
       renderProducts();
-      alert("Product published and synced successfully!");
+      alert("Masterpiece published and inventory synced successfully!");
       document.getElementById('admin-upload-form').reset();
       document.getElementById('admin-section').classList.remove('active');
     });
