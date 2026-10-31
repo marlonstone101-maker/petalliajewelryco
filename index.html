@@ -92,32 +92,32 @@
     </div>
 
     <!-- Navigation Header -->
-    <header class="sticky top-0 z-40 bg-cream-50/95 backdrop-blur-md border-b border-cream-200 transition-all duration-300">
+    <header class="sticky top-0 z-40 bg-cream-50/95 backdrop-blur-md border-b border-cream-200 transition-all duration-300 py-2">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-3 items-center h-20">
+            <div class="grid grid-cols-3 items-center">
                 
                 <!-- Left: Hamburger & Navigation -->
                 <div class="flex items-center space-x-4 justify-start">
                     <button onclick="toggleMobileMenu()" class="text-lv-dark hover:text-lv-gold text-2xl focus:outline-none p-2" aria-label="Open Menu">
                         <i class="fa-solid fa-bars"></i>
                     </button>
-                    <nav class="hidden lg:flex space-x-6 text-xs font-medium tracking-widest uppercase">
+                    <nav class="hidden lg:flex space-x-4 xl:space-x-6 text-[11px] xl:text-xs font-medium tracking-wider uppercase">
                         <a href="#hero" class="hover:text-lv-gold transition-colors py-2 border-b-2 border-transparent hover:border-lv-gold">Home</a>
                         <a href="#categories" class="hover:text-lv-gold transition-colors py-2 border-b-2 border-transparent hover:border-lv-gold">Categories</a>
                         <a href="featured-pieces.html" class="hover:text-lv-gold transition-colors py-2 border-b-2 border-transparent hover:border-lv-gold">Collection</a>
-                        <a href="#arrivals" class="hover:text-lv-gold transition-colors py-2 border-b-2 border-transparent hover:border-lv-gold">New Arrivals</a>
+                        <a href="#arrivals" class="hover:text-lv-gold transition-colors py-2 border-b-2 border-transparent hover:border-lv-gold whitespace-nowrap">New Arrivals</a>
                     </nav>
                 </div>
 
-                <!-- Center: Centered Logo -->
+                <!-- Center: Centered Logo Above Text -->
                 <div class="flex justify-center items-center">
-                    <a href="#" class="flex items-center space-x-3 group">
-                        <div class="w-11 h-11 md:w-12 md:h-12 rounded-full border-2 border-lv-gold p-0.5 overflow-hidden flex items-center justify-center bg-white shadow-sm group-hover:scale-105 transition-transform">
-                            <img src="logo.png" onerror="this.onerror=null; this.src='logo.png'; this.parentElement.innerHTML='<div class=\'text-lv-gold font-serif font-bold text-lg\'>PJ</div>';" alt="Petallia Jewelry Logo" class="w-full h-full object-cover rounded-full">
+                    <a href="#" class="flex flex-col items-center group py-1">
+                        <div class="w-10 h-10 md:w-11 md:h-11 rounded-full border-2 border-lv-gold p-0.5 overflow-hidden flex items-center justify-center bg-white shadow-sm group-hover:scale-105 transition-transform mb-1">
+                            <img src="logo.png" onerror="this.onerror=null; this.src='logo.png'; this.parentElement.innerHTML='<div class=\'text-lv-gold font-serif font-bold text-sm\'>PJ</div>';" alt="Petallia Jewelry Logo" class="w-full h-full object-cover rounded-full">
                         </div>
-                        <div class="text-center">
-                            <span class="block text-base md:text-xl font-bold tracking-widest text-lv-dark font-serif uppercase">Petallia</span>
-                            <span class="block text-[8px] md:text-[9px] tracking-[0.3em] text-lv-gold font-light uppercase -mt-1">Jewelry Co.</span>
+                        <div class="text-center leading-tight">
+                            <span class="block text-xs md:text-sm font-bold tracking-widest text-lv-dark font-serif uppercase">Petallia</span>
+                            <span class="block text-[7px] md:text-[8px] tracking-[0.25em] text-lv-gold font-light uppercase">Jewelry Co.</span>
                         </div>
                     </a>
                 </div>
@@ -160,10 +160,13 @@
     <!-- Main Content -->
     <main class="flex-grow">
         
-        <!-- HERO SECTION -->
+        <!-- HERO SECTION (Video Background) -->
         <section id="hero" class="relative bg-lv-dark text-cream-50 overflow-hidden h-[80vh] min-h-[500px] flex items-center justify-center">
-            <div id="heroSlidesContainer" class="absolute inset-0 w-full h-full">
-                <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-100 scale-105 transform" style="background-image: url('https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=1600&auto=format&fit=crop');"></div>
+            <div class="absolute inset-0 w-full h-full overflow-hidden">
+                <video autoplay muted loop playsinline class="w-full h-full object-cover scale-105">
+                    <source src="video1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
             </div>
             <div class="absolute inset-0 bg-gradient-to-t from-lv-dark via-lv-dark/60 to-transparent"></div>
             <div class="absolute inset-0 bg-black/30"></div>
@@ -183,13 +186,9 @@
                     </button>
                 </div>
             </div>
-
-            <button onclick="prevHeroSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 text-cream-100/70 hover:text-lv-gold p-2 text-2xl transition-colors"><i class="fa-solid fa-chevron-left"></i></button>
-            <button onclick="nextHeroSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 z-20 text-cream-100/70 hover:text-lv-gold p-2 text-2xl transition-colors"><i class="fa-solid fa-chevron-right"></i></button>
-            <div id="heroDots" class="absolute bottom-6 z-20 flex space-x-2"></div>
         </section>
 
-        <!-- SHOP BY CATEGORY SECTION (Links to featured-pieces.html) -->
+        <!-- SHOP BY CATEGORY SECTION -->
         <section id="categories" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <span class="text-xs uppercase tracking-[0.3em] text-lv-gold font-semibold">Explore Collections</span>
@@ -202,7 +201,7 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <!-- Watch Category -->
                 <div onclick="window.location.href='featured-pieces.html?cat=Watch'" class="group relative bg-white border border-cream-200 rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer aspect-[4/5]">
-                    <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=600&auto=format&fit=crop" alt="Watches" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <img src="image1.jpg" alt="Watches" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                     <div class="absolute inset-0 bg-gradient-to-t from-lv-dark/90 via-lv-dark/20 to-transparent flex flex-col justify-end p-5 text-center">
                         <span class="text-[10px] text-lv-gold uppercase tracking-widest mb-1">Timepieces</span>
                         <h3 class="text-sm font-serif text-cream-50 font-bold uppercase tracking-wider">Watches</h3>
@@ -211,7 +210,7 @@
 
                 <!-- Chain Category -->
                 <div onclick="window.location.href='featured-pieces.html?cat=Chain'" class="group relative bg-white border border-cream-200 rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer aspect-[4/5]">
-                    <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=600&auto=format&fit=crop" alt="Chains" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <img src="image2.jpg" alt="Chains" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                     <div class="absolute inset-0 bg-gradient-to-t from-lv-dark/90 via-lv-dark/20 to-transparent flex flex-col justify-end p-5 text-center">
                         <span class="text-[10px] text-lv-gold uppercase tracking-widest mb-1">Necklaces</span>
                         <h3 class="text-sm font-serif text-cream-50 font-bold uppercase tracking-wider">Chains</h3>
@@ -220,7 +219,7 @@
 
                 <!-- Ring Category -->
                 <div onclick="window.location.href='featured-pieces.html?cat=Ring'" class="group relative bg-white border border-cream-200 rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer aspect-[4/5]">
-                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=600&auto=format&fit=crop" alt="Rings" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <img src="image3.jpg" alt="Rings" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                     <div class="absolute inset-0 bg-gradient-to-t from-lv-dark/90 via-lv-dark/20 to-transparent flex flex-col justify-end p-5 text-center">
                         <span class="text-[10px] text-lv-gold uppercase tracking-widest mb-1">Stunning Bands</span>
                         <h3 class="text-sm font-serif text-cream-50 font-bold uppercase tracking-wider">Rings</h3>
@@ -229,7 +228,7 @@
 
                 <!-- Bracelet Category -->
                 <div onclick="window.location.href='featured-pieces.html?cat=Bracelet'" class="group relative bg-white border border-cream-200 rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer aspect-[4/5]">
-                    <img src="https://images.unsplash.com/photo-1611591475155-42e523a67341?q=80&w=600&auto=format&fit=crop" alt="Bracelets" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <img src="image4.jpg" alt="Bracelets" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                     <div class="absolute inset-0 bg-gradient-to-t from-lv-dark/90 via-lv-dark/20 to-transparent flex flex-col justify-end p-5 text-center">
                         <span class="text-[10px] text-lv-gold uppercase tracking-widest mb-1">Stacked Bangles</span>
                         <h3 class="text-sm font-serif text-cream-50 font-bold uppercase tracking-wider">Bracelets</h3>
@@ -238,7 +237,7 @@
             </div>
         </section>
 
-        <!-- NEW ARRIVALS MARQUEE SLIDER SECTION (Clickable to Quick View) -->
+        <!-- NEW ARRIVALS MARQUEE SLIDER SECTION -->
         <section id="arrivals" class="py-20 overflow-hidden bg-cream-100 border-y border-cream-200">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center">
                 <span class="text-xs uppercase tracking-[0.3em] text-lv-gold font-semibold">Just Dropped</span>
@@ -247,10 +246,33 @@
                 <p class="text-xs text-gray-600 mt-2">Click any item below for a closer view and secure checkout.</p>
             </div>
 
-            <!-- Running Ticker Slider Rendered Dynamically -->
+            <!-- Running Ticker Slider -->
             <div class="flex overflow-hidden relative w-full py-4 bg-white border-y border-cream-200">
-                <div id="arrivalsGrid" class="animate-marquee flex space-x-8">
-                    <!-- Dynamically populated arrival items -->
+                <div id="arrivalsGrid" class="animate-marquee flex space-x-8"></div>
+            </div>
+        </section>
+
+        <!-- TWO PROMOTIONAL BANNERS SECTION -->
+        <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Promo Banner 1 -->
+                <div class="relative bg-lv-dark rounded-sm overflow-hidden shadow-md aspect-[16/9] md:aspect-[16/10] group">
+                    <img src="image5.jpg" alt="Luxury Collection Promo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-lv-dark/90 via-lv-dark/30 to-transparent flex flex-col justify-end p-6 md:p-8">
+                        <span class="text-[10px] uppercase tracking-[0.3em] text-lv-gold font-bold mb-1">Signature Line</span>
+                        <h3 class="text-xl md:text-2xl font-serif text-cream-50 font-bold mb-3">Non-Tarnish Gold Essentials</h3>
+                        <a href="featured-pieces.html" class="inline-block bg-lv-gold hover:bg-yellow-600 text-lv-dark text-xs font-bold uppercase tracking-widest px-5 py-2.5 rounded w-max transition-all shadow">Shop Collection</a>
+                    </div>
+                </div>
+
+                <!-- Promo Banner 2 -->
+                <div class="relative bg-lv-dark rounded-sm overflow-hidden shadow-md aspect-[16/9] md:aspect-[16/10] group">
+                    <img src="image6.jpg" alt="Islandwide Delivery Promo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-lv-dark/90 via-lv-dark/30 to-transparent flex flex-col justify-end p-6 md:p-8">
+                        <span class="text-[10px] uppercase tracking-[0.3em] text-lv-gold font-bold mb-1">Fast Shipping</span>
+                        <h3 class="text-xl md:text-2xl font-serif text-cream-50 font-bold mb-3">Islandwide Delivery in Jamaica</h3>
+                        <a href="#about" class="inline-block bg-cream-50 hover:bg-cream-100 text-lv-dark text-xs font-bold uppercase tracking-widest px-5 py-2.5 rounded w-max transition-all shadow">Learn More</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -318,7 +340,7 @@
                     <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-lv-gold mb-4 font-serif">Direct Contact</h4>
                     <ul class="space-y-2.5 text-xs text-cream-200">
                         <li class="flex items-center space-x-2"><i class="fa-solid fa-phone text-lv-gold w-4"></i><a href="tel:8768954721" class="hover:text-lv-gold">(876) 895-4721</a></li>
-                        <li class="flex items-center space-x-2"><i class="fa-brands fa-instagram text-lv-gold w-4"></i><a href="http://127.0.0.1:5500/url?id=2" target="_blank" class="hover:text-lv-gold">@jewelrybypetallia</a></li>
+                        <li class="flex items-center space-x-2"><i class="fa-brands fa-instagram text-lv-gold w-4"></i><a href="https://instagram.com/jewelrybypetallia" target="_blank" class="hover:text-lv-gold">@jewelrybypetallia</a></li>
                     </ul>
                 </div>
             </div>
@@ -338,7 +360,7 @@
         <div class="bg-cream-50 border border-lv-gold w-full max-w-lg rounded-sm shadow-2xl overflow-hidden flex flex-col relative animate-fade-in">
             <button onclick="closeQuickView()" class="absolute top-3 right-3 text-gray-500 hover:text-lv-dark text-xl z-10 bg-white/80 w-8 h-8 rounded-full flex items-center justify-center shadow"><i class="fa-solid fa-xmark"></i></button>
             <div class="relative aspect-[4/3] bg-cream-100">
-                <img id="qvImage" src="" alt="Product Image" class="w-full h-full object-cover">
+                <img id="qvImage" src="#" alt="Product Image" class="w-full h-full object-cover">
                 <span id="qvCategory" class="absolute top-3 left-3 bg-lv-brown/90 text-cream-100 text-[10px] uppercase tracking-widest px-2.5 py-1 rounded border border-lv-gold/30"></span>
             </div>
             <div class="p-6 space-y-4">
@@ -360,7 +382,6 @@
     <!-- SHOPPING BAG & CARD CHECKOUT DRAWER -->
     <div id="bagDrawer" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex justify-end">
         <div class="bg-cream-50 w-full max-w-md h-full flex flex-col shadow-2xl transform transition-transform">
-            <!-- Drawer Header -->
             <div class="bg-lv-brown text-cream-100 p-4 border-b border-lv-gold flex justify-between items-center">
                 <div class="flex items-center space-x-2">
                     <i class="fa-solid fa-bag-shopping text-lv-gold"></i>
@@ -368,13 +389,9 @@
                 </div>
                 <button onclick="closeBagDrawer()" class="text-cream-300 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
             </div>
-
-            <!-- Drawer Body -->
             <div id="bagItemsContainer" class="p-6 overflow-y-auto flex-1 space-y-4">
                 <p class="text-center text-gray-400 py-12 text-xs">Your bag is currently empty.</p>
             </div>
-
-            <!-- Drawer Footer & Checkout Summary -->
             <div class="bg-white p-6 border-t border-cream-200 space-y-4 shadow-lg">
                 <div class="flex justify-between text-xs font-medium text-gray-600">
                     <span>Subtotal:</span>
@@ -388,8 +405,6 @@
                     <span>Total Amount:</span>
                     <span id="bagTotal" class="font-serif text-base">$600 JMD</span>
                 </div>
-
-                <!-- Pay with Card Button -->
                 <button onclick="proceedToCardCheckout()" class="w-full bg-lv-gold hover:bg-yellow-600 text-lv-dark text-xs font-bold uppercase tracking-widest py-3.5 rounded shadow transition-all flex items-center justify-center space-x-2">
                     <i class="fa-solid fa-credit-card"></i>
                     <span>Pay with Card</span>
@@ -408,9 +423,7 @@
                 </div>
                 <button onclick="closeAdminModal()" class="text-cream-300 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
             </div>
-
             <div class="p-6 overflow-y-auto flex-1 space-y-6">
-                <!-- Add New Product (Updates New Arrivals & Collection) -->
                 <div class="bg-white p-4 rounded border border-cream-200 shadow-sm">
                     <h4 class="text-xs font-bold uppercase tracking-wider text-lv-brown mb-4 flex items-center">
                         <i class="fa-solid fa-plus-circle text-lv-gold mr-2"></i> Add New Product (New Arrivals & Collection)
@@ -446,21 +459,6 @@
                         <button type="submit" class="w-full bg-lv-gold hover:bg-yellow-600 text-lv-dark text-xs font-semibold uppercase tracking-wider py-2.5 rounded transition-all">Save Product</button>
                     </form>
                 </div>
-
-                <!-- Add Hero Banner Slide -->
-                <div class="bg-white p-4 rounded border border-cream-200 shadow-sm">
-                    <h4 class="text-xs font-bold uppercase tracking-wider text-lv-brown mb-4 flex items-center">
-                        <i class="fa-solid fa-image text-lv-gold mr-2"></i> Add Hero Section Banner Image
-                    </h4>
-                    <form id="addHeroForm" onsubmit="handleAddHero(event)" class="space-y-4">
-                        <div>
-                            <label class="block text-xs font-medium text-gray-700 mb-1">Upload Hero Banner Image</label>
-                            <input type="file" id="heroImgFile" accept="image/*" required class="w-full text-xs p-2 border border-cream-300 rounded focus:border-lv-gold focus:outline-none bg-cream-50 file:mr-4 file:py-1.5 file:px-3 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-lv-brown file:text-cream-100 hover:file:bg-lv-gold hover:file:text-lv-dark cursor-pointer">
-                        </div>
-                        <button type="submit" class="w-full bg-lv-brown hover:bg-lv-gold text-cream-100 hover:text-lv-dark text-xs font-semibold uppercase tracking-wider py-2.5 rounded transition-all">Add to Hero Slides</button>
-                    </form>
-                </div>
-
                 <div>
                     <h4 class="text-xs font-bold uppercase tracking-wider text-lv-brown mb-3">Manage Existing Products</h4>
                     <div id="adminProductList" class="space-y-2 max-h-60 overflow-y-auto pr-1"></div>
@@ -489,12 +487,6 @@
 
         let currentProducts = JSON.parse(localStorage.getItem('petallia_products')) || initialProducts;
         let shoppingBag = JSON.parse(localStorage.getItem('petallia_bag')) || [];
-        let heroSlides = JSON.parse(localStorage.getItem('petallia_hero_slides')) || [
-            'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=1600&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1600&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1611591475155-42e523a67341?q=80&w=1600&auto=format&fit=crop'
-        ];
-        let currentSlide = 0;
 
         function readFileAsDataURL(fileInput) {
             return new Promise((resolve, reject) => {
@@ -655,23 +647,6 @@
             }
         };
 
-        window.handleAddHero = async function(e) {
-            e.preventDefault();
-            const fileInput = document.getElementById('heroImgFile');
-
-            try {
-                const imageBase64 = await readFileAsDataURL(fileInput);
-                heroSlides.unshift(imageBase64);
-                localStorage.setItem('petallia_hero_slides', JSON.stringify(heroSlides));
-                setupHero();
-                document.getElementById('addHeroForm').reset();
-                closeAdminModal();
-                showToast('New Hero banner slide added successfully!');
-            } catch (err) {
-                alert('Please select an image file for the hero banner.');
-            }
-        };
-
         window.deleteProduct = function(id) {
             if (!confirm('Are you sure you want to delete this product?')) return;
             currentProducts = currentProducts.filter(p => p.id !== id);
@@ -723,48 +698,8 @@
             setTimeout(() => toast.classList.add('translate-y-20', 'opacity-0'), 3000);
         }
 
-        function setupHero() {
-            const container = document.getElementById('heroSlidesContainer');
-            const dots = document.getElementById('heroDots');
-            if (!container) return;
-
-            container.innerHTML = heroSlides.map((img, i) => `
-                <div class="hero-slide absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 ${i === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'}" style="background-image: url('${img}');"></div>
-            `).join('');
-
-            if (dots) {
-                dots.innerHTML = heroSlides.map((_, i) => `
-                    <button onclick="goToSlide(${i})" class="w-2.5 h-2.5 rounded-full transition-all ${i === 0 ? 'bg-lv-gold w-6' : 'bg-cream-100/50'}"></button>
-                `).join('');
-            }
-        }
-
-        window.nextHeroSlide = function() {
-            currentSlide = (currentSlide + 1) % heroSlides.length;
-            goToSlide(currentSlide);
-        };
-        window.prevHeroSlide = function() {
-            currentSlide = (currentSlide - 1 + heroSlides.length) % heroSlides.length;
-            goToSlide(currentSlide);
-        };
-        window.goToSlide = function(i) {
-            currentSlide = i;
-            const slideEls = document.querySelectorAll('.hero-slide');
-            slideEls.forEach((el, idx) => {
-                if (idx === i) {
-                    el.classList.remove('opacity-0', 'z-0');
-                    el.classList.add('opacity-100', 'z-10');
-                } else {
-                    el.classList.remove('opacity-100', 'z-10');
-                    el.classList.add('opacity-0', 'z-0');
-                }
-            });
-        };
-
-        setInterval(nextHeroSlide, 6000);
         renderNewArrivals();
         updateBagBadge();
-        setupHero();
     </script>
 </body>
 </html>
