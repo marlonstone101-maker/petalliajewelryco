@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petallia Jewelry | Luxury Collection</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: {
+                            50: '#FAF8F5',
+                            100: '#F5F0E6',
+                            200: '#EAE2D6',
+                            300: '#D8CBB7',
+                        },
+                        lv: {
+                            gold: '#C5A059',
+                            roseGold: '#B8826B',
+                            dark: '#1A1816',
+                            brown: '#2C221E',
+                            accent: '#D4AF37'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'Georgia', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                        cinzel: ['Cinzel', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            background-color: #FAF8F5;
+            color: #1A1816;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, .font-serif-luxury {
+            font-family: 'Cinzel', serif;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF8F5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C5A059;
+            border-radius: 3px;
+        }
+        /* Running Ticker Animation */
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: 200%;
+            animation: marquee 25s linear infinite;
+        }
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body class="bg-cream-50 text-lv-dark min-h-screen flex flex-col selection:bg-lv-gold selection:text-white">
+
+    <!-- Running Top Announcement Bar -->
+    <div class="bg-lv-brown text-cream-100 text-xs py-2.5 overflow-hidden whitespace-nowrap border-b border-lv-gold/30">
+        <div class="animate-marquee flex space-x-12 tracking-widest uppercase font-medium">
+            <span><i class="fa-solid fa-box-archive text-lv-gold mr-1"></i> Island-Wide Delivery Available</span>
+            <span><i class="fa-solid fa-gem text-lv-gold mr-1"></i> Premium Stainless Steel Jewelry</span>
+            <span><i class="fa-solid fa-phone text-lv-gold mr-1"></i> (876) 895-4721</span>
+            <span><i class="fa-solid fa-box-archive text-lv-gold mr-1"></i> Island-Wide Delivery Available</span>
+            <span><i class="fa-solid fa-gem text-lv-gold mr-1"></i> Premium Stainless Steel Jewelry</span>
+            <span><i class="fa-solid fa-phone text-lv-gold mr-1"></i> (876) 895-4721</span>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 bg-cream-50/95 backdrop-blur-md border-b border-cream-200 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-3 items-center h-20">
+                
+                <!-- Left: Hamburger & Navigation -->
+                <div class="flex items-center space-x-4 justify-start">
+                    <button onclick="toggleMobileMenu()" class="text-lv-dark hover:text-lv-gold text-2xl focus:outline-none p-2" aria-label="Open Menu">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <nav class="hidden lg:flex space-x-6 text-xs font-medium tracking-widest uppercase">
+                        <a href="#hero" class="hover:text-lv-gold transition-colors py-2 border-b-2 border-transparent hover:border-lv-gold">Home</a>
+                        <a href="#categories" class="hover:text-lv-gold transition-colors py-2 border-b-2 border-transparent hover:border-lv-gold">Categories</a>
+                        <a href="featured-pieces.html" class="hover:text-lv-gold transition-colors py-2 border-b-2 border-transparent hover:border-lv-gold">Collection</a>
+                        <a href="#arrivals" class="hover:text-lv-gold transition-colors py-2 border-b-2 border-transparent hover:border-lv-gold">New Arrivals</a>
+                    </nav>
+                </div>
+
+                <!-- Center: Centered Logo -->
+                <div class="flex justify-center items-center">
+                    <a href="#" class="flex items-center space-x-3 group">
+                        <div class="w-11 h-11 md:w-12 md:h-12 rounded-full border-2 border-lv-gold p-0.5 overflow-hidden flex items-center justify-center bg-white shadow-sm group-hover:scale-105 transition-transform">
+                            <img src="logo.png" onerror="this.onerror=null; this.src='logo.png'; this.parentElement.innerHTML='<div class=\'text-lv-gold font-serif font-bold text-lg\'>PJ</div>';" alt="Petallia Jewelry Logo" class="w-full h-full object-cover rounded-full">
+                        </div>
+                        <div class="text-center">
+                            <span class="block text-base md:text-xl font-bold tracking-widest text-lv-dark font-serif uppercase">Petallia</span>
+                            <span class="block text-[8px] md:text-[9px] tracking-[0.3em] text-lv-gold font-light uppercase -mt-1">Jewelry Co.</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Right: Bag Trigger -->
+                <div class="flex items-center justify-end space-x-4">
+                    <button onclick="openBagDrawer()" class="relative bg-lv-brown text-cream-100 hover:bg-lv-gold hover:text-lv-dark p-2.5 rounded-sm transition-all flex items-center shadow-sm">
+                        <i class="fa-solid fa-bag-shopping text-sm"></i>
+                        <span id="bagBadge" class="absolute -top-1.5 -right-1.5 bg-lv-gold text-lv-dark text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobileMenu" class="hidden absolute top-full left-0 w-full bg-cream-50 border-b border-cream-200 shadow-xl px-6 py-6 space-y-6 text-xs tracking-widest uppercase transition-all">
+            <div class="flex justify-between items-center border-b border-cream-200 pb-3">
+                <span class="font-bold text-lv-brown font-serif text-sm">Menu & Categories</span>
+                <button onclick="toggleMobileMenu()" class="text-gray-500 hover:text-lv-gold text-lg"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            
+            <div class="space-y-2">
+                <a href="#hero" onclick="toggleMobileMenu()" class="block py-2 text-lv-dark hover:text-lv-gold font-medium">Home</a>
+                <a href="#categories" onclick="toggleMobileMenu()" class="block py-2 text-lv-dark hover:text-lv-gold font-medium">Shop By Category</a>
+                <a href="featured-pieces.html" onclick="toggleMobileMenu()" class="block py-2 text-lv-dark hover:text-lv-gold font-medium">Featured Collection</a>
+                <a href="#arrivals" onclick="toggleMobileMenu()" class="block py-2 text-lv-dark hover:text-lv-gold font-medium">New Arrivals</a>
+                <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-lv-dark hover:text-lv-gold font-medium">Delivery & Shipping Info</a>
+            </div>
+
+            <!-- Admin Section Inside Hamburger Menu -->
+            <div class="border-t border-cream-200 pt-4">
+                <button onclick="toggleMobileMenu(); openAdminModal();" class="w-full bg-lv-brown text-cream-100 hover:bg-lv-gold hover:text-lv-dark font-semibold py-3 px-4 rounded transition-all flex items-center justify-center space-x-2 shadow">
+                    <i class="fa-solid fa-lock text-xs"></i>
+                    <span>Open Client Admin Panel</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+        
+        <!-- HERO SECTION -->
+        <section id="hero" class="relative bg-lv-dark text-cream-50 overflow-hidden h-[80vh] min-h-[500px] flex items-center justify-center">
+            <div id="heroSlidesContainer" class="absolute inset-0 w-full h-full">
+                <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-100 scale-105 transform" style="background-image: url('https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=1600&auto=format&fit=crop');"></div>
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-lv-dark via-lv-dark/60 to-transparent"></div>
+            <div class="absolute inset-0 bg-black/30"></div>
+
+            <div class="relative z-10 text-center max-w-3xl px-6 py-12 border border-lv-gold/30 bg-lv-dark/40 backdrop-blur-sm rounded-sm mx-4">
+                <span class="text-xs md:text-sm tracking-[0.4em] uppercase text-lv-gold font-semibold mb-3 block">Exclusive Stainless Steel</span>
+                <h1 class="text-3xl md:text-5xl lg:text-6xl font-serif tracking-wider mb-4 text-cream-100 leading-tight">My Collection</h1>
+                <p class="text-sm md:text-base text-cream-200 font-light tracking-wide max-w-lg mx-auto mb-8 leading-relaxed">
+                    "Money comes back, but jewelry goes out of stock." Discover luxury pieces designed for everyday wear.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="featured-pieces.html" class="bg-lv-gold hover:bg-yellow-600 text-lv-dark font-medium tracking-widest text-xs uppercase px-8 py-3.5 transition-all duration-300 shadow-lg">
+                        Explore Collection
+                    </a>
+                    <button onclick="openBagDrawer()" class="border border-cream-200 text-cream-100 hover:bg-cream-100 hover:text-lv-dark font-medium tracking-widest text-xs uppercase px-8 py-3.5 transition-all duration-300">
+                        View Shopping Bag
+                    </button>
+                </div>
+            </div>
+
+            <button onclick="prevHeroSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 text-cream-100/70 hover:text-lv-gold p-2 text-2xl transition-colors"><i class="fa-solid fa-chevron-left"></i></button>
+            <button onclick="nextHeroSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 z-20 text-cream-100/70 hover:text-lv-gold p-2 text-2xl transition-colors"><i class="fa-solid fa-chevron-right"></i></button>
+            <div id="heroDots" class="absolute bottom-6 z-20 flex space-x-2"></div>
+        </section>
+
+        <!-- SHOP BY CATEGORY SECTION (Links to featured-pieces.html) -->
+        <section id="categories" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-xs uppercase tracking-[0.3em] text-lv-gold font-semibold">Explore Collections</span>
+                <h2 class="text-3xl md:text-4xl font-serif text-lv-dark mt-2 mb-4">Shop By Category</h2>
+                <div class="w-16 h-0.5 bg-lv-gold mx-auto"></div>
+                <p class="text-xs text-gray-600 mt-3">Select a category below to browse exclusive pieces.</p>
+            </div>
+
+            <!-- Visual Category Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Watch Category -->
+                <div onclick="window.location.href='featured-pieces.html?cat=Watch'" class="group relative bg-white border border-cream-200 rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer aspect-[4/5]">
+                    <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=600&auto=format&fit=crop" alt="Watches" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-lv-dark/90 via-lv-dark/20 to-transparent flex flex-col justify-end p-5 text-center">
+                        <span class="text-[10px] text-lv-gold uppercase tracking-widest mb-1">Timepieces</span>
+                        <h3 class="text-sm font-serif text-cream-50 font-bold uppercase tracking-wider">Watches</h3>
+                    </div>
+                </div>
+
+                <!-- Chain Category -->
+                <div onclick="window.location.href='featured-pieces.html?cat=Chain'" class="group relative bg-white border border-cream-200 rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer aspect-[4/5]">
+                    <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=600&auto=format&fit=crop" alt="Chains" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-lv-dark/90 via-lv-dark/20 to-transparent flex flex-col justify-end p-5 text-center">
+                        <span class="text-[10px] text-lv-gold uppercase tracking-widest mb-1">Necklaces</span>
+                        <h3 class="text-sm font-serif text-cream-50 font-bold uppercase tracking-wider">Chains</h3>
+                    </div>
+                </div>
+
+                <!-- Ring Category -->
+                <div onclick="window.location.href='featured-pieces.html?cat=Ring'" class="group relative bg-white border border-cream-200 rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer aspect-[4/5]">
+                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=600&auto=format&fit=crop" alt="Rings" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-lv-dark/90 via-lv-dark/20 to-transparent flex flex-col justify-end p-5 text-center">
+                        <span class="text-[10px] text-lv-gold uppercase tracking-widest mb-1">Stunning Bands</span>
+                        <h3 class="text-sm font-serif text-cream-50 font-bold uppercase tracking-wider">Rings</h3>
+                    </div>
+                </div>
+
+                <!-- Bracelet Category -->
+                <div onclick="window.location.href='featured-pieces.html?cat=Bracelet'" class="group relative bg-white border border-cream-200 rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer aspect-[4/5]">
+                    <img src="https://images.unsplash.com/photo-1611591475155-42e523a67341?q=80&w=600&auto=format&fit=crop" alt="Bracelets" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-lv-dark/90 via-lv-dark/20 to-transparent flex flex-col justify-end p-5 text-center">
+                        <span class="text-[10px] text-lv-gold uppercase tracking-widest mb-1">Stacked Bangles</span>
+                        <h3 class="text-sm font-serif text-cream-50 font-bold uppercase tracking-wider">Bracelets</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW ARRIVALS MARQUEE SLIDER SECTION (Clickable to Quick View) -->
+        <section id="arrivals" class="py-20 overflow-hidden bg-cream-100 border-y border-cream-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center">
+                <span class="text-xs uppercase tracking-[0.3em] text-lv-gold font-semibold">Just Dropped</span>
+                <h2 class="text-3xl md:text-4xl font-serif text-lv-dark mt-1">New Arrivals</h2>
+                <div class="w-16 h-0.5 bg-lv-gold mx-auto mt-3"></div>
+                <p class="text-xs text-gray-600 mt-2">Click any item below for a closer view and secure checkout.</p>
+            </div>
+
+            <!-- Running Ticker Slider Rendered Dynamically -->
+            <div class="flex overflow-hidden relative w-full py-4 bg-white border-y border-cream-200">
+                <div id="arrivalsGrid" class="animate-marquee flex space-x-8">
+                    <!-- Dynamically populated arrival items -->
+                </div>
+            </div>
+        </section>
+
+        <!-- DELIVERY & SHIPPING POLICIES -->
+        <section id="about" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="border border-lv-gold/40 bg-white p-8 rounded-sm shadow-sm relative overflow-hidden">
+                    <span class="text-[10px] tracking-widest text-lv-gold font-bold uppercase block mb-1">Notice</span>
+                    <h3 class="text-2xl font-serif text-lv-dark mb-4 border-b border-cream-200 pb-3">Important Delivery Notice</h3>
+                    <p class="text-xs text-gray-600 mb-6 leading-relaxed">
+                        Make sure to place your order on the <strong>exact day</strong> you want delivery. When checking out, please ensure your details are complete:
+                    </p>
+                    <ul class="space-y-3 text-xs text-gray-700 mb-6">
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-location-dot text-lv-gold w-4"></i><span>Exact Delivery Address</span></li>
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-user text-lv-gold w-4"></i><span>Full Customer Name</span></li>
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-phone text-lv-gold w-4"></i><span>Active Phone Number</span></li>
+                    </ul>
+                    <div class="bg-cream-100 p-3 rounded-sm border border-cream-200 text-center">
+                        <span class="text-xs font-semibold text-lv-brown">Delivery Schedule: 12:00 PM – 4:00 PM Islandwide</span>
+                    </div>
+                </div>
+
+                <div class="border border-lv-gold/40 bg-white p-8 rounded-sm shadow-sm relative overflow-hidden">
+                    <span class="text-[10px] tracking-widest text-lv-gold font-bold uppercase block mb-1">Islandwide</span>
+                    <h3 class="text-2xl font-serif text-lv-dark mb-4 border-b border-cream-200 pb-3">Card Checkout & Shipping</h3>
+                    <p class="text-xs text-gray-600 mb-4">Shop safely online and checkout securely using your credit or debit card.</p>
+                    <div class="border-t border-cream-200 pt-4">
+                        <h4 class="text-xs font-bold text-lv-dark uppercase tracking-wider mb-2">Shipping Options & Fees</h4>
+                        <div class="grid grid-cols-2 gap-2 text-[11px] text-gray-700">
+                            <div class="flex justify-between bg-cream-100 p-2 rounded"><span>Knutsford Express:</span><span class="font-bold text-lv-brown">$700 JMD</span></div>
+                            <div class="flex justify-between bg-cream-100 p-2 rounded"><span>Zipmail Shipping:</span><span class="font-bold text-lv-brown">$500 JMD</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-lv-brown text-cream-100 pt-16 pb-8 border-t-2 border-lv-gold">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-12 border-b border-cream-200/20">
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full border border-lv-gold p-0.5 bg-white flex items-center justify-center">
+                            <img src="logo.png" onerror="this.onerror=null; this.src='logo.png'; this.parentElement.innerHTML='<div class=\'text-lv-gold font-serif font-bold\'>PJ</div>';" alt="Logo" class="w-full h-full object-cover rounded-full">
+                        </div>
+                        <div>
+                            <span class="block text-lg font-serif tracking-widest text-cream-50">PETALLIA</span>
+                            <span class="block text-[8px] tracking-[0.3em] text-lv-gold uppercase">Jewelry Co.</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-cream-300 leading-relaxed font-light">Luxury stainless steel jewelry delivering timeless elegance and modern sophistication across Jamaica.</p>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-lv-gold mb-4 font-serif">Store Information</h4>
+                    <ul class="space-y-2.5 text-xs text-cream-200">
+                        <li class="flex items-center space-x-2"><i class="fa-solid fa-truck text-lv-gold w-4"></i><span>Islandwide Delivery Available</span></li>
+                        <li class="flex items-center space-x-2"><i class="fa-solid fa-gem text-lv-gold w-4"></i><span>Non-Tarnish Stainless Steel</span></li>
+                        <li class="flex items-center space-x-2"><i class="fa-solid fa-clock text-lv-gold w-4"></i><span>Mon–Sat 10:00am – 7:00pm</span></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-lv-gold mb-4 font-serif">Direct Contact</h4>
+                    <ul class="space-y-2.5 text-xs text-cream-200">
+                        <li class="flex items-center space-x-2"><i class="fa-solid fa-phone text-lv-gold w-4"></i><a href="tel:8768954721" class="hover:text-lv-gold">(876) 895-4721</a></li>
+                        <li class="flex items-center space-x-2"><i class="fa-brands fa-instagram text-lv-gold w-4"></i><a href="http://127.0.0.1:5500/url?id=2" target="_blank" class="hover:text-lv-gold">@jewelrybypetallia</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 text-center text-[11px] text-cream-300 flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0">
+                <p>&copy; 2026 Petallia Jewelry Co. All Rights Reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#about" class="hover:text-lv-gold">Shipping Policy</a>
+                    <span>•</span>
+                    <a href="featured-pieces.html" class="hover:text-lv-gold">Collection</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- QUICK VIEW MODAL FOR NEW ARRIVALS -->
+    <div id="quickViewModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-cream-50 border border-lv-gold w-full max-w-lg rounded-sm shadow-2xl overflow-hidden flex flex-col relative animate-fade-in">
+            <button onclick="closeQuickView()" class="absolute top-3 right-3 text-gray-500 hover:text-lv-dark text-xl z-10 bg-white/80 w-8 h-8 rounded-full flex items-center justify-center shadow"><i class="fa-solid fa-xmark"></i></button>
+            <div class="relative aspect-[4/3] bg-cream-100">
+                <img id="qvImage" src="" alt="Product Image" class="w-full h-full object-cover">
+                <span id="qvCategory" class="absolute top-3 left-3 bg-lv-brown/90 text-cream-100 text-[10px] uppercase tracking-widest px-2.5 py-1 rounded border border-lv-gold/30"></span>
+            </div>
+            <div class="p-6 space-y-4">
+                <h3 id="qvTitle" class="text-lg font-serif font-bold text-lv-dark"></h3>
+                <p id="qvDescription" class="text-xs text-gray-600 leading-relaxed"></p>
+                <div class="flex items-baseline space-x-1 pt-2 border-t border-cream-200">
+                    <span class="text-xs text-gray-400 font-medium">$</span>
+                    <span id="qvPrice" class="text-xl font-bold text-lv-brown font-serif"></span>
+                    <span class="text-xs text-gray-400">JMD</span>
+                </div>
+                <button id="qvAddBtn" onclick="" class="w-full bg-lv-gold hover:bg-yellow-600 text-lv-dark text-xs font-bold uppercase tracking-widest py-3.5 rounded shadow transition-all flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span>Add to Bag</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SHOPPING BAG & CARD CHECKOUT DRAWER -->
+    <div id="bagDrawer" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex justify-end">
+        <div class="bg-cream-50 w-full max-w-md h-full flex flex-col shadow-2xl transform transition-transform">
+            <!-- Drawer Header -->
+            <div class="bg-lv-brown text-cream-100 p-4 border-b border-lv-gold flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-bag-shopping text-lv-gold"></i>
+                    <h3 class="font-serif text-base tracking-wider">Your Shopping Bag</h3>
+                </div>
+                <button onclick="closeBagDrawer()" class="text-cream-300 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <!-- Drawer Body -->
+            <div id="bagItemsContainer" class="p-6 overflow-y-auto flex-1 space-y-4">
+                <p class="text-center text-gray-400 py-12 text-xs">Your bag is currently empty.</p>
+            </div>
+
+            <!-- Drawer Footer & Checkout Summary -->
+            <div class="bg-white p-6 border-t border-cream-200 space-y-4 shadow-lg">
+                <div class="flex justify-between text-xs font-medium text-gray-600">
+                    <span>Subtotal:</span>
+                    <span id="bagSubtotal" class="font-bold text-lv-dark font-serif text-sm">$0 JMD</span>
+                </div>
+                <div class="flex justify-between text-xs font-medium text-gray-600">
+                    <span>Shipping (Knutsford/Zipmail):</span>
+                    <span class="font-bold text-lv-dark font-serif text-sm">$600 JMD</span>
+                </div>
+                <div class="flex justify-between text-sm font-bold text-lv-brown pt-2 border-t border-cream-200">
+                    <span>Total Amount:</span>
+                    <span id="bagTotal" class="font-serif text-base">$600 JMD</span>
+                </div>
+
+                <!-- Pay with Card Button -->
+                <button onclick="proceedToCardCheckout()" class="w-full bg-lv-gold hover:bg-yellow-600 text-lv-dark text-xs font-bold uppercase tracking-widest py-3.5 rounded shadow transition-all flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-credit-card"></i>
+                    <span>Pay with Card</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN MODAL -->
+    <div id="adminModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-cream-50 border border-lv-gold w-full max-w-xl rounded-sm shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+            <div class="bg-lv-brown text-cream-100 p-4 border-b border-lv-gold flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-sliders text-lv-gold"></i>
+                    <h3 class="font-serif text-lg tracking-wider">Client Admin Panel</h3>
+                </div>
+                <button onclick="closeAdminModal()" class="text-cream-300 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="p-6 overflow-y-auto flex-1 space-y-6">
+                <!-- Add New Product (Updates New Arrivals & Collection) -->
+                <div class="bg-white p-4 rounded border border-cream-200 shadow-sm">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-lv-brown mb-4 flex items-center">
+                        <i class="fa-solid fa-plus-circle text-lv-gold mr-2"></i> Add New Product (New Arrivals & Collection)
+                    </h4>
+                    <form id="addProductForm" onsubmit="handleAddProduct(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-medium text-gray-700 mb-1">Product Title</label>
+                            <input type="text" id="prodTitle" required placeholder="e.g. Luxury Gold Watch & Bracelet Set" class="w-full text-xs p-2.5 border border-cream-300 rounded focus:border-lv-gold focus:outline-none">
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-medium text-gray-700 mb-1">Category</label>
+                                <select id="prodCategory" class="w-full text-xs p-2.5 border border-cream-300 rounded focus:border-lv-gold focus:outline-none">
+                                    <option value="Watch">Watch</option>
+                                    <option value="Chain">Chain</option>
+                                    <option value="Ring">Ring</option>
+                                    <option value="Bracelet">Bracelet</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-gray-700 mb-1">Price ($ JMD)</label>
+                                <input type="text" id="prodPrice" required placeholder="e.g. $5,500" class="w-full text-xs p-2.5 border border-cream-300 rounded focus:border-lv-gold focus:outline-none">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-gray-700 mb-1">Upload Product Image</label>
+                            <input type="file" id="prodImgFile" accept="image/*" required class="w-full text-xs p-2 border border-cream-300 rounded focus:border-lv-gold focus:outline-none bg-cream-50 file:mr-4 file:py-1.5 file:px-3 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-lv-brown file:text-cream-100 hover:file:bg-lv-gold hover:file:text-lv-dark cursor-pointer">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-gray-700 mb-1">Description</label>
+                            <textarea id="prodDesc" rows="3" required placeholder="Luxurious non-tarnish stainless steel..." class="w-full text-xs p-2.5 border border-cream-300 rounded focus:border-lv-gold focus:outline-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-lv-gold hover:bg-yellow-600 text-lv-dark text-xs font-semibold uppercase tracking-wider py-2.5 rounded transition-all">Save Product</button>
+                    </form>
+                </div>
+
+                <!-- Add Hero Banner Slide -->
+                <div class="bg-white p-4 rounded border border-cream-200 shadow-sm">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-lv-brown mb-4 flex items-center">
+                        <i class="fa-solid fa-image text-lv-gold mr-2"></i> Add Hero Section Banner Image
+                    </h4>
+                    <form id="addHeroForm" onsubmit="handleAddHero(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-medium text-gray-700 mb-1">Upload Hero Banner Image</label>
+                            <input type="file" id="heroImgFile" accept="image/*" required class="w-full text-xs p-2 border border-cream-300 rounded focus:border-lv-gold focus:outline-none bg-cream-50 file:mr-4 file:py-1.5 file:px-3 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-lv-brown file:text-cream-100 hover:file:bg-lv-gold hover:file:text-lv-dark cursor-pointer">
+                        </div>
+                        <button type="submit" class="w-full bg-lv-brown hover:bg-lv-gold text-cream-100 hover:text-lv-dark text-xs font-semibold uppercase tracking-wider py-2.5 rounded transition-all">Add to Hero Slides</button>
+                    </form>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-lv-brown mb-3">Manage Existing Products</h4>
+                    <div id="adminProductList" class="space-y-2 max-h-60 overflow-y-auto pr-1"></div>
+                </div>
+            </div>
+            <div class="bg-cream-100 px-6 py-3 border-t border-cream-200 text-right">
+                <button onclick="closeAdminModal()" class="text-xs uppercase tracking-wider bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 py-2 rounded">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 bg-lv-brown text-cream-100 border border-lv-gold px-4 py-3 rounded shadow-xl transform translate-y-20 opacity-0 transition-all duration-300 text-xs flex items-center space-x-2">
+        <i class="fa-solid fa-circle-check text-lv-gold text-base"></i>
+        <span id="toastMsg">Action completed successfully.</span>
+    </div>
+
+    <!-- Application Script -->
+    <script>
+        const initialProducts = [
+            { id: 'prod-1', title: 'Gold Clover Necklace & Bracelet Set', category: 'Chain', image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=800&auto=format&fit=crop', price: '5,500', description: 'Elegant four-leaf clover design in non-tarnish gold plating.' },
+            { id: 'prod-2', title: 'Silver Statement Stack Bangles', category: 'Bracelet', image: 'https://images.unsplash.com/photo-1611591475155-42e523a67341?q=80&w=800&auto=format&fit=crop', price: '4,800', description: 'Luxurious set of patterned bangles with sparkling cz accents.' },
+            { id: 'prod-3', title: 'Two-Tone Textured Gold Ring Set', category: 'Ring', image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=800&auto=format&fit=crop', price: '3,200', description: 'Modern statement rings with rich gold luster.' },
+            { id: 'prod-4', title: 'Chronograph Luxury Gold Watch', category: 'Watch', image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=800&auto=format&fit=crop', price: '12,500', description: 'Sophisticated timepiece with gold finish and waterproof casing.' }
+        ];
+
+        let currentProducts = JSON.parse(localStorage.getItem('petallia_products')) || initialProducts;
+        let shoppingBag = JSON.parse(localStorage.getItem('petallia_bag')) || [];
+        let heroSlides = JSON.parse(localStorage.getItem('petallia_hero_slides')) || [
+            'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=1600&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1600&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1611591475155-42e523a67341?q=80&w=1600&auto=format&fit=crop'
+        ];
+        let currentSlide = 0;
+
+        function readFileAsDataURL(fileInput) {
+            return new Promise((resolve, reject) => {
+                const file = fileInput.files[0];
+                if (!file) {
+                    reject('No file selected');
+                    return;
+                }
+                const reader = new FileReader();
+                reader.onload = (e) => resolve(e.target.result);
+                reader.onerror = (err) => reject(err);
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function renderNewArrivals() {
+            const container = document.getElementById('arrivalsGrid');
+            if (!container) return;
+
+            const itemsHTML = currentProducts.map(prod => `
+                <div onclick="openQuickView('${prod.id}')" class="w-72 bg-cream-50 border border-cream-200 rounded p-4 shadow-sm flex-shrink-0 flex items-center space-x-4 cursor-pointer hover:border-lv-gold transition-all">
+                    <img src="${prod.image}" class="w-20 h-20 object-cover rounded">
+                    <div>
+                        <span class="text-[9px] text-lv-gold font-bold uppercase tracking-widest block">New Arrival</span>
+                        <h4 class="text-xs font-bold text-lv-dark font-serif mt-0.5 line-clamp-1">${prod.title}</h4>
+                        <span class="text-xs font-bold text-lv-brown mt-1 block">$${prod.price} JMD</span>
+                    </div>
+                </div>
+            `).join('');
+
+            container.innerHTML = itemsHTML + itemsHTML;
+        }
+
+        window.openQuickView = function(id) {
+            const prod = currentProducts.find(p => p.id === id);
+            if (!prod) return;
+
+            document.getElementById('qvImage').src = prod.image;
+            document.getElementById('qvCategory').textContent = prod.category;
+            document.getElementById('qvTitle').textContent = prod.title;
+            document.getElementById('qvDescription').textContent = prod.description || 'Luxurious non-tarnish stainless steel piece designed for daily elegance.';
+            document.getElementById('qvPrice').textContent = prod.price;
+            document.getElementById('qvAddBtn').setAttribute('onclick', `addToBagFromQuickView('${prod.id}')`);
+
+            document.getElementById('quickViewModal').classList.remove('hidden');
+        };
+
+        window.closeQuickView = function() {
+            document.getElementById('quickViewModal').classList.add('hidden');
+        };
+
+        window.addToBagFromQuickView = function(id) {
+            addToBag(id);
+            closeQuickView();
+        };
+
+        window.addToBag = function(id) {
+            const product = currentProducts.find(p => p.id === id);
+            if (!product) return;
+            shoppingBag.push(product);
+            localStorage.setItem('petallia_bag', JSON.stringify(shoppingBag));
+            updateBagBadge();
+            showToast(`Added "${product.title}" to bag!`);
+        };
+
+        function updateBagBadge() {
+            const badge = document.getElementById('bagBadge');
+            if (badge) badge.textContent = shoppingBag.length;
+        }
+
+        function renderBagItems() {
+            const container = document.getElementById('bagItemsContainer');
+            const subtotalEl = document.getElementById('bagSubtotal');
+            const totalEl = document.getElementById('bagTotal');
+            if (!container) return;
+
+            if (shoppingBag.length === 0) {
+                container.innerHTML = `<p class="text-center text-gray-400 py-12 text-xs">Your bag is currently empty.</p>`;
+                if (subtotalEl) subtotalEl.textContent = '$0 JMD';
+                if (totalEl) totalEl.textContent = '$600 JMD';
+                return;
+            }
+
+            let subtotal = 0;
+            container.innerHTML = shoppingBag.map((item, idx) => {
+                const numericPrice = parseFloat(item.price.replace(/,/g, '')) || 0;
+                subtotal += numericPrice;
+                return `
+                    <div class="flex items-center justify-between p-3 bg-white rounded border border-cream-200 text-xs shadow-sm">
+                        <div class="flex items-center space-x-3 overflow-hidden">
+                            <img src="${item.image}" class="w-10 h-10 object-cover rounded">
+                            <div class="truncate">
+                                <p class="font-medium text-lv-dark truncate">${item.title}</p>
+                                <p class="text-[11px] text-lv-gold font-bold">$${item.price} JMD</p>
+                            </div>
+                        </div>
+                        <button onclick="removeFromBag(${idx})" class="text-red-400 hover:text-red-600 p-2"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                `;
+            }).join('');
+
+            const shippingFee = 600;
+            const total = subtotal + shippingFee;
+            if (subtotalEl) subtotalEl.textContent = `$${subtotal.toLocaleString()} JMD`;
+            if (totalEl) totalEl.textContent = `$${total.toLocaleString()} JMD`;
+        }
+
+        window.removeFromBag = function(index) {
+            shoppingBag.splice(index, 1);
+            localStorage.setItem('petallia_bag', JSON.stringify(shoppingBag));
+            updateBagBadge();
+            renderBagItems();
+        };
+
+        window.proceedToCardCheckout = function() {
+            if (shoppingBag.length === 0) {
+                alert('Your shopping bag is empty. Please add items before checking out.');
+                return;
+            }
+            alert('Redirecting to secure card checkout...');
+            shoppingBag = [];
+            localStorage.removeItem('petallia_bag');
+            updateBagBadge();
+            renderBagItems();
+            closeBagDrawer();
+            showToast('Order placed successfully!');
+        };
+
+        window.handleAddProduct = async function(e) {
+            e.preventDefault();
+            const title = document.getElementById('prodTitle').value;
+            const category = document.getElementById('prodCategory').value;
+            const price = document.getElementById('prodPrice').value;
+            const description = document.getElementById('prodDesc').value;
+            const fileInput = document.getElementById('prodImgFile');
+
+            try {
+                const imageBase64 = await readFileAsDataURL(fileInput);
+                const newProd = {
+                    id: 'prod-' + Date.now(),
+                    title,
+                    category,
+                    price,
+                    image: imageBase64,
+                    tag: 'Stainless Steel',
+                    description
+                };
+
+                currentProducts.unshift(newProd);
+                localStorage.setItem('petallia_products', JSON.stringify(currentProducts));
+                renderNewArrivals();
+                renderAdminList();
+                document.getElementById('addProductForm').reset();
+                closeAdminModal();
+                showToast('New product added successfully!');
+            } catch (err) {
+                alert('Please select an image file for the product.');
+            }
+        };
+
+        window.handleAddHero = async function(e) {
+            e.preventDefault();
+            const fileInput = document.getElementById('heroImgFile');
+
+            try {
+                const imageBase64 = await readFileAsDataURL(fileInput);
+                heroSlides.unshift(imageBase64);
+                localStorage.setItem('petallia_hero_slides', JSON.stringify(heroSlides));
+                setupHero();
+                document.getElementById('addHeroForm').reset();
+                closeAdminModal();
+                showToast('New Hero banner slide added successfully!');
+            } catch (err) {
+                alert('Please select an image file for the hero banner.');
+            }
+        };
+
+        window.deleteProduct = function(id) {
+            if (!confirm('Are you sure you want to delete this product?')) return;
+            currentProducts = currentProducts.filter(p => p.id !== id);
+            localStorage.setItem('petallia_products', JSON.stringify(currentProducts));
+            renderNewArrivals();
+            renderAdminList();
+            showToast('Product deleted.');
+        };
+
+        function renderAdminList() {
+            const list = document.getElementById('adminProductList');
+            if (!list) return;
+            list.innerHTML = currentProducts.map(p => `
+                <div class="flex items-center justify-between p-2.5 bg-cream-100 rounded border border-cream-200 text-xs">
+                    <div class="flex items-center space-x-3 truncate">
+                        <img src="${p.image}" class="w-8 h-8 object-cover rounded">
+                        <div class="truncate">
+                            <p class="font-medium text-lv-dark truncate">${p.title} (${p.category})</p>
+                            <p class="text-[10px] text-lv-gold font-bold">$${p.price} JMD</p>
+                        </div>
+                    </div>
+                    <button onclick="deleteProduct('${p.id}')" class="text-red-500 hover:text-red-700 p-1.5"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+            `).join('');
+        }
+
+        window.openBagDrawer = function() {
+            renderBagItems();
+            document.getElementById('bagDrawer').classList.remove('hidden');
+        };
+        window.closeBagDrawer = function() {
+            document.getElementById('bagDrawer').classList.add('hidden');
+        };
+        window.openAdminModal = function() {
+            renderAdminList();
+            document.getElementById('adminModal').classList.remove('hidden');
+        };
+        window.closeAdminModal = function() {
+            document.getElementById('adminModal').classList.add('hidden');
+        };
+        window.toggleMobileMenu = function() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        };
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').textContent = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => toast.classList.add('translate-y-20', 'opacity-0'), 3000);
+        }
+
+        function setupHero() {
+            const container = document.getElementById('heroSlidesContainer');
+            const dots = document.getElementById('heroDots');
+            if (!container) return;
+
+            container.innerHTML = heroSlides.map((img, i) => `
+                <div class="hero-slide absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 ${i === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'}" style="background-image: url('${img}');"></div>
+            `).join('');
+
+            if (dots) {
+                dots.innerHTML = heroSlides.map((_, i) => `
+                    <button onclick="goToSlide(${i})" class="w-2.5 h-2.5 rounded-full transition-all ${i === 0 ? 'bg-lv-gold w-6' : 'bg-cream-100/50'}"></button>
+                `).join('');
+            }
+        }
+
+        window.nextHeroSlide = function() {
+            currentSlide = (currentSlide + 1) % heroSlides.length;
+            goToSlide(currentSlide);
+        };
+        window.prevHeroSlide = function() {
+            currentSlide = (currentSlide - 1 + heroSlides.length) % heroSlides.length;
+            goToSlide(currentSlide);
+        };
+        window.goToSlide = function(i) {
+            currentSlide = i;
+            const slideEls = document.querySelectorAll('.hero-slide');
+            slideEls.forEach((el, idx) => {
+                if (idx === i) {
+                    el.classList.remove('opacity-0', 'z-0');
+                    el.classList.add('opacity-100', 'z-10');
+                } else {
+                    el.classList.remove('opacity-100', 'z-10');
+                    el.classList.add('opacity-0', 'z-0');
+                }
+            });
+        };
+
+        setInterval(nextHeroSlide, 6000);
+        renderNewArrivals();
+        updateBagBadge();
+        setupHero();
+    </script>
+</body>
+</html>

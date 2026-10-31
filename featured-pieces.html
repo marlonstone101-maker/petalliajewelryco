@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Featured Pieces | Petallia Jewelry</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: {
+                            50: '#FAF8F5',
+                            100: '#F5F0E6',
+                            200: '#EAE2D6',
+                            300: '#D8CBB7',
+                        },
+                        lv: {
+                            gold: '#C5A059',
+                            roseGold: '#B8826B',
+                            dark: '#1A1816',
+                            brown: '#2C221E',
+                            accent: '#D4AF37'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'Georgia', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                        cinzel: ['Cinzel', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            background-color: #FAF8F5;
+            color: #1A1816;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, .font-serif-luxury {
+            font-family: 'Cinzel', serif;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF8F5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C5A059;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="bg-cream-50 text-lv-dark min-h-screen flex flex-col selection:bg-lv-gold selection:text-white">
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 bg-cream-50/95 backdrop-blur-md border-b border-cream-200 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-3 items-center h-20">
+                <div class="flex items-center space-x-4 justify-start">
+                    <a href="index.html" class="text-xs font-medium tracking-widest uppercase hover:text-lv-gold flex items-center space-x-1">
+                        <i class="fa-solid fa-arrow-left"></i><span>Back to Home</span>
+                    </a>
+                </div>
+                <div class="flex justify-center items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <span class="text-base md:text-xl font-bold tracking-widest text-lv-dark font-serif uppercase">Petallia</span>
+                    </a>
+                </div>
+                <div class="flex items-center justify-end space-x-4">
+                    <button onclick="openBagDrawer()" class="relative bg-lv-brown text-cream-100 hover:bg-lv-gold hover:text-lv-dark p-2.5 rounded-sm transition-all flex items-center shadow-sm">
+                        <i class="fa-solid fa-bag-shopping text-sm"></i>
+                        <span id="bagBadge" class="absolute -top-1.5 -right-1.5 bg-lv-gold text-lv-dark text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Featured Catalog Section -->
+    <main class="flex-grow py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-10">
+            <div>
+                <span id="categorySubHeader" class="text-xs uppercase tracking-[0.3em] text-lv-gold font-semibold">Handcrafted & Curated</span>
+                <h2 id="categoryMainHeader" class="text-3xl md:text-4xl font-serif text-lv-dark mt-1">Featured Pieces Catalog</h2>
+            </div>
+            <!-- Quick Filter Buttons -->
+            <div class="flex flex-wrap gap-2 mt-4 md:mt-0">
+                <button onclick="filterCategory('all')" class="cat-btn bg-lv-brown text-cream-50 text-xs px-4 py-2 rounded uppercase tracking-wider transition-all">All</button>
+                <button onclick="filterCategory('Watch')" class="cat-btn bg-white text-lv-dark border border-cream-200 text-xs px-4 py-2 rounded uppercase tracking-wider transition-all">Watches</button>
+                <button onclick="filterCategory('Chain')" class="cat-btn bg-white text-lv-dark border border-cream-200 text-xs px-4 py-2 rounded uppercase tracking-wider transition-all">Chains</button>
+                <button onclick="filterCategory('Ring')" class="cat-btn bg-white text-lv-dark border border-cream-200 text-xs px-4 py-2 rounded uppercase tracking-wider transition-all">Rings</button>
+                <button onclick="filterCategory('Bracelet')" class="cat-btn bg-white text-lv-dark border border-cream-200 text-xs px-4 py-2 rounded uppercase tracking-wider transition-all">Bracelets</button>
+            </div>
+        </div>
+
+        <!-- Amazon-Style Horizontal Scrolling Grid Container -->
+        <div id="productGrid" class="flex overflow-x-auto space-x-6 pb-6 pt-2 scrollbar-thin scrollbar-thumb-lv-gold scrollbar-track-cream-200 snap-x">
+            <!-- Dynamically rendered items -->
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-lv-brown text-cream-100 py-8 border-t-2 border-lv-gold text-center text-xs mt-12">
+        <p>&copy; 2026 Petallia Jewelry Co. All Rights Reserved.</p>
+    </footer>
+
+    <!-- SHOPPING BAG DRAWER -->
+    <div id="bagDrawer" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex justify-end">
+        <div class="bg-cream-50 w-full max-w-md h-full flex flex-col shadow-2xl transform transition-transform">
+            <div class="bg-lv-brown text-cream-100 p-4 border-b border-lv-gold flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-bag-shopping text-lv-gold"></i>
+                    <h3 class="font-serif text-base tracking-wider">Your Shopping Bag</h3>
+                </div>
+                <button onclick="closeBagDrawer()" class="text-cream-300 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="bagItemsContainer" class="p-6 overflow-y-auto flex-1 space-y-4">
+                <p class="text-center text-gray-400 py-12 text-xs">Your bag is currently empty.</p>
+            </div>
+            <div class="bg-white p-6 border-t border-cream-200 space-y-4 shadow-lg">
+                <div class="flex justify-between text-xs font-medium text-gray-600">
+                    <span>Subtotal:</span>
+                    <span id="bagSubtotal" class="font-bold text-lv-dark font-serif text-sm">$0 JMD</span>
+                </div>
+                <div class="flex justify-between text-xs font-medium text-gray-600">
+                    <span>Shipping:</span>
+                    <span class="font-bold text-lv-dark font-serif text-sm">$600 JMD</span>
+                </div>
+                <div class="flex justify-between text-sm font-bold text-lv-brown pt-2 border-t border-cream-200">
+                    <span>Total Amount:</span>
+                    <span id="bagTotal" class="font-serif text-base">$600 JMD</span>
+                </div>
+                <button onclick="proceedToCardCheckout()" class="w-full bg-lv-gold hover:bg-yellow-600 text-lv-dark text-xs font-bold uppercase tracking-widest py-3.5 rounded shadow transition-all flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-credit-card"></i>
+                    <span>Pay with Card</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 bg-lv-brown text-cream-100 border border-lv-gold px-4 py-3 rounded shadow-xl transform translate-y-20 opacity-0 transition-all duration-300 text-xs flex items-center space-x-2">
+        <i class="fa-solid fa-circle-check text-lv-gold text-base"></i>
+        <span id="toastMsg">Action completed successfully.</span>
+    </div>
+
+    <!-- Script to render catalog and handle bag -->
+    <script>
+        const initialProducts = [
+            { id: 'prod-1', title: 'Gold Clover Necklace & Bracelet Set', category: 'Chain', image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=800&auto=format&fit=crop', price: '5,500', description: 'Elegant four-leaf clover design in non-tarnish gold plating.' },
+            { id: 'prod-2', title: 'Silver Statement Stack Bangles', category: 'Bracelet', image: 'https://images.unsplash.com/photo-1611591475155-42e523a67341?q=80&w=800&auto=format&fit=crop', price: '4,800', description: 'Luxurious set of patterned bangles with sparkling cz accents.' },
+            { id: 'prod-3', title: 'Two-Tone Textured Gold Ring Set', category: 'Ring', image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=800&auto=format&fit=crop', price: '3,200', description: 'Modern statement rings with rich gold luster.' },
+            { id: 'prod-4', title: 'Chronograph Luxury Gold Watch', category: 'Watch', image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=800&auto=format&fit=crop', price: '12,500', description: 'Sophisticated timepiece with gold finish and waterproof casing.' }
+        ];
+
+        let currentProducts = JSON.parse(localStorage.getItem('petallia_products')) || initialProducts;
+        let shoppingBag = JSON.parse(localStorage.getItem('petallia_bag')) || [];
+
+        function renderProducts(filter = 'all') {
+            const container = document.getElementById('productGrid');
+            const mainHeader = document.getElementById('categoryMainHeader');
+            if (!container) return;
+
+            let filtered = currentProducts;
+            if (filter !== 'all') {
+                filtered = currentProducts.filter(p => p.category.toLowerCase() === filter.toLowerCase());
+                if (mainHeader) mainHeader.textContent = `${filter} Collection`;
+            } else {
+                if (mainHeader) mainHeader.textContent = 'Featured Pieces Catalog';
+            }
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<p class="min-w-full text-center py-12 text-gray-500 text-xs">No products found in this category.</p>`;
+                return;
+            }
+
+            container.innerHTML = filtered.map(prod => `
+                <div class="min-w-[260px] md:min-w-[280px] bg-white border border-cream-200 rounded-sm overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col group snap-start">
+                    <div class="relative aspect-[4/3] bg-cream-100 overflow-hidden">
+                        <img src="${prod.image}" alt="${prod.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <span class="absolute top-2 left-2 bg-lv-brown/90 text-cream-100 text-[9px] uppercase tracking-widest px-2 py-0.5 rounded border border-lv-gold/30">
+                            ${prod.category}
+                        </span>
+                    </div>
+                    <div class="p-4 flex flex-col justify-between flex-1">
+                        <div>
+                            <h3 class="text-sm font-serif font-semibold text-lv-dark mb-1 leading-snug group-hover:text-lv-gold transition-colors line-clamp-1">${prod.title}</h3>
+                            <p class="text-[11px] text-gray-500 mb-3 line-clamp-2 leading-relaxed">${prod.description}</p>
+                        </div>
+                        <div>
+                            <div class="flex items-baseline space-x-1 mb-3">
+                                <span class="text-xs text-gray-400 font-medium">$</span>
+                                <span class="text-base font-bold text-lv-brown font-serif">${prod.price}</span>
+                                <span class="text-[10px] text-gray-400">JMD</span>
+                            </div>
+                            <button onclick="addToBag('${prod.id}')" class="w-full bg-cream-100 hover:bg-lv-gold hover:text-lv-dark text-lv-brown text-xs font-semibold py-2.5 rounded transition-colors uppercase tracking-wider flex items-center justify-center space-x-2 shadow-sm">
+                                <i class="fa-solid fa-bag-shopping text-xs"></i>
+                                <span>Add to Bag</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        window.filterCategory = function(cat) {
+            renderProducts(cat);
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                if (btn.textContent.toLowerCase().includes(cat.toLowerCase()) || (cat === 'all' && btn.textContent.includes('All'))) {
+                    btn.className = 'cat-btn bg-lv-brown text-cream-50 text-xs px-4 py-2 rounded uppercase tracking-wider transition-all';
+                } else {
+                    btn.className = 'cat-btn bg-white text-lv-dark border border-cream-200 text-xs px-4 py-2 rounded uppercase tracking-wider transition-all';
+                }
+            });
+        };
+
+        window.addToBag = function(id) {
+            const product = currentProducts.find(p => p.id === id);
+            if (!product) return;
+            shoppingBag.push(product);
+            localStorage.setItem('petallia_bag', JSON.stringify(shoppingBag));
+            updateBagBadge();
+            showToast(`Added "${product.title}" to bag!`);
+        };
+
+        window.removeFromBag = function(index) {
+            shoppingBag.splice(index, 1);
+            localStorage.setItem('petallia_bag', JSON.stringify(shoppingBag));
+            updateBagBadge();
+            renderBagItems();
+        };
+
+        function updateBagBadge() {
+            const badge = document.getElementById('bagBadge');
+            if (badge) badge.textContent = shoppingBag.length;
+        }
+
+        function renderBagItems() {
+            const container = document.getElementById('bagItemsContainer');
+            const subtotalEl = document.getElementById('bagSubtotal');
+            const totalEl = document.getElementById('bagTotal');
+            if (!container) return;
+
+            if (shoppingBag.length === 0) {
+                container.innerHTML = `<p class="text-center text-gray-400 py-12 text-xs">Your bag is currently empty.</p>`;
+                if (subtotalEl) subtotalEl.textContent = '$0 JMD';
+                if (totalEl) totalEl.textContent = '$600 JMD';
+                return;
+            }
+
+            let subtotal = 0;
+            container.innerHTML = shoppingBag.map((item, idx) => {
+                const numericPrice = parseFloat(item.price.replace(/,/g, '')) || 0;
+                subtotal += numericPrice;
+                return `
+                    <div class="flex items-center justify-between p-3 bg-white rounded border border-cream-200 text-xs shadow-sm">
+                        <div class="flex items-center space-x-3 overflow-hidden">
+                            <img src="${item.image}" class="w-10 h-10 object-cover rounded">
+                            <div class="truncate">
+                                <p class="font-medium text-lv-dark truncate">${item.title}</p>
+                                <p class="text-[11px] text-lv-gold font-bold">$${item.price} JMD</p>
+                            </div>
+                        </div>
+                        <button onclick="removeFromBag(${idx})" class="text-red-400 hover:text-red-600 p-2"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                `;
+            }).join('');
+
+            const shippingFee = 600;
+            const total = subtotal + shippingFee;
+            if (subtotalEl) subtotalEl.textContent = `$${subtotal.toLocaleString()} JMD`;
+            if (totalEl) totalEl.textContent = `$${total.toLocaleString()} JMD`;
+        }
+
+        window.proceedToCardCheckout = function() {
+            if (shoppingBag.length === 0) {
+                alert('Your shopping bag is empty.');
+                return;
+            }
+            alert('Redirecting to secure card checkout...');
+            shoppingBag = [];
+            localStorage.removeItem('petallia_bag');
+            updateBagBadge();
+            renderBagItems();
+            closeBagDrawer();
+            showToast('Order placed successfully!');
+        };
+
+        window.openBagDrawer = function() {
+            renderBagItems();
+            document.getElementById('bagDrawer').classList.remove('hidden');
+        };
+        window.closeBagDrawer = function() {
+            document.getElementById('bagDrawer').classList.add('hidden');
+        };
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').textContent = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => toast.classList.add('translate-y-20', 'opacity-0'), 3000);
+        }
+
+        // Initialize page filters based on URL parameter (?cat=Watch)
+        const urlParams = new URLSearchParams(window.location.search);
+        const catParam = urlParams.get('cat');
+        renderProducts(catParam || 'all');
+        if (catParam) filterCategory(catParam);
+        updateBagBadge();
+    </script>
+</body>
+</html>
