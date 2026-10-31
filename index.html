@@ -88,7 +88,7 @@
 <body class="bg-cream-50 text-lv-dark min-h-screen flex flex-col selection:bg-lv-gold selection:text-white">
 
     <!-- Running Top Announcement Bar -->
-    <div class="bg-lv-brown text-cream-100 text-xs py-2.5 overflow-hidden whitespace-nowrap border-b border-lv-gold/30">
+    <div class="bg-lv-brown text-cream-100 text-xs py-2.5 overflow-hidden whitespace-nowrap border-b border-lv-gold/30 z-50 relative">
         <div class="animate-marquee flex space-x-12 tracking-widest uppercase font-medium">
             <span><i class="fa-solid fa-box-archive text-lv-gold mr-1"></i> Island-Wide Delivery Available</span>
             <span><i class="fa-solid fa-gem text-lv-gold mr-1"></i> Premium Stainless Steel Jewelry</span>
@@ -99,17 +99,17 @@
         </div>
     </div>
 
-    <!-- Navigation Header -->
-    <header class="sticky top-0 z-40 bg-cream-50/95 backdrop-blur-md border-b border-cream-200 transition-all duration-300 py-2">
+    <!-- Navigation Header (Transparent Look overlaying the video) -->
+    <header class="absolute top-[37px] left-0 w-full z-40 bg-transparent backdrop-blur-[2px] transition-all duration-300 py-3">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-3 items-center">
                 
                 <!-- Left: Hamburger & Navigation -->
                 <div class="flex items-center space-x-4 justify-start">
-                    <button onclick="toggleMobileMenu()" class="text-lv-dark hover:text-lv-gold text-2xl focus:outline-none p-2" aria-label="Open Menu">
+                    <button onclick="toggleMobileMenu()" class="text-cream-100 hover:text-lv-gold text-2xl focus:outline-none p-2 drop-shadow-md" aria-label="Open Menu">
                         <i class="fa-solid fa-bars"></i>
                     </button>
-                    <nav class="hidden lg:flex space-x-4 xl:space-x-6 text-[11px] xl:text-xs font-medium tracking-wider uppercase">
+                    <nav class="hidden lg:flex space-x-4 xl:space-x-6 text-[11px] xl:text-xs font-medium tracking-wider uppercase text-cream-100 drop-shadow">
                         <a href="#hero" class="hover:text-lv-gold transition-colors py-2 border-b-2 border-transparent hover:border-lv-gold">Home</a>
                         <a href="#categories" class="hover:text-lv-gold transition-colors py-2 border-b-2 border-transparent hover:border-lv-gold">Categories</a>
                         <a href="featured-pieces.html" class="hover:text-lv-gold transition-colors py-2 border-b-2 border-transparent hover:border-lv-gold">Collection</a>
@@ -120,19 +120,22 @@
                 <!-- Center: Centered Logo Above Text -->
                 <div class="flex justify-center items-center">
                     <a href="#" class="flex flex-col items-center group py-1">
-                        <div class="w-10 h-10 md:w-11 md:h-11 rounded-full border-2 border-lv-gold p-0.5 overflow-hidden flex items-center justify-center bg-white shadow-sm group-hover:scale-105 transition-transform mb-1">
+                        <div class="w-10 h-10 md:w-11 md:h-11 rounded-full border-2 border-lv-gold p-0.5 overflow-hidden flex items-center justify-center bg-lv-dark/80 shadow-md group-hover:scale-105 transition-transform mb-1">
                             <img src="logo.png" onerror="this.onerror=null; this.src='logo.png'; this.parentElement.innerHTML='<div class=\'text-lv-gold font-serif font-bold text-sm\'>PJ</div>';" alt="Petallia Jewelry Logo" class="w-full h-full object-cover rounded-full">
                         </div>
-                        <div class="text-center leading-tight">
-                            <span class="block text-xs md:text-sm font-bold tracking-widest text-lv-dark font-serif uppercase">Petallia</span>
+                        <div class="text-center leading-tight drop-shadow-md">
+                            <span class="block text-xs md:text-sm font-bold tracking-widest text-cream-50 font-serif uppercase">Petallia</span>
                             <span class="block text-[7px] md:text-[8px] tracking-[0.25em] text-lv-gold font-light uppercase">Jewelry Co.</span>
                         </div>
                     </a>
                 </div>
 
-                <!-- Right: Bag Trigger -->
-                <div class="flex items-center justify-end space-x-4">
-                    <button onclick="openBagDrawer()" class="relative bg-lv-brown text-cream-100 hover:bg-lv-gold hover:text-lv-dark p-2.5 rounded-sm transition-all flex items-center shadow-sm">
+                <!-- Right: Search & Bag Triggers -->
+                <div class="flex items-center justify-end space-x-3">
+                    <button onclick="openSearchModal()" class="bg-lv-dark/60 backdrop-blur-md text-cream-100 border border-lv-gold/40 hover:bg-lv-gold hover:text-lv-dark p-2.5 rounded-sm transition-all flex items-center shadow-md" aria-label="Search">
+                        <i class="fa-solid fa-magnifying-glass text-sm"></i>
+                    </button>
+                    <button onclick="openBagDrawer()" class="relative bg-lv-brown/90 backdrop-blur-md text-cream-100 border border-lv-gold/40 hover:bg-lv-gold hover:text-lv-dark p-2.5 rounded-sm transition-all flex items-center shadow-md">
                         <i class="fa-solid fa-bag-shopping text-sm"></i>
                         <span id="bagBadge" class="absolute -top-1.5 -right-1.5 bg-lv-gold text-lv-dark text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow">0</span>
                     </button>
@@ -168,16 +171,15 @@
     <!-- Main Content -->
     <main class="flex-grow">
         
-        <!-- HERO SECTION (Video Background) -->
-        <section id="hero" class="relative bg-lv-dark text-cream-50 overflow-hidden h-[80vh] min-h-[500px] flex items-center justify-center">
+        <!-- HERO SECTION (Video Background - adjusted top padding so video goes right behind transparent header) -->
+        <section id="hero" class="relative bg-lv-dark text-cream-50 overflow-hidden h-[85vh] min-h-[550px] flex items-center justify-center pt-16">
             <div class="absolute inset-0 w-full h-full overflow-hidden">
                 <video autoplay muted loop playsinline class="w-full h-full object-cover scale-105">
                     <source src="video1.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
-            <div class="absolute inset-0 bg-gradient-to-t from-lv-dark via-lv-dark/60 to-transparent"></div>
-            <div class="absolute inset-0 bg-black/30"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-lv-dark via-lv-dark/50 to-black/20"></div>
 
             <div class="relative z-10 text-center max-w-3xl px-6 py-12 border border-lv-gold/30 bg-lv-dark/40 backdrop-blur-sm rounded-sm mx-4">
                 <span class="text-xs md:text-sm tracking-[0.4em] uppercase text-lv-gold font-semibold mb-3 block">Exclusive Stainless Steel</span>
@@ -362,6 +364,27 @@
             </div>
         </div>
     </footer>
+
+    <!-- SEARCH MODAL -->
+    <div id="searchModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-cream-50 border border-lv-gold w-full max-w-lg rounded-sm shadow-2xl overflow-hidden flex flex-col relative animate-fade-in">
+            <div class="bg-lv-brown text-cream-100 p-4 border-b border-lv-gold flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-magnifying-glass text-lv-gold"></i>
+                    <h3 class="font-serif text-base tracking-wider">Search Products</h3>
+                </div>
+                <button onclick="closeSearchModal()" class="text-cream-300 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="p-6 space-y-4">
+                <div>
+                    <input type="text" id="searchInput" oninput="handleSearch(this.value)" placeholder="Type to search watches, chains, rings, bracelets..." class="w-full text-xs p-3 border border-cream-300 rounded focus:border-lv-gold focus:outline-none">
+                </div>
+                <div id="searchResultsContainer" class="space-y-2 max-h-60 overflow-y-auto pr-1">
+                    <p class="text-center text-gray-400 py-6 text-xs">Start typing to search available collection items...</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- QUICK VIEW MODAL FOR NEW ARRIVALS -->
     <div id="quickViewModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
@@ -713,6 +736,42 @@
                         </div>
                     </div>
                     <button onclick="deleteProduct('${p.id}')" class="text-red-500 hover:text-red-700 p-1.5"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+            `).join('');
+        }
+
+        // Search Modal Functions
+        window.openSearchModal = function() {
+            document.getElementById('searchModal').classList.remove('hidden');
+            document.getElementById('searchInput').focus();
+        }
+        window.closeSearchModal = function() {
+            document.getElementById('searchModal').classList.add('hidden');
+            document.getElementById('searchInput').value = '';
+            document.getElementById('searchResultsContainer').innerHTML = `<p class="text-center text-gray-400 py-6 text-xs">Start typing to search available collection items...</p>`;
+        }
+        window.handleSearch = function(query) {
+            const container = document.getElementById('searchResultsContainer');
+            const q = query.toLowerCase().trim();
+            if (!q) {
+                container.innerHTML = `<p class="text-center text-gray-400 py-6 text-xs">Start typing to search available collection items...</p>`;
+                return;
+            }
+            const matches = currentProducts.filter(p => p.title.toLowerCase().includes(q) || p.category.toLowerCase().includes(q) || (p.description && p.description.toLowerCase().includes(q)));
+            if (matches.length === 0) {
+                container.innerHTML = `<p class="text-center text-gray-400 py-6 text-xs">No products found matching "${query}".</p>`;
+                return;
+            }
+            container.innerHTML = matches.map(prod => `
+                <div onclick="closeSearchModal(); openQuickView('${prod.id}')" class="flex items-center justify-between p-2.5 bg-white rounded border border-cream-200 text-xs cursor-pointer hover:border-lv-gold transition-all shadow-sm">
+                    <div class="flex items-center space-x-3 overflow-hidden">
+                        <img src="${prod.image}" class="w-10 h-10 object-cover rounded">
+                        <div class="truncate">
+                            <p class="font-medium text-lv-dark truncate">${prod.title}</p>
+                            <p class="text-[10px] text-lv-gold uppercase tracking-wider font-bold">${prod.category} • $${prod.price} JMD</p>
+                        </div>
+                    </div>
+                    <span class="text-lv-brown text-xs font-bold"><i class="fa-solid fa-chevron-right"></i></span>
                 </div>
             `).join('');
         }
