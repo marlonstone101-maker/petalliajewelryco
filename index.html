@@ -104,10 +104,14 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-3 items-center">
                 
-                <!-- Left: Hamburger & Navigation -->
-                <div class="flex items-center space-x-4 justify-start">
+                <!-- Left: Hamburger, Search, & Navigation -->
+                <div class="flex items-center space-x-2 sm:space-x-4 justify-start">
                     <button onclick="toggleMobileMenu()" class="text-cream-100 hover:text-lv-gold text-2xl focus:outline-none p-2 drop-shadow-md" aria-label="Open Menu">
                         <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <!-- Search Button placed right beside the hamburger menu with no solid block -->
+                    <button onclick="openSearchModal()" class="text-cream-100 hover:text-lv-gold text-xl focus:outline-none p-2 drop-shadow-md transition-colors" aria-label="Search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                     <nav class="hidden lg:flex space-x-4 xl:space-x-6 text-[11px] xl:text-xs font-medium tracking-wider uppercase text-cream-100 drop-shadow">
                         <a href="#hero" class="hover:text-lv-gold transition-colors py-2 border-b-2 border-transparent hover:border-lv-gold">Home</a>
@@ -130,11 +134,8 @@
                     </a>
                 </div>
 
-                <!-- Right: Search & Bag Triggers -->
+                <!-- Right: Bag Trigger -->
                 <div class="flex items-center justify-end space-x-3">
-                    <button onclick="openSearchModal()" class="bg-lv-dark/60 backdrop-blur-md text-cream-100 border border-lv-gold/40 hover:bg-lv-gold hover:text-lv-dark p-2.5 rounded-sm transition-all flex items-center shadow-md" aria-label="Search">
-                        <i class="fa-solid fa-magnifying-glass text-sm"></i>
-                    </button>
                     <button onclick="openBagDrawer()" class="relative bg-lv-brown/90 backdrop-blur-md text-cream-100 border border-lv-gold/40 hover:bg-lv-gold hover:text-lv-dark p-2.5 rounded-sm transition-all flex items-center shadow-md">
                         <i class="fa-solid fa-bag-shopping text-sm"></i>
                         <span id="bagBadge" class="absolute -top-1.5 -right-1.5 bg-lv-gold text-lv-dark text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow">0</span>
